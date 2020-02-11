@@ -1,4 +1,4 @@
-package com.example.thankunext;
+package com.example.flipphone;
 
 import org.junit.Test;
 
