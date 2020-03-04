@@ -35,19 +35,19 @@ import com.google.firebase.firestore.Query;
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 /**
- * RecyclerView adapter for a list of Restaurants.
+ * RecyclerView adapter for a list of Phones.
  */
 public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
 
-    public interface OnRestaurantSelectedListener {
+    public interface OnPhoneSelectedListener {
 
-        void onRestaurantSelected(DocumentSnapshot restaurant);
+        void onPhoneSelected(DocumentSnapshot phone);
 
     }
 
-    private OnRestaurantSelectedListener mListener;
+    private OnPhoneSelectedListener mListener;
 
-    public PhoneAdapter(Query query, OnRestaurantSelectedListener listener) {
+    public PhoneAdapter(Query query, OnPhoneSelectedListener listener) {
         super(query);
         mListener = listener;
     }
@@ -56,7 +56,7 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        return new ViewHolder(inflater.inflate(R.layout.item_restaurant, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.item_phone, parent, false));
     }
 
     @Override
@@ -76,17 +76,17 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.restaurant_item_image);
-            nameView = itemView.findViewById(R.id.restaurant_item_name);
-            ratingBar = itemView.findViewById(R.id.restaurant_item_rating);
-            numRatingsView = itemView.findViewById(R.id.restaurant_item_num_ratings);
-            priceView = itemView.findViewById(R.id.restaurant_item_price);
-            categoryView = itemView.findViewById(R.id.restaurant_item_category);
-            cityView = itemView.findViewById(R.id.restaurant_item_city);
+            imageView = itemView.findViewById(R.id.phone_item_image);
+            nameView = itemView.findViewById(R.id.phone_item_name);
+            ratingBar = itemView.findViewById(R.id.phone_item_rating);
+            numRatingsView = itemView.findViewById(R.id.phone_item_num_ratings);
+            priceView = itemView.findViewById(R.id.phone_item_price);
+            categoryView = itemView.findViewById(R.id.phone_item_category);
+            cityView = itemView.findViewById(R.id.phone_item_city);
         }
 
         public void bind(final DocumentSnapshot snapshot,
-                         final OnRestaurantSelectedListener listener) {
+                         final OnPhoneSelectedListener listener) {
 
             Phone phone = snapshot.toObject(Phone.class);
             Resources resources = itemView.getResources();
@@ -109,7 +109,7 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
-                        listener.onRestaurantSelected(snapshot);
+                        listener.onPhoneSelected(snapshot);
                     }
                 }
             });

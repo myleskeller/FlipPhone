@@ -55,11 +55,11 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_rating, container, false);
-        mRatingBar = v.findViewById(R.id.restaurant_form_rating);
-        mRatingText = v.findViewById(R.id.restaurant_form_text);
+        mRatingBar = v.findViewById(R.id.phone_form_rating);
+        mRatingText = v.findViewById(R.id.phone_form_text);
 
-        v.findViewById(R.id.restaurant_form_button).setOnClickListener(this);
-        v.findViewById(R.id.restaurant_form_cancel).setOnClickListener(this);
+        v.findViewById(R.id.phone_form_button).setOnClickListener(this);
+        v.findViewById(R.id.phone_form_cancel).setOnClickListener(this);
 
         return v;
     }
@@ -85,10 +85,10 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.restaurant_form_button:
+            case R.id.phone_form_button:
                 onSubmitClicked(v);
                 break;
-            case R.id.restaurant_form_cancel:
+            case R.id.phone_form_cancel:
                 onCancelClicked(v);
                 break;
         }

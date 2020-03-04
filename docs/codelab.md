@@ -101,7 +101,7 @@ Duration: 5:00
 
 In this section we will write some data to Firestore so that we can populate the home screen. You can enter data manually in the [Firebase console](https://console.firebase.google.com), but we'll do it in the app itself to demonstrate how to write data to Firestore using the Android SDK.
 
-The main model object in our app is a phone (see `model/Restaurant.java`). Firestore data is split into documents, collections, and subcollections. We will store each phone as a document in a top-level collection called `"restaurants"`. To learn more about the Firestore data model, read about documents and collections in [the documentation](https://firebase.google.com/docs/firestore/data-model).
+The main model object in our app is a phone (see `model/Phone.java`). Firestore data is split into documents, collections, and subcollections. We will store each phone as a document in a top-level collection called `"phones"`. To learn more about the Firestore data model, read about documents and collections in [the documentation](https://firebase.google.com/docs/firestore/data-model).
 
 First, let's get an instance of `FirebaseFirestore` to work with. Edit the `initFirestore()` method in `MainActivity`:
 
@@ -111,28 +111,28 @@ First, let's get an instance of `FirebaseFirestore` to work with. Edit the `init
     }
 ```
 
-For demonstration purposes, we will add functionality in the app to create ten random restaurants when we click the "Add Random Items" button in the overflow menu. Fill in the `onAddItemsClicked()`:
+For demonstration purposes, we will add functionality in the app to create ten random phones when we click the "Add Random Items" button in the overflow menu. Fill in the `onAddItemsClicked()`:
 
 ```
     private void onAddItemsClicked() {
-        // Get a reference to the restaurants collection
-        CollectionReference restaurants = mFirestore.collection("restaurants");
+        // Get a reference to the phones collection
+        CollectionReference phones = mFirestore.collection("phones");
 
         for (int i = 0; i < 10; i++) {
-            // Get a random Restaurant POJO
-            Restaurant phone = RestaurantUtil.getRandom(this);
+            // Get a random Phone POJO
+            Phone phone = PhoneUtil.getRandom(this);
 
-            // Add a new document to the restaurants collection
-            restaurants.add(phone);
+            // Add a new document to the phones collection
+            phones.add(phone);
         }
     }
 ```
 
 There are a few important things to note about the code above:
 
-*   We started by getting a reference to the `"restaurants"` collection. Collections are created implicitly when documents are added, so there was no need to create the collection before writing data.
-*   Documents can be created using POJOs, which we use to create each Restaurant doc.
-*   The `add()` method adds a document to a collection with an auto-generated ID, so we did not need to specify a unique ID for each Restaurant.
+*   We started by getting a reference to the `"phones"` collection. Collections are created implicitly when documents are added, so there was no need to create the collection before writing data.
+*   Documents can be created using POJOs, which we use to create each Phone doc.
+*   The `add()` method adds a document to a collection with an auto-generated ID, so we did not need to specify a unique ID for each Phone.
 
 Now run the app again and click the "Add Random Items" button in the overflow menu to invoke the code you just wrote:
 
@@ -153,8 +153,8 @@ In this step we will learn how to retrieve data from Firestore and display it in
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
 
-        // Get the 50 highest rated restaurants
-        mQuery = mFirestore.collection("restaurants")
+        // Get the 50 highest rated phones
+        mQuery = mFirestore.collection("phones")
                 .orderBy("avgRating", Query.Direction.DESCENDING)
                 .limit(LIMIT);
     }
@@ -279,7 +279,7 @@ Finally implement the `startListening()` method to attach the listener:
 positive
 : **Note**: this codelab demonstrates the real-time capabilities of Firestore, but it's also simple to fetch data without a listener. You can call get() on any query or reference to fetch a data snapshot.
 
-Now the app is fully configured to read data from Firestore. **Run** the app again and you should see the restaurants you added in the previous step:
+Now the app is fully configured to read data from Firestore. **Run** the app again and you should see the phones you added in the previous step:
 
 ![Firestore-Android5](img/Firestore-Android5.png)
 
@@ -289,7 +289,7 @@ Now go back to the Firebase console and edit one of the phone names. You should 
 ## Sort and filter data
 Duration: 5:00
 
-The app currently displays the top-rated restaurants across the entire collection, but in a real phone app the user would want to sort and filter the data. For example the app should be able to show "Top seafood restaurants in Philadelphia" or "Least expensive pizza".
+The app currently displays the top-rated phones across the entire collection, but in a real phone app the user would want to sort and filter the data. For example the app should be able to show "Top seafood phones in Philadelphia" or "Least expensive pizza".
 
 Clicking white bar at the top of the app brings up a filters dialog. In this section we'll use Firestore queries to make this dialog work:
 
@@ -301,7 +301,7 @@ Let's edit the `onFilter()` method of `MainActivity.java`. This method accepts a
     @Override
     public void onFilter(Filters filters) {
         // Construct query basic query
-        Query query = mFirestore.collection("restaurants");
+        Query query = mFirestore.collection("phones");
 
         // Category (equality filter)
         if (filters.hasCategory()) {
@@ -341,7 +341,7 @@ Let's edit the `onFilter()` method of `MainActivity.java`. This method accepts a
 
 In the snippet above we build a `Query` object by attaching `where` and `orderBy` clauses to match the given filters.
 
-**Run** the app again and select the following filter to show the most popular low-price restaurants:
+**Run** the app again and select the following filter to show the most popular low-price phones:
 
 ![Firestore-Android7](img/Firestore-Android7.png)
 
@@ -366,27 +366,27 @@ Clicking **Create Index** will begin creating the required index. When the index
 positive
 : **Note**: the Firestore Android SDK caches documents offline and will return those results in the event of a server error. If you execute a query without a matching index you may still see results in your UI but it's important to check the logs to make sure you have all required indexes.
 
-Now that the proper index has been created, run the app again and execute the same query. You should now see a filtered list of restaurants containing only low-price options:
+Now that the proper index has been created, run the app again and execute the same query. You should now see a filtered list of phones containing only low-price options:
 
 ![Firestore-Android10](img/Firestore-Android10.png)
 
-If you've made it this far, you have now built a fully functioning phone recommendation app on Firestore!  You can now sort and filter restaurants in real time. In the next few sections we add more features and security to the app.
+If you've made it this far, you have now built a fully functioning phone recommendation app on Firestore!  You can now sort and filter phones in real time. In the next few sections we add more features and security to the app.
 
 
 ## Organize data in subcollections
 Duration: 5:00
 
-In this section we'll add ratings to the app so users can review their favorite (or least favorite) restaurants.
+In this section we'll add ratings to the app so users can review their favorite (or least favorite) phones.
 
 ### Collections and subcollections
 
-So far we have stored all phone data in a top-level collection called "restaurants". When a user rates a phone we want to add a new `Rating` object to the restaurants. For this task we will use a subcollection. You can think of a subcollection as a collection that is attached to a document. So each phone document will have a ratings subcollection full of rating documents. Subcollections help organize data without bloating our documents or requiring complex queries.
+So far we have stored all phone data in a top-level collection called "phones". When a user rates a phone we want to add a new `Rating` object to the phones. For this task we will use a subcollection. You can think of a subcollection as a collection that is attached to a document. So each phone document will have a ratings subcollection full of rating documents. Subcollections help organize data without bloating our documents or requiring complex queries.
 
 To access a subcollection, call `.collection()` on the parent document:
 
 
 ```
-CollectionReference subRef = mFirestore.collection("restaurants")
+CollectionReference subRef = mFirestore.collection("phones")
         .document("abc123")
         .collection("ratings");
 ```
@@ -396,7 +396,7 @@ You can access and query a subcollection just like with a top-level collection, 
 
 ### Writing data in a transaction
 
-Adding a `Rating` to the proper subcollection only requires calling `.add()`, but we also need to update the `Restaurant` object's average rating and number of ratings to reflect the new data. If we use separate operations to make these two changes there are a number of race conditions that could result in stale or incorrect data.
+Adding a `Rating` to the proper subcollection only requires calling `.add()`, but we also need to update the `Phone` object's average rating and number of ratings to reflect the new data. If we use separate operations to make these two changes there are a number of race conditions that could result in stale or incorrect data.
 
 To ensure that ratings are added properly, we will use a transaction to add ratings to a phone. This transaction will perform a few actions:
 
@@ -404,14 +404,14 @@ To ensure that ratings are added properly, we will use a transaction to add rati
 *   Add the rating to the subcollection
 *   Update the phone's average rating and number of ratings
 
-Open `RestaurantDetailActivity.java` and implement the `addRating` function:
+Open `PhoneDetailActivity.java` and implement the `addRating` function:
 
 
 ```
-    private Task<Void> addRating(final DocumentReference restaurantRef,
+    private Task<Void> addRating(final DocumentReference phoneRef,
                                  final Rating rating) {
         // Create reference for new rating, for use inside the transaction
-        final DocumentReference ratingRef = restaurantRef.collection("ratings")
+        final DocumentReference ratingRef = phoneRef.collection("ratings")
                 .document();
 
         // In a transaction, add the new rating and update the aggregate totals
@@ -420,8 +420,8 @@ Open `RestaurantDetailActivity.java` and implement the `addRating` function:
             public Void apply(Transaction transaction)
                     throws FirebaseFirestoreException {
 
-                Restaurant phone = transaction.get(restaurantRef)
-                        .toObject(Restaurant.class);
+                Phone phone = transaction.get(phoneRef)
+                        .toObject(Phone.class);
 
                 // Compute new number of ratings
                 int newNumRatings = phone.getNumRatings() + 1;
@@ -437,7 +437,7 @@ Open `RestaurantDetailActivity.java` and implement the `addRating` function:
                 phone.setAvgRating(newAvgRating);
 
                 // Commit to Firestore
-                transaction.set(restaurantRef, phone);
+                transaction.set(phoneRef, phone);
                 transaction.set(ratingRef, rating);
 
                 return null;
@@ -448,7 +448,7 @@ Open `RestaurantDetailActivity.java` and implement the `addRating` function:
 
 The `addRating()` function returns a `Task` representing the entire transaction. In the `onRating()` function listeners are added to the task to respond to the result of the transaction.
 
-Now **Run** the app again and click on one of the restaurants, which should bring up the phone detail screen. Click the **+** button to start adding a review. Add a review by picking a number of stars and entering some text.
+Now **Run** the app again and click on one of the phones, which should bring up the phone detail screen. Click the **+** button to start adding a review. Add a review by picking a number of stars and entering some text.
 
 ![Firestore-Android11](img/Firestore-Android11.png)
 
@@ -470,12 +470,12 @@ negative
 ```
 service cloud.firestore {
   match /databases/{database}/documents {
-        // Restaurants:
+        // Phones:
         //   - Authenticated user can read
         //   - Authenticated user can create/update (for demo)
         //   - Validate updates
         //   - Deletes are not allowed
-    match /restaurants/{restaurantId} {
+    match /phones/{phoneId} {
       allow read, create: if request.auth.uid != null;
       allow update: if request.auth.uid != null
                     && request.resource.data.name == resource.data.name

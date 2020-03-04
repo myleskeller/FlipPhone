@@ -54,9 +54,9 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         EventListener<DocumentSnapshot>,
         RatingDialogFragment.RatingListener {
 
-    private static final String TAG = "RestaurantDetail";
+    private static final String TAG = "PhoneDetail";
 
-    public static final String KEY_RESTAURANT_ID = "key_restaurant_id";
+    public static final String KEY_RESTAURANT_ID = "key_phone_id";
 
     private ImageView mImageView;
     private TextView mNameView;
@@ -71,43 +71,43 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private RatingDialogFragment mRatingDialog;
 
     private FirebaseFirestore mFirestore;
-    private DocumentReference mRestaurantRef;
-    private ListenerRegistration mRestaurantRegistration;
+    private DocumentReference mPhoneRef;
+    private ListenerRegistration mPhoneRegistration;
 
     private RatingAdapter mRatingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_detail);
+        setContentView(R.layout.activity_phone_detail);
         
-        mImageView = findViewById(R.id.restaurant_image);
-        mNameView = findViewById(R.id.restaurant_name);
-        mRatingIndicator = findViewById(R.id.restaurant_rating);
-        mNumRatingsView = findViewById(R.id.restaurant_num_ratings);
-        mCityView = findViewById(R.id.restaurant_city);
-        mCategoryView = findViewById(R.id.restaurant_category);
-        mPriceView = findViewById(R.id.restaurant_price);
+        mImageView = findViewById(R.id.phone_image);
+        mNameView = findViewById(R.id.phone_name);
+        mRatingIndicator = findViewById(R.id.phone_rating);
+        mNumRatingsView = findViewById(R.id.phone_num_ratings);
+        mCityView = findViewById(R.id.phone_city);
+        mCategoryView = findViewById(R.id.phone_category);
+        mPriceView = findViewById(R.id.phone_price);
         mEmptyView = findViewById(R.id.view_empty_ratings);
         mRatingsRecycler = findViewById(R.id.recycler_ratings);
 
-        findViewById(R.id.restaurant_button_back).setOnClickListener(this);
+        findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
 
-        // Get restaurant ID from extras
-        String restaurantId = getIntent().getExtras().getString(KEY_RESTAURANT_ID);
-        if (restaurantId == null) {
+        // Get phone ID from extras
+        String phoneId = getIntent().getExtras().getString(KEY_RESTAURANT_ID);
+        if (phoneId == null) {
             throw new IllegalArgumentException("Must pass extra " + KEY_RESTAURANT_ID);
         }
 
         // Initialize Firestore
         mFirestore = FirebaseFirestore.getInstance();
 
-        // Get reference to the restaurant
-        mRestaurantRef = mFirestore.collection("restaurants").document(restaurantId);
+        // Get reference to the phone
+        mPhoneRef = mFirestore.collection("phones").document(phoneId);
 
         // Get ratings
-        Query ratingsQuery = mRestaurantRef
+        Query ratingsQuery = mPhoneRef
                 .collection("ratings")
                 .orderBy("timestamp", Query.Direction.DESCENDING)
                 .limit(50);
@@ -137,7 +137,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         super.onStart();
 
         mRatingAdapter.startListening();
-        mRestaurantRegistration = mRestaurantRef.addSnapshotListener(this);
+        mPhoneRegistration = mPhoneRef.addSnapshotListener(this);
     }
 
     @Override
@@ -146,16 +146,16 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
         mRatingAdapter.stopListening();
 
-        if (mRestaurantRegistration != null) {
-            mRestaurantRegistration.remove();
-            mRestaurantRegistration = null;
+        if (mPhoneRegistration != null) {
+            mPhoneRegistration.remove();
+            mPhoneRegistration = null;
         }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.restaurant_button_back:
+            case R.id.phone_button_back:
                 onBackArrowClicked(v);
                 break;
             case R.id.fab_show_rating_dialog:
@@ -164,25 +164,25 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         }
     }
 
-    private Task<Void> addRating(final DocumentReference restaurantRef, final Rating rating) {
+    private Task<Void> addRating(final DocumentReference phoneRef, final Rating rating) {
         // TODO(developer): Implement
         return Tasks.forException(new Exception("not yet implemented"));
     }
 
     /**
-     * Listener for the Phone document ({@link #mRestaurantRef}).
+     * Listener for the Phone document ({@link #mPhoneRef}).
      */
     @Override
     public void onEvent(DocumentSnapshot snapshot, FirebaseFirestoreException e) {
         if (e != null) {
-            Log.w(TAG, "restaurant:onEvent", e);
+            Log.w(TAG, "phone:onEvent", e);
             return;
         }
 
-        onRestaurantLoaded(snapshot.toObject(Phone.class));
+        onPhoneLoaded(snapshot.toObject(Phone.class));
     }
 
-    private void onRestaurantLoaded(Phone phone) {
+    private void onPhoneLoaded(Phone phone) {
         mNameView.setText(phone.getName());
         mRatingIndicator.setRating((float) phone.getAvgRating());
         mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
@@ -207,7 +207,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     @Override
     public void onRating(Rating rating) {
         // In a transaction, add the new rating and update the aggregate totals
-        addRating(mRestaurantRef, rating)
+        addRating(mPhoneRef, rating)
                 .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
