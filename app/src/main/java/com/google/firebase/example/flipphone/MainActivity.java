@@ -29,6 +29,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         };
 
-        mPhonesRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mPhonesRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         mPhonesRecycler.setAdapter(mAdapter);
     }
 
