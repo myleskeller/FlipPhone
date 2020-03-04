@@ -38,34 +38,34 @@ public class PhoneUtil {
             TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
     //private static final String RESTAURANT_URL_FMT = "https://storage.googleapis.com/firestorequickstarts.appspot.com/food_%d.png";
-    public static String[] phones = {"https://www.google.com/imgres?imgurl=https%3A%2F%2Ffscl01.fonpit.de%2Fuserfiles%2F7640001%2Fimage%2Fbest-high-end-smartphones%2FAndroidPIT-Best-High-End-Smartphones-Hero-1.jpg&imgrefurl=https%3A%2F%2Fwww.androidpit.com%2Fdo-not-buy-a-new-smartphone-now&tbnid=UYHMfIr6HEIKRM&vet=12ahUKEwiskaiu1f_nAhVMHVMKHd8pDF0QMygAegUIARCNAw..i&docid=iuk8nQNCXMTo8M&w=3840&h=2160&q=smartphones&safe=off&ved=2ahUKEwiskaiu1f_nAhVMHVMKHd8pDF0QMygAegUIARCNAw",
-    "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.arstechnica.net%2Fwp-content%2Fuploads%2F2018%2F05%2F1-980x735.jpg&imgrefurl=https%3A%2F%2Farstechnica.com%2Fgadgets%2F2018%2F06%2Foneplus-finally-promises-to-update-its-smartphones%2F&tbnid=x2A1SZibnyv0mM&vet=12ahUKEwiskaiu1f_nAhVMHVMKHd8pDF0QMygXegUIARDhAQ..i&docid=-nJBkgcQdGbJlM&w=980&h=735&q=smartphones&safe=off&ved=2ahUKEwiskaiu1f_nAhVMHVMKHd8pDF0QMygXegUIARDhAQ",
+    public static String[] phones = {"https://www.hutmobile.com/wp-content/uploads/2019/12/1-104.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2018/05/1-980x735.jpg",
     "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/03/Xiaomi-Mi-9-front-angled-top-left-920x613.jpg",
     "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/10/OnePlus-7T-Pro-held-768x512.jpg",
     "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/11/Mi-Note-10_04-768x432.jpg"};
 
-    private static final int MAX_IMAGE_NUM = 22;
+    private static final int MAX_IMAGE_NUM = 5;
 
     private static final String[] NAME_FIRST_WORDS = {
-            "Foo",
-            "Bar",
-            "Baz",
-            "Qux",
-            "Fire",
-            "Lorem",
-            "Ipsum",
+            "Samsung",
+            "Apple",
+            "Motorola",
+            "Huawei",
+            "HTC",
+            "Razer",
+            "OnePlus",
             "Google",
             "Best",
     };
 
     private static final String[] NAME_SECOND_WORDS = {
             "Phone",
-            "HTC",
-            "iPhone",
-            "Samsung Galaxy",
-            "Motorola",
-            "Razer",
-            "OnePlus",
+            "One",
+            "iPhone Pro Max",
+            "Galaxy S20",
+            "8",
+            "Moto G8",
+            "Pixel",
     };
 
 
@@ -77,8 +77,8 @@ public class PhoneUtil {
         Random random = new Random();
 
         // Cities (first element is 'Any')
-        String[] cities = context.getResources().getStringArray(R.array.cities);
-        cities = Arrays.copyOfRange(cities, 1, cities.length);
+        String[] condition = context.getResources().getStringArray(R.array.condition);
+        condition = Arrays.copyOfRange(condition, 1, condition.length);
 
         // Categories (first element is 'Any')
         String[] categories = context.getResources().getStringArray(R.array.categories);
@@ -87,7 +87,7 @@ public class PhoneUtil {
         int[] prices = new int[]{1, 2, 3};
 
         phone.setName(getRandomName(random));
-        phone.setCity(getRandomString(cities, random));
+        phone.setCity(getRandomString(condition, random));
         phone.setCategory(getRandomString(categories, random));
         phone.setPhoto(getRandomImageUrl(random));
         phone.setPrice(getRandomInt(prices, random));
@@ -103,9 +103,10 @@ public class PhoneUtil {
      */
     private static String getRandomImageUrl(Random random) {
         // Integer between 1 and MAX_IMAGE_NUM (inclusive)
-        //int id = random.nextInt(3) + 1;
+        int id = random.nextInt(MAX_IMAGE_NUM);
 
-        return String.format(Locale.getDefault(), phones[1]);
+        //return String.format(Locale.getDefault(), phones[1]);
+        return phones[id];
     }
 
     /**

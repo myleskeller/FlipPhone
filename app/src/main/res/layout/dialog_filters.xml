@@ -52,7 +52,7 @@
             style="@style/AppTheme.FilterSpinner"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/icon_city"
-            android:entries="@array/cities" />
+            android:entries="@array/condition" />
 
     </RelativeLayout>
 

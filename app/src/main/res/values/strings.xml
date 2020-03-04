@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Flip Phone</string>
 
-    <string name="value_any_category">All food</string>
-    <string name="value_any_city">Anywhere</string>
+    <string name="value_any_category">All Phones</string>
+    <string name="value_any_condition">Condition</string>
     <string name="value_any_price">Any price</string>
 
     <string name="price_1">$</string>
@@ -43,72 +43,20 @@
     <string-array name="categories">
         <item>@string/value_any_category</item>
 
-        <item>Brunch</item>
-        <item>Burgers</item>
-        <item>Coffee</item>
-        <item>Deli</item>
-        <item>Dim Sum</item>
-        <item>Indian</item>
-        <item>Italian</item>
-        <item>Mediterranean</item>
-        <item>Mexican</item>
-        <item>Pizza</item>
-        <item>Ramen</item>
-        <item>Sushi</item>
+        <item>Condition</item>
     </string-array>
-    ite
 
-    <!-- 50 most populous cities in the US -->
-    <string-array name="cities">
-        <item>@string/value_any_city</item>
 
-        <item>Albuquerque</item>
-        <item>Arlington</item>
-        <item>Atlanta</item>
-        <item>Austin</item>
-        <item>Baltimore</item>
-        <item>Boston</item>
-        <item>Charlotte</item>
-        <item>Chicago</item>
-        <item>Cleveland</item>
-        <item>Colorado Springs</item>
-        <item>Columbus</item>
-        <item>Dallas</item>
-        <item>Denver</item>
-        <item>Detroit</item>
-        <item>El Paso</item>
-        <item>Fort Worth</item>
-        <item>Fresno</item>
-        <item>Houston</item>
-        <item>Indianapolis</item>
-        <item>Jacksonville</item>
-        <item>Kansas City</item>
-        <item>Las Vagas</item>
-        <item>Long Beach</item>
-        <item>Los Angeles</item>
-        <item>Louisville</item>
-        <item>Memphis</item>
-        <item>Mesa</item>
-        <item>Miami</item>
-        <item>Milwaukee</item>
-        <item>Nashville</item>
-        <item>New York</item>
-        <item>Oakland</item>
-        <item>Oklahoma</item>
-        <item>Omaha</item>
-        <item>Philadelphia</item>
-        <item>Phoenix</item>
-        <item>Portland</item>
-        <item>Raleigh</item>
-        <item>Sacramento</item>
-        <item>San Antonio</item>
-        <item>San Diego</item>
-        <item>San Francisco</item>
-        <item>San Jose</item>
-        <item>Tucson</item>
-        <item>Tulsa</item>
-        <item>Virginia Beach</item>
-        <item>Washington</item>
+    <!-- 50 most populous condition in the US -->
+    <string-array name="condition">
+        <item>@string/value_any_condition</item>
+
+        <item>New</item>
+        <item>Open Box</item>
+        <item>Refurbished</item>
+        <item>Used</item>
+        <item>For Parts</item>
+
     </string-array>
 
     <!-- Price filters -->
