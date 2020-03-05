@@ -28,7 +28,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Utilities for Restaurants.
+ * Utilities for Phones.
  */
 public class PhoneUtil {
 
@@ -37,30 +37,35 @@ public class PhoneUtil {
     private static final ThreadPoolExecutor EXECUTOR = new ThreadPoolExecutor(2, 4, 60,
             TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
-    private static final String RESTAURANT_URL_FMT = "https://storage.googleapis.com/firestorequickstarts.appspot.com/food_%d.png";
+    //private static final String RESTAURANT_URL_FMT = "https://storage.googleapis.com/firestorequickstarts.appspot.com/food_%d.png";
+    public static String[] phones = {"https://www.hutmobile.com/wp-content/uploads/2019/12/1-104.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2018/05/1-980x735.jpg",
+    "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/03/Xiaomi-Mi-9-front-angled-top-left-920x613.jpg",
+    "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/10/OnePlus-7T-Pro-held-768x512.jpg",
+    "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/11/Mi-Note-10_04-768x432.jpg"};
 
-    private static final int MAX_IMAGE_NUM = 22;
+    private static final int MAX_IMAGE_NUM = 5;
 
     private static final String[] NAME_FIRST_WORDS = {
-            "Foo",
-            "Bar",
-            "Baz",
-            "Qux",
-            "Fire",
-            "Sam's",
-            "World Famous",
+            "Samsung",
+            "Apple",
+            "Motorola",
+            "Huawei",
+            "HTC",
+            "Razer",
+            "OnePlus",
             "Google",
-            "The Best",
+            "Best",
     };
 
     private static final String[] NAME_SECOND_WORDS = {
             "Phone",
-            "Cafe",
-            "Spot",
-            "Eatin' Place",
-            "Eatery",
-            "Drive Thru",
-            "Diner",
+            "One",
+            "iPhone Pro Max",
+            "Galaxy S20",
+            "8",
+            "Moto G8",
+            "Pixel",
     };
 
 
@@ -72,8 +77,8 @@ public class PhoneUtil {
         Random random = new Random();
 
         // Cities (first element is 'Any')
-        String[] cities = context.getResources().getStringArray(R.array.cities);
-        cities = Arrays.copyOfRange(cities, 1, cities.length);
+        String[] condition = context.getResources().getStringArray(R.array.condition);
+        condition = Arrays.copyOfRange(condition, 1, condition.length);
 
         // Categories (first element is 'Any')
         String[] categories = context.getResources().getStringArray(R.array.categories);
@@ -82,7 +87,7 @@ public class PhoneUtil {
         int[] prices = new int[]{1, 2, 3};
 
         phone.setName(getRandomName(random));
-        phone.setCity(getRandomString(cities, random));
+        phone.setCity(getRandomString(condition, random));
         phone.setCategory(getRandomString(categories, random));
         phone.setPhoto(getRandomImageUrl(random));
         phone.setPrice(getRandomInt(prices, random));
@@ -98,9 +103,10 @@ public class PhoneUtil {
      */
     private static String getRandomImageUrl(Random random) {
         // Integer between 1 and MAX_IMAGE_NUM (inclusive)
-        int id = random.nextInt(MAX_IMAGE_NUM) + 1;
+        int id = random.nextInt(MAX_IMAGE_NUM);
 
-        return String.format(Locale.getDefault(), RESTAURANT_URL_FMT, id);
+        //return String.format(Locale.getDefault(), phones[1]);
+        return phones[id];
     }
 
     /**

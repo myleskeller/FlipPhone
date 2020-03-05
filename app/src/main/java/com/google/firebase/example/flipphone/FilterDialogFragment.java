@@ -123,7 +123,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     @Nullable
     private String getSelectedCity() {
         String selected = (String) mCitySpinner.getSelectedItem();
-        if (getString(R.string.value_any_city).equals(selected)) {
+        if (getString(R.string.value_any_condition).equals(selected)) {
             return null;
         } else {
             return selected;

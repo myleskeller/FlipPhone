@@ -29,6 +29,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +51,7 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
         FilterDialogFragment.FilterListener,
-        PhoneAdapter.OnRestaurantSelectedListener {
+        PhoneAdapter.OnPhoneSelectedListener {
 
     private static final String TAG = "MainActivity";
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements
     private Toolbar mToolbar;
     private TextView mCurrentSearchView;
     private TextView mCurrentSortByView;
-    private RecyclerView mRestaurantsRecycler;
+    private RecyclerView mPhonesRecycler;
     private ViewGroup mEmptyView;
 
     private FirebaseFirestore mFirestore;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements
 
         mCurrentSearchView = findViewById(R.id.text_current_search);
         mCurrentSortByView = findViewById(R.id.text_current_sort_by);
-        mRestaurantsRecycler = findViewById(R.id.recycler_restaurants);
+        mPhonesRecycler = findViewById(R.id.recycler_phones);
         mEmptyView = findViewById(R.id.view_empty);
 
         findViewById(R.id.filter_bar).setOnClickListener(this);
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
-        mQuery = mFirestore.collection("restaurants")
+        mQuery = mFirestore.collection("phones")
                 .orderBy("avgRating", Query.Direction.DESCENDING)
                 .limit(LIMIT);
     }
@@ -120,10 +121,10 @@ public class MainActivity extends AppCompatActivity implements
             protected void onDataChanged() {
                 // Show/hide content if the query returns empty.
                 if (getItemCount() == 0) {
-                    mRestaurantsRecycler.setVisibility(View.GONE);
+                    mPhonesRecycler.setVisibility(View.GONE);
                     mEmptyView.setVisibility(View.VISIBLE);
                 } else {
-                    mRestaurantsRecycler.setVisibility(View.VISIBLE);
+                    mPhonesRecycler.setVisibility(View.VISIBLE);
                     mEmptyView.setVisibility(View.GONE);
                 }
             }
@@ -136,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements
             }
         };
 
-        mRestaurantsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mRestaurantsRecycler.setAdapter(mAdapter);
+        mPhonesRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+        mPhonesRecycler.setAdapter(mAdapter);
     }
 
     @Override
@@ -168,18 +169,18 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void onAddItemsClicked() {
-        CollectionReference restaurants = mFirestore.collection("restaurants");
+        CollectionReference phones = mFirestore.collection("phones");
 
         for (int i = 0; i < 10; i++){
             Phone phone = PhoneUtil.getRandom(this);
-            restaurants.add(phone);
+            phones.add(phone);
         }
     }
 
     @Override
     public void onFilter(Filters filters) {
         // Construct query basic query
-        Query query = mFirestore.collection("restaurants");
+        Query query = mFirestore.collection("phones");
 
         // Category (equality filter)
         if (filters.hasCategory()) {
@@ -271,10 +272,10 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onRestaurantSelected(DocumentSnapshot restaurant) {
-        // Go to the details page for the selected restaurant
+    public void onPhoneSelected(DocumentSnapshot phone) {
+        // Go to the details page for the selected phone
         Intent intent = new Intent(this, PhoneDetailActivity.class);
-        intent.putExtra(PhoneDetailActivity.KEY_RESTAURANT_ID, restaurant.getId());
+        intent.putExtra(PhoneDetailActivity.KEY_RESTAURANT_ID, phone.getId());
 
         startActivity(intent);
     }
