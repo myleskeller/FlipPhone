@@ -78,11 +78,11 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
             super(itemView);
             imageView = itemView.findViewById(R.id.phone_item_image);
             nameView = itemView.findViewById(R.id.phone_item_name);
-            ratingBar = itemView.findViewById(R.id.phone_item_rating);
-            numRatingsView = itemView.findViewById(R.id.phone_item_num_ratings);
+            //ratingBar = itemView.findViewById(R.id.phone_item_rating);
+            //numRatingsView = itemView.findViewById(R.id.phone_item_num_ratings);
             priceView = itemView.findViewById(R.id.phone_item_price);
-            categoryView = itemView.findViewById(R.id.phone_item_category);
-            cityView = itemView.findViewById(R.id.phone_item_city);
+            //categoryView = itemView.findViewById(R.id.phone_item_category);
+            //cityView = itemView.findViewById(R.id.phone_item_city);
         }
 
         public void bind(final DocumentSnapshot snapshot,
@@ -97,11 +97,11 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
                     .into(imageView);
 
             nameView.setText(phone.getName());
-            ratingBar.setRating((float) phone.getAvgRating());
-            cityView.setText(phone.getCity());
-            categoryView.setText(phone.getCategory());
-            numRatingsView.setText(resources.getString(R.string.fmt_num_ratings,
-                    phone.getNumRatings()));
+            //ratingBar.setRating((float) phone.getAvgRating());
+            //cityView.setText(phone.getCity());
+            //categoryView.setText(phone.getCategory());
+            //numRatingsView.setText(resources.getString(R.string.fmt_num_ratings,
+                    //phone.getNumRatings()));
             priceView.setText(PhoneUtil.getPriceString(phone));
 
             // Click listener
