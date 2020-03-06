@@ -34,10 +34,10 @@
     <string name="apply">Apply</string>
     <string name="cancel">Cancel</string>
     <string name="message_no_results">Oops, couldn\'t find any results\nthat matched your filter</string>
-    <string name="message_no_reviews">Be the first to leave a review!</string>
-    <string name="hint_review">How was your experience?</string>
+    <string name="message_no_reviews">No phone specifications!</string>
+    <string name="hint_review">Enter message for the user</string>
     <string name="submit">Submit</string>
-    <string name="filter_add_review">Add review</string>
+    <string name="filter_add_review">Message User</string>
 
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">

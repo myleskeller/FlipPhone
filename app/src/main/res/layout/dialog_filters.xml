@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/filters_form"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -24,7 +25,8 @@
             style="@style/AppTheme.FilterIcon"
             android:layout_centerVertical="true"
             android:tint="@color/greySecondary"
-            app:srcCompat="@drawable/ic_fastfood_white_24dp" />
+            app:srcCompat="@drawable/ic_smartphone_white_18dp"
+            tools:srcCompat="@drawable/ic_smartphone_white_18dp" />
 
         <Spinner
             android:id="@+id/spinner_category"
@@ -45,7 +47,7 @@
             style="@style/AppTheme.FilterIcon"
             android:layout_centerVertical="true"
             android:tint="@color/greySecondary"
-            app:srcCompat="@drawable/ic_place_white_24px" />
+            app:srcCompat="@drawable/round_new_releases_white_24dp" />
 
         <Spinner
             android:id="@+id/spinner_city"
@@ -82,19 +84,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/icon_sort"
-            style="@style/AppTheme.FilterIcon"
-            android:layout_centerVertical="true"
-            android:tint="@color/greySecondary"
-            app:srcCompat="@drawable/ic_sort_white_24px" />
 
-        <Spinner
-            android:id="@+id/spinner_sort"
-            style="@style/AppTheme.FilterSpinner"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/icon_sort"
-            android:entries="@array/sort_by" />
+
     </RelativeLayout>
 
     <!-- Cancel and apply buttons -->

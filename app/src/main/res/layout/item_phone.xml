@@ -10,7 +10,7 @@
     cardview:cardCornerRadius="4dp"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/selectableItemBackground"
@@ -31,6 +31,16 @@
             android:layout_width="match_parent"
             android:layout_height="33dp"
 
+            android:layout_below="@+id/phone_item_image"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="-2dp"
+            android:layout_marginLeft="-2dp"
+            android:layout_marginTop="-3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
             android:gravity="center_horizontal"
             android:paddingTop="5dp"
             android:textSize="13sp"
@@ -40,12 +50,20 @@
         <TextView
             android:id="@+id/phone_item_price"
             style="@style/AppTheme.Caption"
-            android:layout_width="198dp"
-            android:layout_height="152dp"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_alignTop="@id/phone_item_image"
+            android:layout_alignBottom="@id/phone_item_image"
 
-            android:textColor="@color/greySecondary"
+            android:layout_marginBottom="131dp"
+            android:background="#6D3367D6"
+            android:gravity="center_horizontal"
+
+            android:textColor="#FFFFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
             tools:text="$$$" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

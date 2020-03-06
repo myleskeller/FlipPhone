@@ -55,7 +55,7 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_rating, container, false);
-        mRatingBar = v.findViewById(R.id.phone_form_rating);
+        //mRatingBar = v.findViewById(R.id.phone_form_rating);
         mRatingText = v.findViewById(R.id.phone_form_text);
 
         v.findViewById(R.id.phone_form_button).setOnClickListener(this);

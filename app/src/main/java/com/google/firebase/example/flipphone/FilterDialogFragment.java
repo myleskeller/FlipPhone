@@ -60,7 +60,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
 
         mCategorySpinner = mRootView.findViewById(R.id.spinner_category);
         mCitySpinner = mRootView.findViewById(R.id.spinner_city);
-        mSortSpinner = mRootView.findViewById(R.id.spinner_sort);
+        //mSortSpinner = mRootView.findViewById(R.id.spinner_sort);
         mPriceSpinner = mRootView.findViewById(R.id.spinner_price);
 
         mRootView.findViewById(R.id.button_search).setOnClickListener(this);
