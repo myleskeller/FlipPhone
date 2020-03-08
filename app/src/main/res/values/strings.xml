@@ -38,6 +38,7 @@
     <string name="hint_review">Enter message for the user</string>
     <string name="submit">Submit</string>
     <string name="filter_add_review">Message User</string>
+    <string name="qr_code_scanner">QR Code Scanner</string>
 
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">

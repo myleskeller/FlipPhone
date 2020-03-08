@@ -34,6 +34,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.flipphone.qrcode.QrCodeScannerActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.adapter.PhoneAdapter;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements
     private static final int RC_SIGN_IN = 9001;
 
     private static final int LIMIT = 50;
+
+    private static final String EXTRA_MESSAGE = "";
 
     private Toolbar mToolbar;
     private TextView mCurrentSearchView;
@@ -229,6 +232,9 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.menu_add_items:
                 onAddItemsClicked();
                 break;
+            case R.id.menu_qr_code:
+                OpenQRScanner();
+                break;
             case R.id.menu_sign_out:
                 AuthUI.getInstance().signOut(this);
                 startSignIn();
@@ -298,5 +304,11 @@ public class MainActivity extends AppCompatActivity implements
 
     private void showTodoToast() {
         Toast.makeText(this, "TODO: Implement", Toast.LENGTH_SHORT).show();
+    }
+    public void OpenQRScanner() {
+        Intent intent = new Intent(this, QrCodeScannerActivity.class);
+        String message = "maybe this will be useful later..";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
