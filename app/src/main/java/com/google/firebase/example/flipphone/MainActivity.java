@@ -46,7 +46,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
+import java.util.Arrays;
 import java.util.Collections;
+
+import static java.util.Arrays.asList;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
@@ -287,8 +290,9 @@ public class MainActivity extends AppCompatActivity implements
     private void startSignIn() {
         // Sign in with FirebaseUI
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
-                .setAvailableProviders(Collections.singletonList(
-                        new AuthUI.IdpConfig.EmailBuilder().build()))
+                .setAvailableProviders(Arrays.asList(
+                        new AuthUI.IdpConfig.PhoneBuilder().build())
+                )
                 .setIsSmartLockEnabled(false)
                 .build();
 
