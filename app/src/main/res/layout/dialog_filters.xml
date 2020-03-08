@@ -25,8 +25,8 @@
             style="@style/AppTheme.FilterIcon"
             android:layout_centerVertical="true"
             android:tint="@color/greySecondary"
-            app:srcCompat="@drawable/ic_smartphone_white_18dp"
-            tools:srcCompat="@drawable/ic_smartphone_white_18dp" />
+            app:srcCompat="@drawable/ic_flip_phone_24px"
+            tools:srcCompat="@drawable/ic_flip_phone_24px" />
 
         <Spinner
             android:id="@+id/spinner_category"
