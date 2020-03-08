@@ -1,0 +1,7 @@
+#Sun Mar 08 18:00:31 EDT 2020
+base.0=C\:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\dex\\release\\out\\classes.dex
+path.1=classes2.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\dex\\release\\out\\classes2.dex

@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pizza_monster.png.flat",
-        "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\drawable-xhdpi\\pizza_monster.png"
-    },
-    {
         "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_fastfood_white_24dp.xml.flat",
         "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\drawable\\ic_fastfood_white_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pizza_monster.png.flat",
+        "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\drawable-xhdpi\\pizza_monster.png"
     },
     {
         "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_filter_list_white_24px.xml.flat",
@@ -28,12 +28,12 @@
         "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_phone.xml.flat",
-        "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\layout\\item_phone.xml"
-    },
-    {
         "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chat.xml.flat",
         "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_phone.xml.flat",
+        "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\layout\\item_phone.xml"
     },
     {
         "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
