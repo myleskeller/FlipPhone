@@ -39,6 +39,11 @@
     <string name="submit">Submit</string>
     <string name="filter_add_review">Message User</string>
     <string name="qr_code_scanner">QR Code Scanner</string>
+    <string name="photo_front">Capture Front Photo</string>
+    <string name="phone_guide_camera_overlay">phone guide camera overlay</string>
+    <string name="front_photo_tip_message">Lay the phone on a flat, well-illuminated surface and align the edges of the device with the edges of the silhouette overlay.</string>
+    <string name="front_photo_tip_title">Before you begin…</string>
+    <string name="preview_of_image_taken">preview of image taken</string>
 
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">

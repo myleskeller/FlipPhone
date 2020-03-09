@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.firebase.example.flipphone"><!--package="flipphone"-->
+    package="com.google.firebase.example.flipphone">
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="androidx.multidex.MultiDexApplication"
@@ -22,6 +24,8 @@
         </activity>
         <activity android:name="com.google.firebase.example.flipphone.PhoneDetailActivity" />
         <activity android:name="com.flipphone.qrcode.QrCodeScannerActivity" />
+        <activity android:name="com.flipphone.camera.PicturePreviewActivity" />
+        <activity android:name="com.flipphone.camera.CameraActivity" />
     </application>
 
 </manifest>
