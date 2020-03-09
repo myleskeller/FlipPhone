@@ -16,6 +16,7 @@
  package com.google.firebase.example.flipphone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -201,7 +202,9 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     public void onAddRatingClicked(View view) {
-        mRatingDialog.show(getSupportFragmentManager(), RatingDialogFragment.TAG);
+       // mRatingDialog.show(getSupportFragmentManager(), RatingDialogFragment.TAG);
+        Intent chatIntent = new Intent(getApplicationContext(), Chat.class);
+        startActivity(chatIntent);
     }
 
     @Override

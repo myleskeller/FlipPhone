@@ -55,7 +55,11 @@ animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
 array categories
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
 array condition
+array preloaded_fonts
 array prices
 array sort_by
 attr actionBarDivider
@@ -1526,9 +1530,11 @@ drawable pizza_monster
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font bungee_inline
 id ALT
 id BOTTOM_END
 id BOTTOM_START
+id BOTTOM_TEXT
 id CTRL
 id FUNCTION
 id META
@@ -2351,6 +2357,7 @@ string sorted_by_price
 string sorted_by_rating
 string status_bar_notification_info_overflow
 string submit
+string temp_chat
 string value_any_category
 string value_any_condition
 string value_any_price

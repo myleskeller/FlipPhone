@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
+ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\178955f6763586e4de22bf0662484897\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\8575bec3ab9c782df2510f852d3e3836\jetified-firebase-firestore-21.4.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\6c40987d3e243825d47c30deab10f400\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:2:1-9:12
@@ -76,25 +76,25 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Tyler\.gradle\caches\transform
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\418169442b149b4822f5543b5487de19\jetified-firebase-database-collection-17.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.0.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\a1de707cb06ff23854166fb3e671cb77\jetified-protolite-well-known-types-17.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\83aaca0b33cd0e9f5cad5aa8264d745d\jetified-grpc-android-1.21.0\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
-INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:3:5-52
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
+		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-23:12
+		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:1-27:12
 		INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:5:5-21:19
+ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:5:5-25:19
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\8575bec3ab9c782df2510f852d3e3836\jetified-firebase-firestore-21.4.0\AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:21.4.0] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\8575bec3ab9c782df2510f852d3e3836\jetified-firebase-firestore-21.4.0\AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-analytics:17.2.2] C:\Users\Tyler\.gradle\caches\transforms-2\files-2.1\6c40987d3e243825d47c30deab10f400\jetified-firebase-analytics-17.2.2\AndroidManifest.xml:7:5-20
@@ -183,6 +183,12 @@ activity#com.google.firebase.example.flipphone.PhoneDetailActivity
 ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:20:9-57
 	android:name
 		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:20:19-54
+meta-data#preloaded_fonts
+ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:22:9-24:57
+	android:resource
+		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:24:13-54
+	android:name
+		ADDED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml:23:13-43
 uses-sdk
 INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Tyler\Documents\GitHub\flip_phone\app\src\main\AndroidManifest.xml

@@ -6,4 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.google.firebase.example.flipphone.Chat">
 
+    <TextView
+        android:id="@+id/BOTTOM_TEXT"
+        android:layout_width="211dp"
+        android:layout_height="573dp"
+        android:fontFamily="@font/bungee_inline"
+        android:text="@string/temp_chat"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="62dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

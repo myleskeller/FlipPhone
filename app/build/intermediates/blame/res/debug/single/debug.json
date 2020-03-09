@@ -104,6 +104,10 @@
         "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\drawable\\ic_smartphone_white_18dp.png"
     },
     {
+        "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\font_bungee_inline.xml.flat",
+        "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\font\\bungee_inline.xml"
+    },
+    {
         "merged": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_main.xml.flat",
         "source": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\src\\main\\res\\menu\\menu_main.xml"
     },

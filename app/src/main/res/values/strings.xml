@@ -39,6 +39,8 @@
     <string name="submit">Submit</string>
     <string name="filter_add_review">Add review</string>
 
+    <string name="temp_chat">Should Be Working Soon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBOTTOM TEXT</string>
+
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">
         <item>@string/value_any_category</item>
