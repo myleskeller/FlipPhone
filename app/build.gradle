@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\Tyler\\Documents\\keystores\\upload-keystore.jks')
+            keyAlias = 'upload'
+            keyPassword 'COP4656'
+            storePassword 'COP4656'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion '29.0.2'
     defaultConfig {
