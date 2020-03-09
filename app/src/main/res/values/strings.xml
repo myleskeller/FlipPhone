@@ -44,6 +44,10 @@
     <string name="front_photo_tip_message">Lay the phone on a flat, well-illuminated surface and align the edges of the device with the edges of the silhouette overlay.</string>
     <string name="front_photo_tip_title">Before you begin…</string>
     <string name="preview_of_image_taken">preview of image taken</string>
+    <string name="qr_code_generator">Generate QR Code</string>
+    <string name="user_avatar">user avatar</string>
+    <string name="qr_code">qr code</string>
+    <string name="default_user_email">[Unverified Account]</string>
 
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">

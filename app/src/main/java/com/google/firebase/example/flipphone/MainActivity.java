@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.flipphone.camera.CameraActivity;
+import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -221,7 +222,10 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.menu_qr_code:
                 OpenQRScanner();
                 break;
-                case R.id.menu_photo_front:
+            case R.id.menu_qr_make:
+                OpenQRGenerator();
+                break;
+            case R.id.menu_photo_front:
                 TakeFrontPhoto();
                 break;
             case R.id.menu_sign_out:
@@ -296,6 +300,13 @@ public class MainActivity extends AppCompatActivity implements
     }
     public void OpenQRScanner() {
         Intent intent = new Intent(this, QrCodeScannerActivity.class);
+        String message = "maybe this will be useful later..";
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    public void OpenQRGenerator() {
+        Intent intent = new Intent(this, QRCodeGeneratorActivity.class);
         String message = "maybe this will be useful later..";
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);

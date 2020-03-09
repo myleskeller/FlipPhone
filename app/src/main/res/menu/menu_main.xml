@@ -14,6 +14,10 @@
         android:title="@string/qr_code_scanner" />
 
     <item
+        android:id="@+id/menu_qr_make"
+        android:title="@string/qr_code_generator" />
+
+    <item
         android:id="@+id/menu_photo_front"
         android:title="@string/photo_front" />
 
