@@ -1,29 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\robsi\\Desktop\\Temp\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\Tyler\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\e7faca53b489a56f849aee4dea77ffaf\\media-1.0.0\\res\\values-v21\\values-v21.xml",
-                    "from": {
-                        "startLines": "2,5,8,11",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,223,386,554",
-                        "endLines": "4,7,10,13",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "218,381,549,716"
-                    },
-                    "to": {
-                        "startLines": "308,311,315,319",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "22804,22972,23261,23557",
-                        "endLines": "310,313,317,321",
-                        "endColumns": "12,12,12,12",
-                        "endOffsets": "22967,23130,23424,23719"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,106,109,152,155,158,160,162,164,167,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,220,222,223,224,234,235,236,248",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -42,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\robsi\\Desktop\\Temp\\flip_phone\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "source": "C:\\Users\\Rob\\Desktop\\Tyler\\flip_phone\\app\\src\\main\\res\\values-v21\\styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -61,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\038fa30e02290b4af7d24a506a557642\\core-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\038fa30e02290b4af7d24a506a557642\\core-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -80,7 +61,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,15,16,19,24,35,41,47,53,59,65,69,72,75,78,81,85",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -96,6 +77,25 @@
                         "endLines": "3,4,5,6,7,8,9,10,11,12,82,242,245,250,261,267,327,333,339,345,349,352,355,358,361,373,377",
                         "endColumns": "67,78,87,87,87,87,86,86,86,86,10,115,10,12,10,10,10,10,10,10,10,10,10,10,10,10,10",
                         "endOffsets": "222,301,389,477,565,653,740,827,914,1001,7018,18231,18401,18722,19751,20208,24061,24405,24755,25105,25498,25716,25938,26164,26380,27131,27390"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\e7faca53b489a56f849aee4dea77ffaf\\media-1.0.0\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,5,8,11",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,223,386,554",
+                        "endLines": "4,7,10,13",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "218,381,549,716"
+                    },
+                    "to": {
+                        "startLines": "308,311,315,319",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "22804,22972,23261,23557",
+                        "endLines": "310,313,317,321",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "22967,23130,23424,23719"
                     }
                 }
             ]

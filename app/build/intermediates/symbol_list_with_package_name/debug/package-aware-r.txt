@@ -1417,6 +1417,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_shadow
+drawable broken_phone
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1483,8 +1484,10 @@ drawable ic_close_white_24px
 drawable ic_edit_black_24dp
 drawable ic_fastfood_white_24dp
 drawable ic_filter_list_white_24px
+drawable ic_flip_phone_24px
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
+drawable ic_launcher_background
 drawable ic_local_dining_white_24px
 drawable ic_menu_arrow_down_black_24dp
 drawable ic_menu_arrow_up_black_24dp
@@ -1493,9 +1496,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
-drawable ic_phone_white_24px
 drawable ic_place_white_24px
-drawable ic_smartphone_white_18dp
 drawable ic_sort_white_24px
 drawable mrb_star_border_icon_black_36dp
 drawable mrb_star_icon_black_36dp
@@ -1716,6 +1717,7 @@ id icon_only
 id icon_price
 id ifRoom
 id image
+id image_recycler_view
 id info
 id invisible
 id invisible_frame
@@ -1734,6 +1736,7 @@ id main_tos_and_pp
 id masked
 id media_actions
 id menu_add_items
+id menu_sell
 id menu_sign_out
 id message
 id microsoft_signin_button
@@ -1939,6 +1942,7 @@ id withText
 id wrap
 id wrap_content
 id yahoo_signin_button
+id zoomed_image
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -2001,6 +2005,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat
+layout activity_image
 layout activity_main
 layout activity_phone_detail
 layout browser_actions_context_menu_page
@@ -2051,6 +2057,7 @@ layout fui_welcome_back_idp_prompt_layout
 layout fui_welcome_back_password_prompt_layout
 layout item_phone
 layout item_rating
+layout item_zoomed_phone
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -2112,6 +2119,8 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu menu_main
 mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 plurals fui_error_weak_password
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
@@ -2368,7 +2377,7 @@ style AppTheme_FilterSpinner
 style AppTheme_FormLabel
 style AppTheme_Headline
 style AppTheme_Overflow
-style AppTheme_PizzaGuy
+style AppTheme_PhoneImg
 style AppTheme_Subheader
 style AppTheme_TextDivider
 style AppTheme_Title

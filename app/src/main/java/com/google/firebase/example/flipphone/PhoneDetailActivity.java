@@ -16,6 +16,7 @@
  package com.google.firebase.example.flipphone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,7 +57,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
     private static final String TAG = "PhoneDetail";
 
-    public static final String KEY_RESTAURANT_ID = "key_phone_id";
+    public static final String KEY_PHONE_ID = "key_phone_id";
 
     private ImageView mImageView;
     private TextView mNameView;
@@ -93,11 +94,11 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
-
+        findViewById(R.id.phone_image).setOnClickListener(this);
         // Get phone ID from extras
-        String phoneId = getIntent().getExtras().getString(KEY_RESTAURANT_ID);
+        String phoneId = getIntent().getExtras().getString(KEY_PHONE_ID);
         if (phoneId == null) {
-            throw new IllegalArgumentException("Must pass extra " + KEY_RESTAURANT_ID);
+            throw new IllegalArgumentException("Must pass extra " + KEY_PHONE_ID);
         }
 
         // Initialize Firestore
@@ -161,6 +162,10 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             case R.id.fab_show_rating_dialog:
                 onAddRatingClicked(v);
                 break;
+            case R.id.phone_image:
+                Intent intent = new Intent(PhoneDetailActivity.this, ImagesActivity.class);
+                intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, mPhoneRef.getId());
+                startActivity(intent);
         }
     }
 

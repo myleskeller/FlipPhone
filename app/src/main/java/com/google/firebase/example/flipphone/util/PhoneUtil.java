@@ -37,7 +37,7 @@ public class PhoneUtil {
     private static final ThreadPoolExecutor EXECUTOR = new ThreadPoolExecutor(2, 4, 60,
             TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 
-    //private static final String RESTAURANT_URL_FMT = "https://storage.googleapis.com/firestorequickstarts.appspot.com/food_%d.png";
+    //private static final String PHONE_URL_FMT = "https://storage.googleapis.com/firestorequickstarts.appspot.com/food_%d.png";
     public static String[] phones = {"https://www.hutmobile.com/wp-content/uploads/2019/12/1-104.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2018/05/1-980x735.jpg",
     "https://ksassets.timeincuk.net/wp/uploads/sites/54/2019/03/Xiaomi-Mi-9-front-angled-top-left-920x613.jpg",
