@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Rob\\Desktop\\myles\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gsw\\values-gsw.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\NEW\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gsw\\values-gsw.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\dd7de60433f1bcab93033d7cfb85f4f7\\jetified-firebase-ui-auth-6.2.0\\res\\values-gsw\\values-gsw.xml",

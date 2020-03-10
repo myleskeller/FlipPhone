@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Rob\\Desktop\\myles\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\NEW\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-v21\\values-v21.xml",
@@ -80,6 +80,25 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Rob\\Desktop\\NEW\\flip_phone\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "193"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1266",
+                        "endLines": "19",
+                        "endColumns": "12",
+                        "endOffsets": "1400"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\e7faca53b489a56f849aee4dea77ffaf\\media-1.0.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
@@ -96,25 +115,6 @@
                         "endLines": "318,321,325,329",
                         "endColumns": "12,12,12,12",
                         "endOffsets": "23420,23583,23877,24172"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Rob\\Desktop\\myles\\flip_phone\\app\\src\\main\\res\\values-v21\\styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "193"
-                    },
-                    "to": {
-                        "startLines": "17",
-                        "startColumns": "4",
-                        "startOffsets": "1266",
-                        "endLines": "19",
-                        "endColumns": "12",
-                        "endOffsets": "1400"
                     }
                 }
             ]

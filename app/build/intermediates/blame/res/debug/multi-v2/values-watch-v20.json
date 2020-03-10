@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Rob\\Desktop\\myles\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\NEW\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\b1416af0208c3e420357cda240a414ee\\jetified-play-services-auth-17.0.0\\res\\values-watch-v20\\values.xml",

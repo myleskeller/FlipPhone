@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "611593369331",
-    "firebase_url": "https://flip-phone-8c3fa.firebaseio.com",
-    "project_id": "flip-phone-8c3fa",
-    "storage_bucket": "flip-phone-8c3fa.appspot.com"
+    "project_number": "784574291741",
+    "firebase_url": "https://flip-phone-40908.firebaseio.com",
+    "project_id": "flip-phone-40908",
+    "storage_bucket": "flip-phone-40908.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:611593369331:android:d34190e5706564320fa986",
+        "mobilesdk_app_id": "1:784574291741:android:8faaace857cec10a330bf4",
         "android_client_info": {
-          "package_name": "com.google.firebase.example.fireeats"
+          "package_name": "com.google.firebase.example.flipphone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "611593369331-inf3p8g0jdpr5bibn7qd8dtk33ip7pve.apps.googleusercontent.com",
+          "client_id": "784574291741-6dhmn543616t55smofhoiebfbmjg30tb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.example.flipphone",
+            "certificate_hash": "0c84c6e913413687d04ff73161afcf3a900e3230"
+          }
+        },
+        {
+          "client_id": "784574291741-28omr68ddrs9r93ms63rbee8o73353sq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDN_8rjYCs0ySfqqlzCrLl2tOCF1VZl1t8"
+          "current_key": "AIzaSyBjZH4ng08hhC5VRTPjIIYV8pdzG5qDrH8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "611593369331-inf3p8g0jdpr5bibn7qd8dtk33ip7pve.apps.googleusercontent.com",
+              "client_id": "784574291741-28omr68ddrs9r93ms63rbee8o73353sq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
