@@ -10,5 +10,13 @@ public class Chat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
+        
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent flipIntent = new Intent(getApplicationContext(), SellFlip.class);
+                startActivity(flipIntent);
+            }
+        });
     }
 }
