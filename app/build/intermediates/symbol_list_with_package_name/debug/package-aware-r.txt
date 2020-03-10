@@ -1616,6 +1616,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btn_holder
 id button
+id button2
 id buttonPanel
 id button_cancel
 id button_clear_filter
@@ -1706,6 +1707,7 @@ id ghost_view_holder
 id gone
 id group_divider
 id groups
+id guideline
 id header
 id header_text
 id heading
@@ -1905,6 +1907,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView2
 id text_current_search
 id text_current_search_container
 id text_current_sort_by
@@ -2016,6 +2019,7 @@ layout activity_main
 layout activity_messaging
 layout activity_phone_detail
 layout activity_sell_flip
+layout activity_sell_success
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog

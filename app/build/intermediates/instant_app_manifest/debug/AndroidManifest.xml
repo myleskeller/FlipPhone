@@ -27,6 +27,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.google.firebase.example.flipphone.SellSuccess" />
         <activity android:name="com.google.firebase.example.flipphone.SellFlip" />
         <activity android:name="com.google.firebase.example.flipphone.Chat" />
         <activity android:name="com.google.firebase.example.flipphone.MainActivity" >
