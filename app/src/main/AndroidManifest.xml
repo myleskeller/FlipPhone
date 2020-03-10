@@ -30,11 +30,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SellSuccess"></activity>
+        <activity android:name=".SellFlip" />
+        <activity android:name=".Chat" />
         <activity android:name=".PhoneDetailActivity" />
         <activity android:name="com.flipphone.qrcode.QrCodeScannerActivity" />
         <activity android:name="com.flipphone.camera.PicturePreviewActivity" />
         <activity android:name="com.flipphone.camera.CameraActivity" />
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
+        <activity android:name=".SellActivity"/>
+        <activity android:name=".ImagesActivity"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

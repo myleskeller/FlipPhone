@@ -35,6 +35,7 @@
     <string name="cancel">Cancel</string>
     <string name="message_no_results">Oops, couldn\'t find any results\nthat matched your filter</string>
     <string name="message_no_reviews">No phone specifications!</string>
+    <string name="temp_chat">Should Be Working Soon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</string>
     <string name="hint_review">Enter message for the user</string>
     <string name="submit">Submit</string>
     <string name="filter_add_review">Message User</string>

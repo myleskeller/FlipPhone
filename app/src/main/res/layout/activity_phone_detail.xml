@@ -131,8 +131,8 @@
         tools:visibility="visible">
 
         <ImageView
-            android:src="@drawable/pizza_monster"
-            style="@style/AppTheme.PizzaGuy" />
+            android:src="@drawable/broken_phone"
+            style="@style/AppTheme.PhoneImg" />
 
         <TextView
             style="@style/AppTheme.Body1"
@@ -140,6 +140,12 @@
             android:layout_height="wrap_content"
             android:text="@string/message_no_reviews"
             android:textColor="@color/greyDisabled" />
+
+        <Button
+            android:id="@+id/button_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
     </LinearLayout>
 

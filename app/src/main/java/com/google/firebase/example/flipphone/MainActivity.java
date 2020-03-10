@@ -34,6 +34,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements
@@ -232,6 +233,9 @@ public class MainActivity extends AppCompatActivity implements
                 AuthUI.getInstance().signOut(this);
                 startSignIn();
                 break;
+            case R.id.menu_sell:
+                Intent intent = new Intent(this, SellActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -274,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onPhoneSelected(DocumentSnapshot phone) {
         // Go to the details page for the selected phone
         Intent intent = new Intent(this, PhoneDetailActivity.class);
-        intent.putExtra(PhoneDetailActivity.KEY_RESTAURANT_ID, phone.getId());
+        intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, phone.getId());
 
         startActivity(intent);
     }
@@ -286,8 +290,9 @@ public class MainActivity extends AppCompatActivity implements
     private void startSignIn() {
         // Sign in with FirebaseUI
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
-                .setAvailableProviders(Collections.singletonList(
-                        new AuthUI.IdpConfig.EmailBuilder().build()))
+                .setAvailableProviders(Arrays.asList(
+                        new AuthUI.IdpConfig.PhoneBuilder().build()
+                ))
                 .setIsSmartLockEnabled(false)
                 .build();
 
