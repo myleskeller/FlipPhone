@@ -207,7 +207,8 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     public void onAddRatingClicked(View view) {
-        mRatingDialog.show(getSupportFragmentManager(), RatingDialogFragment.TAG);
+        Intent chatIntent = new Intent(getApplicationContext(), Chat.class);
+        startActivity(chatIntent);
     }
 
     @Override
