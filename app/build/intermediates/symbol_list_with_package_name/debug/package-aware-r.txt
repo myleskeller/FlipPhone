@@ -1615,6 +1615,7 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btn_holder
+id button
 id buttonPanel
 id button_cancel
 id button_clear_filter
@@ -1903,6 +1904,7 @@ id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id text_current_search
 id text_current_search_container
 id text_current_sort_by
@@ -2010,9 +2012,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_chat
 layout activity_main
+layout activity_messaging
 layout activity_phone_detail
+layout activity_sell_flip
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog

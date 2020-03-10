@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.firebase.example.flipphone.Chat">
+
+    <TextView
+        android:id="@+id/BOTTOM_TEXT"
+        android:layout_width="211dp"
+        android:layout_height="573dp"
+        android:fontFamily="@font/bungee_inline"
+        android:text="@string/temp_chat"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flip Over"
+        app:layout_constraintBottom_toTopOf="@+id/BOTTOM_TEXT"
+        app:layout_constraintEnd_toStartOf="@+id/BOTTOM_TEXT"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/BOTTOM_TEXT"
+        app:layout_constraintTop_toBottomOf="@+id/BOTTOM_TEXT"
+        app:layout_constraintVertical_bias="0.504" />
+</androidx.constraintlayout.widget.ConstraintLayout>
