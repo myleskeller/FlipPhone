@@ -57,7 +57,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
     private static final String TAG = "PhoneDetail";
 
-    public static final String KEY_PHONE_ID = "key_phone_id";
+    public static final String KEY_RESTAURANT_ID = "key_phone_id";
 
     private ImageView mImageView;
     private TextView mNameView;
@@ -84,8 +84,8 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         
         mImageView = findViewById(R.id.phone_image);
         mNameView = findViewById(R.id.phone_name);
-        //mRatingIndicator = findViewById(R.id.phone_rating);
-        //mNumRatingsView = findViewById(R.id.phone_num_ratings);
+        mRatingIndicator = findViewById(R.id.phone_rating);
+        mNumRatingsView = findViewById(R.id.phone_num_ratings);
         mCityView = findViewById(R.id.phone_city);
         mCategoryView = findViewById(R.id.phone_category);
         mPriceView = findViewById(R.id.phone_price);
@@ -94,11 +94,11 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
-        findViewById(R.id.phone_image).setOnClickListener(this);
+
         // Get phone ID from extras
-        String phoneId = getIntent().getExtras().getString(KEY_PHONE_ID);
+        String phoneId = getIntent().getExtras().getString(KEY_RESTAURANT_ID);
         if (phoneId == null) {
-            throw new IllegalArgumentException("Must pass extra " + KEY_PHONE_ID);
+            throw new IllegalArgumentException("Must pass extra " + KEY_RESTAURANT_ID);
         }
 
         // Initialize Firestore
@@ -118,17 +118,17 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             @Override
             protected void onDataChanged() {
                 if (getItemCount() == 0) {
-                    //mRatingsRecycler.setVisibility(View.GONE);
+                    mRatingsRecycler.setVisibility(View.GONE);
                     mEmptyView.setVisibility(View.VISIBLE);
                 } else {
-                    //mRatingsRecycler.setVisibility(View.VISIBLE);
+                    mRatingsRecycler.setVisibility(View.VISIBLE);
                     mEmptyView.setVisibility(View.GONE);
                 }
             }
         };
 
-        //mRatingsRecycler.setLayoutManager(new LinearLayoutManager(this));
-       // mRatingsRecycler.setAdapter(mRatingAdapter);
+        mRatingsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mRatingsRecycler.setAdapter(mRatingAdapter);
 
         mRatingDialog = new RatingDialogFragment();
     }
@@ -162,10 +162,6 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             case R.id.fab_show_rating_dialog:
                 onAddRatingClicked(v);
                 break;
-            case R.id.phone_image:
-                Intent intent = new Intent(PhoneDetailActivity.this, ImagesActivity.class);
-                intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, mPhoneRef.getId());
-                startActivity(intent);
         }
     }
 
@@ -189,8 +185,8 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
     private void onPhoneLoaded(Phone phone) {
         mNameView.setText(phone.getName());
-        //mRatingIndicator.setRating((float) phone.getAvgRating());
-        //mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
+        mRatingIndicator.setRating((float) phone.getAvgRating());
+        mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
         mCityView.setText(phone.getCity());
         mCategoryView.setText(phone.getCategory());
         mPriceView.setText(PhoneUtil.getPriceString(phone));
@@ -206,7 +202,8 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     public void onAddRatingClicked(View view) {
-        mRatingDialog.show(getSupportFragmentManager(), RatingDialogFragment.TAG);
+        Intent chatIntent = new Intent(getApplicationContext(), Chat.class);
+        startActivity(chatIntent);
     }
 
     @Override
