@@ -17,21 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!--      <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="16dp"
-                   android:layout_gravity="center"
-                   android:text="I will be recorded!"
-                   android:textColor="@android:color/white"
-
-                   app:layout_drawOnPreview="true"
-                   app:layout_drawOnPictureSnapshot="true"
-                   app:layout_drawOnVideoSnapshot="true"
-
-                   />-->
-
     </com.otaliastudios.cameraview.CameraView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

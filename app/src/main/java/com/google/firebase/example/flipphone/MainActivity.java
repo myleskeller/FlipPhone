@@ -300,22 +300,40 @@ public class MainActivity extends AppCompatActivity implements
     }
     public void OpenQRScanner() {
         Intent intent = new Intent(this, QrCodeScannerActivity.class);
-        String message = "maybe this will be useful later..";
-        intent.putExtra(EXTRA_MESSAGE, message);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "unused");
+        intent.putExtras(extras);
         startActivity(intent);
     }
 
     public void OpenQRGenerator() {
         Intent intent = new Intent(this, QRCodeGeneratorActivity.class);
-        String message = "maybe this will be useful later..";
-        intent.putExtra(EXTRA_MESSAGE, message);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "unused");
+        intent.putExtras(extras);
         startActivity(intent);
     }
 
     public void TakeFrontPhoto() {
         Intent intent = new Intent(this, CameraActivity.class);
-        String message = "maybe this will be useful later..";
-        intent.putExtra(EXTRA_MESSAGE, message);
+        Bundle extras = new Bundle();
+        //TODO: this would probably be the ideal place to keep track of the container for the listing
+        extras.putString("EXTRA_MESSAGE", "front");
+        intent.putExtras(extras);
         startActivity(intent);
     }
+
+//    public void TakeBackPhoto() {
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        String message = "back";
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+//    }
+
+//    public void PriceAndDetails() {
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        String message = "maybe this will be useful later..";
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+//    }
 }

@@ -15,8 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.flipphone.camera.CameraActivity;
+import com.flipphone.camera.PicturePreviewActivity;
 import com.google.zxing.Result;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
 import static android.Manifest.permission.CAMERA;
 
 public class QrCodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler {
@@ -42,7 +46,7 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
     }
 
     private boolean checkPermission() {
-        return ( ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA ) == PackageManager.PERMISSION_GRANTED);
+        return (ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA) == PackageManager.PERMISSION_GRANTED);
     }
 
     private void requestPermission() {
@@ -55,9 +59,9 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
                 if (grantResults.length > 0) {
 
                     boolean cameraAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    if (cameraAccepted){
+                    if (cameraAccepted) {
                         Toast.makeText(getApplicationContext(), "Permission Granted, Now you can access camera", Toast.LENGTH_LONG).show();
-                }else {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Permission Denied, You cannot access and camera", Toast.LENGTH_LONG).show();
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(CAMERA)) {
@@ -96,7 +100,7 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         int currentapiVersion = android.os.Build.VERSION.SDK_INT;
         if (currentapiVersion >= android.os.Build.VERSION_CODES.M) {
             if (checkPermission()) {
-                if(mScannerView == null) {
+                if (mScannerView == null) {
                     mScannerView = new ZXingScannerView(this);
                     setContentView(mScannerView);
                 }
@@ -117,7 +121,8 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
 
     @Override
     public void handleResult(Result rawResult) {
-        //TODO: go to public-facing firebase url and "link new phone to listing created by old phone"
+        //TODO: y'know, anything that it's actually supposed to do...
+
         //maybe: validate url as firedb link
 
         final String result = rawResult.getText();
@@ -125,22 +130,31 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         Log.e("QRCodeScanner", rawResult.getBarcodeFormat().toString());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Scan Result");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mScannerView.resumeCameraPreview(QrCodeScannerActivity.this);
-                    }
-                });
-                builder.setNeutralButton("Visit", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
-                        startActivity(browserIntent);
-                    }
-                });
-                builder.setMessage(rawResult.getText());
-                AlertDialog alert1 = builder.create();
-                alert1.show();
+        builder.setTitle("Rescan QR Code?");
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mScannerView.resumeCameraPreview(QrCodeScannerActivity.this);
+            }
+        });
+        builder.setNeutralButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//              Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
+//              startActivity(browserIntent);
+                TakeFrontPhoto();
+            }
+        });
+        builder.setMessage(rawResult.getText());
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+    }
+
+    public void TakeFrontPhoto() {
+        Intent intent = new Intent(this, CameraActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "front");
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

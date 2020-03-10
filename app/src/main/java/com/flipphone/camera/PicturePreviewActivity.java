@@ -1,6 +1,7 @@
 package com.flipphone.camera;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.example.flipphone.MainActivity;
 import com.google.firebase.example.flipphone.R;
 import com.otaliastudios.cameraview.BitmapCallback;
 import com.otaliastudios.cameraview.PictureResult;
@@ -29,11 +31,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 
 public class PicturePreviewActivity extends Activity {
 
     @BindView(R.id.fab_save_picture)
     FloatingActionButton saveFAB;
+    String message = "";
 
     private static WeakReference<PictureResult> image;
 
@@ -45,6 +50,12 @@ public class PicturePreviewActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_preview);
+
+        //get the current intent
+        Intent intent = getIntent();
+        message = intent.getStringExtra("EXTRA_MESSAGE");
+        Log.v("StringExtra: ",message);
+
         ButterKnife.bind(this);
         final ImageView imageView = findViewById(R.id.image);
         PictureResult result = image == null ? null : image.get();
@@ -53,6 +64,7 @@ public class PicturePreviewActivity extends Activity {
             return;
         }
         AspectRatio ratio = AspectRatio.of(result.getSize());
+        //TODO: get native portrait camera resolution and apply over the constants below
         result.toBitmap(1000, 1000, imageView::setImageBitmap);
 
         if (result.isSnapshot()) {
@@ -112,6 +124,32 @@ public class PicturePreviewActivity extends Activity {
             }
         });
 
+        //janky navigation implementation
+        if (message.equals("front")) {
+            TakeBackPhoto();
+        }
+
+        //janky navigation implementation
+        if (message.equals("back")) {
+            PriceAndDetails();
+        }
+
+
     }
 
+    public void TakeBackPhoto () {
+        Intent intent = new Intent(this, CameraActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "back");
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    public void PriceAndDetails() {
+        Intent intent = new Intent(this, MainActivity.class); //this is wrong
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "unused");
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
 }
