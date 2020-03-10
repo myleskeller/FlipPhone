@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.flipphone.listing.ListingDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.example.flipphone.MainActivity;
 import com.google.firebase.example.flipphone.R;
@@ -146,7 +147,7 @@ public class PicturePreviewActivity extends Activity {
     }
 
     public void PriceAndDetails() {
-        Intent intent = new Intent(this, MainActivity.class); //this is wrong
+        Intent intent = new Intent(this, ListingDetails.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_MESSAGE", "unused");
         intent.putExtras(extras);
