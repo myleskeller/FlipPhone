@@ -69,7 +69,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/phone_city"
+            android:id="@+id/phone_condition"
             style="@style/AppTheme.Subheader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -141,11 +141,6 @@
             android:text="@string/message_no_reviews"
             android:textColor="@color/greyDisabled" />
 
-        <Button
-            android:id="@+id/button_temp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
 
     </LinearLayout>
 

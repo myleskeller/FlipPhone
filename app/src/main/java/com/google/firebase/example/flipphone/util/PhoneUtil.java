@@ -17,8 +17,10 @@
 
 import android.content.Context;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.R;
 import com.google.firebase.example.flipphone.model.Phone;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Arrays;
 import java.util.Locale;
@@ -72,9 +74,22 @@ public class PhoneUtil {
     /**
      * Create a random Phone POJO.
      */
+    public static Phone userPhone(Context context){
+        Phone phone = new Phone();
+        Random random = new Random();
+        String[] categories = context.getResources().getStringArray(R.array.categories);
+        categories = Arrays.copyOfRange(categories, 1, categories.length);
+        phone.setCondition(getRandomString(categories, random));
+        phone.setUserid(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        phone.setName("Samsung Galaxy S20");
+        phone.setPhoto(getRandomImageUrl(random));
+        phone.setCity("New");
+        return phone;
+    }
     public static Phone getRandom(Context context) {
         Phone phone = new Phone();
         Random random = new Random();
+
 
         // Cities (first element is 'Any')
         String[] condition = context.getResources().getStringArray(R.array.condition);
@@ -86,13 +101,13 @@ public class PhoneUtil {
 
         int[] prices = new int[]{1, 2, 3};
 
-        phone.setName(getRandomName(random));
-        phone.setCity(getRandomString(condition, random));
-        phone.setCategory(getRandomString(categories, random));
+        //phone.setName(getRandomName(random));
+        //phone.setCity(getRandomString(condition, random));
+        phone.setCondition(getRandomString(categories, random));
         phone.setPhoto(getRandomImageUrl(random));
         phone.setPrice(getRandomInt(prices, random));
-        phone.setAvgRating(getRandomRating(random));
-        phone.setNumRatings(random.nextInt(20));
+        //phone.setAvgRating(getRandomRating(random));
+        //phone.setNumRatings(random.nextInt(20));
 
         return phone;
     }

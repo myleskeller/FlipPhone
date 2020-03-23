@@ -29,25 +29,74 @@ public class Phone {
     public static final String FIELD_POPULARITY = "numRatings";
     public static final String FIELD_AVG_RATING = "avgRating";
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    private String userid;
+    private String description;
+    private String specifications;
     private String name;
+
+    public String getPhotoFront() {
+        return photoFront;
+    }
+
+    public void setPhotoFront(String photoFront) {
+        this.photoFront = photoFront;
+    }
+
+    public String getPhotoBack() {
+        return photoBack;
+    }
+
+    public void setPhotoBack(String photoBack) {
+        this.photoBack = photoBack;
+    }
+
+    private String photoFront;
+    private String photoBack;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(String specifications) {
+        this.specifications = specifications;
+    }
+
     private String city;
-    private String category;
+    private String condition;
     private String photo;
     private int price;
-    private int numRatings;
-    private double avgRating;
+    //private int numRatings;
+    //private double avgRating;
 
     public Phone() {}
 
-    public Phone(String name, String city, String category, String photo,
-                 int price, int numRatings, double avgRating) {
+    public Phone(String userid, String description, String city, String name, String condition, String photo,
+                 int price) {
+        this.userid = userid;
+        this.description = description;
         this.name = name;
         this.city = city;
-        this.category = category;
+        this.condition = condition;
         this.photo = photo;
         this.price = price;
-        this.numRatings = numRatings;
-        this.avgRating = avgRating;
+        //this.numRatings = numRatings;
+        //this.avgRating = avgRating;
     }
 
     public String getName() {
@@ -58,20 +107,23 @@ public class Phone {
         this.name = name;
     }
 
-    public String getCity() {
+    public String getCondition() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
-
-    public String getCategory() {
-        return category;
+    public String getCity(){
+        return city;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public String getCategory() {
+        return "Condition";
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public String getPhoto() {
@@ -89,7 +141,7 @@ public class Phone {
     public void setPrice(int price) {
         this.price = price;
     }
-
+/*
     public int getNumRatings() {
         return numRatings;
     }
@@ -104,5 +156,5 @@ public class Phone {
 
     public void setAvgRating(double avgRating) {
         this.avgRating = avgRating;
-    }
+    }*/
 }

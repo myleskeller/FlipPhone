@@ -98,7 +98,7 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
 
             nameView.setText(phone.getName());
             //ratingBar.setRating((float) phone.getAvgRating());
-            //cityView.setText(phone.getCity());
+            //cityView.setText(phone.getCondition());
             //categoryView.setText(phone.getCategory());
             //numRatingsView.setText(resources.getString(R.string.fmt_num_ratings,
                     //phone.getNumRatings()));

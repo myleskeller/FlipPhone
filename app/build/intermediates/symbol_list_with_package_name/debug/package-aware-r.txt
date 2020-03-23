@@ -1760,7 +1760,6 @@ id button_old
 id button_resend_email
 id button_search
 id button_sign_in
-id button_temp
 id camera
 id camera1
 id camera2
@@ -1782,6 +1781,7 @@ id clip_horizontal
 id clip_vertical
 id cloudy
 id collapseActionView
+id condition_seekBar
 id condition_value
 id confirm_button
 id confirmation_code
@@ -1801,6 +1801,7 @@ id date_time
 id daylight
 id decor_content_parent
 id default_activity_button
+id description_text
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1968,8 +1969,8 @@ id percent
 id phone_button
 id phone_button_back
 id phone_category
-id phone_city
 id phone_city_divider
+id phone_condition
 id phone_form_button
 id phone_form_cancel
 id phone_form_text
@@ -1985,6 +1986,7 @@ id phone_top_card
 id picture
 id pin
 id post_listing
+id price_seekBar
 id price_value
 id progress_circular
 id progress_horizontal
@@ -2024,8 +2026,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id seekBar
-id seekBar3
 id seekbar
 id seekbar_value
 id select_dialog_listview

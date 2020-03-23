@@ -64,7 +64,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private TextView mNameView;
     private MaterialRatingBar mRatingIndicator;
     private TextView mNumRatingsView;
-    private TextView mCityView;
+    private TextView mConditionView;
     private TextView mCategoryView;
     private TextView mPriceView;
     private ViewGroup mEmptyView;
@@ -87,11 +87,11 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         mNameView = findViewById(R.id.phone_name);
         //mRatingIndicator = findViewById(R.id.phone_rating);
         //mNumRatingsView = findViewById(R.id.phone_num_ratings);
-        mCityView = findViewById(R.id.phone_city);
+        mConditionView = findViewById(R.id.phone_condition);
         mCategoryView = findViewById(R.id.phone_category);
         mPriceView = findViewById(R.id.phone_price);
         mEmptyView = findViewById(R.id.view_empty_ratings);
-        mRatingsRecycler = findViewById(R.id.recycler_ratings);
+        //mRatingsRecycler = findViewById(R.id.recycler_ratings);
 
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
@@ -106,12 +106,12 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         mFirestore = FirebaseFirestore.getInstance();
 
         // Get reference to the phone
-        mPhoneRef = mFirestore.collection("phones").document(phoneId);
+        mPhoneRef = mFirestore.collection("users").document(phoneId);
 
         // Get ratings
         Query ratingsQuery = mPhoneRef
-                .collection("ratings")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .collection("users")
+                .orderBy("price", Query.Direction.DESCENDING)
                 .limit(50);
 
         // RecyclerView
@@ -123,7 +123,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                     mEmptyView.setVisibility(View.VISIBLE);
                 } else {
                     //mRatingsRecycler.setVisibility(View.VISIBLE);
-                    mEmptyView.setVisibility(View.GONE);
+                    // mEmptyView.setVisibility(View.GONE);
                 }
             }
         };
@@ -192,7 +192,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         mNameView.setText(phone.getName());
         //mRatingIndicator.setRating((float) phone.getAvgRating());
         //mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
-        mCityView.setText(phone.getCity());
+        mConditionView.setText(phone.getCity());
         mCategoryView.setText(phone.getCategory());
         mPriceView.setText(PhoneUtil.getPriceString(phone));
 

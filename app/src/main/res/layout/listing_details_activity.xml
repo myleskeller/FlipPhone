@@ -52,7 +52,7 @@
                     </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar3"
+                        android:id="@+id/condition_seekBar"
                         style="@style/Widget.AppCompat.SeekBar.Discrete"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     </LinearLayout>
 
                     <SeekBar
-                        android:id="@+id/seekBar"
+                        android:id="@+id/price_seekBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -139,6 +139,7 @@
                             android:layout_weight="1">
 
                             <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/description_text"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:capitalize="sentences"

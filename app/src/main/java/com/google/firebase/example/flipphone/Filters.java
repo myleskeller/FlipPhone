@@ -37,7 +37,7 @@ public class Filters {
 
     public static Filters getDefault() {
         Filters filters = new Filters();
-        filters.setSortBy(Phone.FIELD_AVG_RATING);
+        filters.setSortBy(Phone.FIELD_PRICE);
         filters.setSortDirection(Query.Direction.DESCENDING);
 
         return filters;
@@ -63,11 +63,11 @@ public class Filters {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCondition(String category) {
         this.category = category;
     }
 
-    public String getCity() {
+    public String getCondition() {
         return city;
     }
 

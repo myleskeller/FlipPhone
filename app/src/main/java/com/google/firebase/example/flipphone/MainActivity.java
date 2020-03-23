@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements
 
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
-        mQuery = mFirestore.collection("phones")
-                .orderBy("avgRating", Query.Direction.DESCENDING)
+        mQuery = mFirestore.collection("users")
+                .orderBy("price", Query.Direction.DESCENDING)
                 .limit(LIMIT);
     }
 
@@ -160,28 +160,31 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void onAddItemsClicked() {
-        CollectionReference phones = mFirestore.collection("phones");
+        CollectionReference phones = mFirestore.collection("users");
 
+        Phone phone = PhoneUtil.userPhone(this);
+        phones.add(phone);
+        /*
         for (int i = 0; i < 10; i++){
             Phone phone = PhoneUtil.getRandom(this);
             phones.add(phone);
-        }
+        }*/
     }
 
     @Override
     public void onFilter(Filters filters) {
         // Construct query basic query
-        Query query = mFirestore.collection("phones");
+        Query query = mFirestore.collection("users");
 
         // Category (equality filter)
         if (filters.hasCategory()) {
-            query = query.whereEqualTo("category", filters.getCategory());
+            query = query.whereEqualTo("condition", filters.getCategory());
         }
 
         // City (equality filter)
-        if (filters.hasCity()) {
-            query = query.whereEqualTo("city", filters.getCity());
-        }
+        //if (filters.hasCity()) {
+            //query = query.whereEqualTo("city", filters.getCondition());
+        //}
 
         // Price (equality filter)
         if (filters.hasPrice()) {
@@ -291,7 +294,8 @@ public class MainActivity extends AppCompatActivity implements
         // Sign in with FirebaseUI
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 .setAvailableProviders(Arrays.asList(
-                        new AuthUI.IdpConfig.PhoneBuilder().build()
+                        //new AuthUI.IdpConfig.PhoneBuilder().build()
+                        new AuthUI.IdpConfig.EmailBuilder().build()
                 ))
                 .setIsSmartLockEnabled(false)
                 .build();
