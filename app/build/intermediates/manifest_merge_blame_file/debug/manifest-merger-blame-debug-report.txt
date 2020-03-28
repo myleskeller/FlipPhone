@@ -134,9 +134,9 @@
 67        <activity android:name="com.google.firebase.example.flipphone.ImagesActivity" />
 67-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:42:9-51
 67-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:42:19-49
-68        <activity android:name="com.google.firebase.example.flipphone.temp_activity" />
-68-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:9-50
-68-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:19-48
+68        <activity android:name="com.google.firebase.example.flipphone.DeleteActivity" />
+68-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:9-51
+68-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:19-49
 69
 70        <meta-data
 70-->C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:44:9-46:57

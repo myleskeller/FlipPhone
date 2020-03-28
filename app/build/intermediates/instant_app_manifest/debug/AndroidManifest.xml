@@ -66,7 +66,7 @@
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
         <activity android:name="com.google.firebase.example.flipphone.SellActivity" />
         <activity android:name="com.google.firebase.example.flipphone.ImagesActivity" />
-        <activity android:name="com.google.firebase.example.flipphone.temp_activity" />
+        <activity android:name="com.google.firebase.example.flipphone.DeleteActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

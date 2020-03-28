@@ -20,12 +20,12 @@
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_pizza_monster.png.flat",
-        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable-hdpi\\pizza_monster.png"
-    },
-    {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_phone_detail.xml.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\activity_phone_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_pizza_monster.png.flat",
+        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable-hdpi\\pizza_monster.png"
     },
     {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_fastfood_white_24dp.xml.flat",
@@ -96,6 +96,10 @@
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\font\\bungee_inline.xml"
     },
     {
+        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_delete.xml.flat",
+        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\activity_delete.xml"
+    },
+    {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
@@ -110,10 +114,6 @@
     {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_place_white_24px.xml.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable\\ic_place_white_24px.xml"
-    },
-    {
-        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_temporary.xml.flat",
-        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\activity_temporary.xml"
     },
     {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_main.xml.flat",

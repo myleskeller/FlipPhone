@@ -50,6 +50,11 @@ import butterknife.OnClick;
 public class PicturePreviewActivity extends Activity {
     String url;
     String frontPic, backPic;
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        return;
+    }
     @BindView(R.id.fab_save_picture)
     FloatingActionButton saveFAB;
     String message = "";

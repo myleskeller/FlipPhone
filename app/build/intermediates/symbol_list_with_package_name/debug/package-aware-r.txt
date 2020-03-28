@@ -2213,6 +2213,7 @@ layout abc_tooltip
 layout activity_camera
 layout activity_chat
 layout activity_choose_device
+layout activity_delete
 layout activity_image
 layout activity_main
 layout activity_messaging
@@ -2222,7 +2223,6 @@ layout activity_qr_code_generator
 layout activity_qr_code_scanner
 layout activity_sell_flip
 layout activity_sell_success
-layout activity_temporary
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout cameraview_gl_view

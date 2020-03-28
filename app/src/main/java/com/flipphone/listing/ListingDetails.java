@@ -50,7 +50,11 @@ public class ListingDetails extends AppCompatActivity implements
     private String condition;
     String photoFront;
     String photoBack;
-
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        return;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

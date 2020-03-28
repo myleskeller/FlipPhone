@@ -272,10 +272,10 @@ activity#com.google.firebase.example.flipphone.ImagesActivity
 ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:42:9-51
 	android:name
 		ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:42:19-49
-activity#com.google.firebase.example.flipphone.temp_activity
-ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:9-50
+activity#com.google.firebase.example.flipphone.DeleteActivity
+ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:9-51
 	android:name
-		ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:19-48
+		ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:43:19-49
 meta-data#preloaded_fonts
 ADDED from C:\Users\robsi\Desktop\New Flip Phone\flip_phone\app\src\main\AndroidManifest.xml:44:9-46:57
 	android:resource

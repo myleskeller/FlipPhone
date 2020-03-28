@@ -65,11 +65,16 @@ public class MainActivity extends AppCompatActivity implements
     private PhoneAdapter mAdapter;
 
     private MainActivityViewModel mViewModel;
-
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+        return;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);

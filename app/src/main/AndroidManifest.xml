@@ -40,7 +40,7 @@
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
         <activity android:name=".SellActivity"/>
         <activity android:name=".ImagesActivity"/>
-        <activity android:name=".temp_activity"/>
+        <activity android:name=".DeleteActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

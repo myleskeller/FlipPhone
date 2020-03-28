@@ -22,15 +22,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -43,7 +40,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.adapter.RatingAdapter;
 import com.google.firebase.example.flipphone.model.Phone;
 import com.google.firebase.example.flipphone.model.Rating;
-import com.google.firebase.example.flipphone.util.PhoneUtil;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -118,7 +114,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                         @Override
                         public void onClick(View v) {
                             //mRef.collection("users").document(phoneId).delete();
-                            Intent intent = new Intent(PhoneDetailActivity.this, temp_activity.class);
+                            Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
                             Bundle extras = new Bundle();
                             extras.putString("DELETE", phoneId);
                             intent.putExtras(extras);
