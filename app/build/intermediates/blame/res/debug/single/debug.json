@@ -8,6 +8,10 @@
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\activity_qr_code_scanner.xml"
     },
     {
+        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_delete_forever.png.flat",
+        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable\\delete_forever.png"
+    },
+    {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_phone_1.png.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable\\phone_1.png"
     },
@@ -106,6 +110,10 @@
     {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_place_white_24px.xml.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable\\ic_place_white_24px.xml"
+    },
+    {
+        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_temporary.xml.flat",
+        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\activity_temporary.xml"
     },
     {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_main.xml.flat",

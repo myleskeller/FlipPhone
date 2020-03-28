@@ -1,6 +1,7 @@
 package com.flipphone.camera;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,11 +26,14 @@ public class CameraActivity extends AppCompatActivity {
     @BindView(R.id.camera)
     CameraView camera;
     String message = "this didn't work";
+    String frontPic = "error";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TODO: add a window title to discern between taking a front and back photo
+
         requestWindowFeature(Window.FEATURE_NO_TITLE); // go full screen
         setContentView(R.layout.activity_camera);
 
@@ -54,11 +58,55 @@ public class CameraActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_MESSAGE", message);
                 intent.putExtras(extras);
-                startActivity(intent);
+                startActivityForResult(intent, 0);
             }
         });
 
         PermissionUtils.requestReadWriteAppPermissions(this);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+            if(requestCode == 0 && resultCode == PicturePreviewActivity.RESULT_OK && data !=null){
+                //requestWindowFeature(Window.FEATURE_NO_TITLE); // go full screen
+                //setContentView(R.layout.activity_camera);
+
+                //Intent intent = getIntent();
+                message = data.getStringExtra("EXTRA_MESSAGE");
+                Bundle b = new Bundle();
+                b = data.getExtras();
+                frontPic = b.getString("FRONT_PIC");
+                Log.v("StringExtra: ",message);
+                Log.v("ALLPICTURES", "CAMERAACTIVITY: "+frontPic);
+
+                if (message.equals("back"))
+                    findViewById(R.id.camera_overlay).setScaleX(-1);
+
+                ButterKnife.bind(this);
+
+                camera.setLifecycleOwner(this);
+
+                showPhotoTip();
+
+                camera.addCameraListener(new CameraListener() {
+                    @Override
+                    public void onPictureTaken(@NonNull PictureResult result) {
+                        PicturePreviewActivity.setPictureResult(result);
+                        Intent intent = new Intent(CameraActivity.this, PicturePreviewActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putString("EXTRA_MESSAGE", message);
+                        extras.putString("FRONT_PIC", frontPic);
+                        intent.putExtras(extras);
+                        startActivity(intent);
+                    }
+                });
+
+                PermissionUtils.requestReadWriteAppPermissions(this);
+            }
+
     }
 
     @OnClick(R.id.fab_picture)

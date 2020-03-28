@@ -65,6 +65,7 @@
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
         <activity android:name="com.google.firebase.example.flipphone.SellActivity" />
         <activity android:name="com.google.firebase.example.flipphone.ImagesActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.temp_activity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -78,7 +79,13 @@
                 android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"

@@ -92,6 +92,20 @@
             android:textStyle="bold"
             tools:text="$$$" />
 
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="51dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00FFFFFF"
+            android:visibility="gone"
+            app:srcCompat="@drawable/delete_forever" />
+
     </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
