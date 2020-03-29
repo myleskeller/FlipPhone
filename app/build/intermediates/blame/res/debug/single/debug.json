@@ -180,6 +180,10 @@
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_listing_details_activity2.xml.flat",
+        "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\layout\\listing_details_activity2.xml"
+    },
+    {
         "merged": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_pizza_monster.png.flat",
         "source": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\src\\main\\res\\drawable-xhdpi\\pizza_monster.png"
     },

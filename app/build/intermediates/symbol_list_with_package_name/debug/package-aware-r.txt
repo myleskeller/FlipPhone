@@ -1740,6 +1740,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id brand_textView
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
@@ -1917,6 +1918,7 @@ id message
 id microsoft_signin_button
 id middle
 id mini
+id model_textView
 id mono
 id month_grid
 id month_navigation_bar
@@ -2086,6 +2088,7 @@ id test_checkbox_app_button_tint
 id text
 id text2
 id textEnd
+id textInputLayout
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -2279,6 +2282,7 @@ layout item_phone
 layout item_rating
 layout item_zoomed_phone
 layout listing_details_activity
+layout listing_details_activity2
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
