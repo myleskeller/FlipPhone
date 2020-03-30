@@ -17,6 +17,8 @@ import androidx.core.content.ContextCompat;
 
 import com.flipphone.camera.CameraActivity;
 import com.flipphone.camera.PicturePreviewActivity;
+import com.google.firebase.example.flipphone.R;
+import com.google.firebase.example.flipphone.SellActivity;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -69,10 +71,8 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
                                         new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{CAMERA},
-                                                            REQUEST_CAMERA);
-                                                }
+                                                requestPermissions(new String[]{CAMERA},
+                                                        REQUEST_CAMERA);
                                             }
                                         });
                                 return;
@@ -157,4 +157,12 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         intent.putExtras(extras);
         startActivity(intent);
     }
+
+//    @Override
+//    public void onBackPressed(){
+//        setContentView(R.layout.activity_main);
+//        this.finish();
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        startActivity(intent);
+//    }
 }

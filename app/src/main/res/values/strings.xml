@@ -104,4 +104,6 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="zoomed_picture_of_phone">zoomed picture of phone</string>
+    <string name="FCM_topic">flipphone</string>
+    <string name="sender_id">784574291741</string>
 </resources>
