@@ -19,8 +19,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
 public class CameraActivity extends AppCompatActivity {
 
     @BindView(R.id.camera)
@@ -54,6 +52,8 @@ public class CameraActivity extends AppCompatActivity {
             @Override
             public void onPictureTaken(@NonNull PictureResult result) {
                 PicturePreviewActivity.setPictureResult(result);
+                PicturePreviewActivity.setStream(result);
+
                 Intent intent = new Intent(CameraActivity.this, PicturePreviewActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_MESSAGE", message);

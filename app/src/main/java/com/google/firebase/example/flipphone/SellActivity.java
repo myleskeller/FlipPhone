@@ -4,10 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +11,6 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SellActivity extends AppCompatActivity {
 
@@ -30,7 +23,7 @@ public class SellActivity extends AppCompatActivity {
     }
 
     public void onOldPhoneClicked() {
-        MyFirebaseMessagingService.subscribeToFCMTopic(getString(R.string.FCM_topic));
+        //TODO: setup RTDB node for handshaking through sell process
         MainActivity.which_phone = "old";
         Log.d("UI", "old button pressed");
 
@@ -39,7 +32,7 @@ public class SellActivity extends AppCompatActivity {
     }
 
     public void onNewPhoneClicked() {
-        MyFirebaseMessagingService.subscribeToFCMTopic(getString(R.string.FCM_topic));
+         //TODO: send message to RTDB to let old phone know access was gained by new phone
         MainActivity.which_phone = "new";
         Log.d("UI", "new button pressed");
 

@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -59,9 +60,14 @@ public class PicturePreviewActivity extends Activity {
     FloatingActionButton saveFAB;
     String message = "";
     String TAG = "MESSAGE";
+    static byte[] byteImage;
 
 
     private static WeakReference<PictureResult> image;
+
+    public static void setStream(PictureResult im){
+        byteImage = im.getData();
+    }
 
     public static void setPictureResult(@Nullable PictureResult im) {
         image = im != null ? new WeakReference<>(im) : null;
@@ -93,6 +99,8 @@ public class PicturePreviewActivity extends Activity {
         //TODO: get native portrait camera resolution and apply over the constants below
         result.toBitmap(1000, 1000, imageView::setImageBitmap);
 
+        byteImage = result.getData();
+
         if (result.isSnapshot()) {
             // Log the real size for debugging reason.
             BitmapFactory.Options options = new BitmapFactory.Options();
@@ -116,47 +124,47 @@ public class PicturePreviewActivity extends Activity {
 
     @OnClick(R.id.fab_save_picture)
     void savePicture() {
-        //TODO: figure out how/where to pass this bitmap to get it to firebase
 
         if (image == null) {
             return;
         }
 
-        PermissionUtils.requestReadWriteAppPermissions(this);
+//        PermissionUtils.requestReadWriteAppPermissions(this);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HH_mm_ss", Locale.US);
         String currentTimeStamp = dateFormat.format(new Date());
 
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "CameraViewFreeDrawing";
-        File outputDir= new File(path);
-        outputDir.mkdirs();
+//        File outputDir= new File(path);
+//        outputDir.mkdirs();
         File saveTo = new File(path + File.separator + currentTimeStamp + ".jpg");
 
-        Toast.makeText(PicturePreviewActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
-        image.get().toFile(saveTo, file -> {
-            if (file != null) {
+//        Toast.makeText(PicturePreviewActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
+//        image.get().toFile(saveTo, file -> {
+//            if (file != null) {
                 //Toast.makeText(PicturePreviewActivity.this, "Picture saved to " + file.getPath(), Toast.LENGTH_LONG).show();
 
                 // should not need to save the picture again
-                saveFAB.setVisibility(View.GONE);
+//                saveFAB.setVisibility(View.GONE);
 
                 // refresh gallery
-                MediaScannerConnection.scanFile(this,
-                        new String[] { file.toString() }, null,
-                        (filePath, uri) -> {
-                            Log.i("ExternalStorage", "Scanned " + filePath + ":");
-                            Log.i("ExternalStorage", "-> uri=" + uri);
-                        });
-            }
-        });
+//                MediaScannerConnection.scanFile(this,
+//                        new String[] { file.toString() }, null,
+//                        (filePath, uri) -> {
+//                            Log.i("ExternalStorage", "Scanned " + filePath + ":");
+//                            Log.i("ExternalStorage", "-> uri=" + uri);
+//                        });
+//            }
+//        });
         Uri uri = Uri.fromFile(saveTo);
         final String cloudFilePath = uri.getLastPathSegment();
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-        //DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("users");
         StorageReference storageReference = firebaseStorage.getReference("users");
         StorageReference uploadRef = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getEmail()).child(cloudFilePath);
-        //StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("imageurl", "null").build();
-        UploadTask uploadTask = uploadRef.putFile(uri);
+
+//        UploadTask uploadTask = uploadRef.putFile(uri);
+        UploadTask uploadTask = uploadRef.putBytes(byteImage);
+
         Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
             @Override
             public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -189,36 +197,6 @@ public class PicturePreviewActivity extends Activity {
                     if (message.equals("back")) {
                         PriceAndDetails();
                     }
-                    /*
-                    FirebaseStorage storage = FirebaseStorage.getInstance();
-                    StorageReference storageRef = storage.getReference();
-
-                    // Get reference to the file
-                    StorageReference imgRef = storageRef.child(FirebaseAuth.getInstance().getCurrentUser().getEmail()).child(cloudFilePath);
-                    StorageMetadata newmetadata = new StorageMetadata.Builder()
-                            .setCustomMetadata("imageurl", url)
-                            .build();
-                    uploadRef.updateMetadata(newmetadata).addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                        @Override
-                        public void onSuccess(StorageMetadata storageMetadata) {
-                            Toast.makeText(PicturePreviewActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
-                            if (message.equals("front")) {
-
-                                TakeBackPhoto();
-                            }
-
-                            //janky navigation implementation
-                            if (message.equals("back")) {
-                                PriceAndDetails();
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.e("Exception", e.toString());
-                        }
-                    });
-*/
                 }
             }
         });

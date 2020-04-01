@@ -121,27 +121,25 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
 
     @Override
     public void handleResult(Result rawResult) {
-        //TODO: y'know, anything that it's actually supposed to do...
-
-        //maybe: validate url as firedb link
-
         final String result = rawResult.getText();
         Log.e("QRCodeScanner", rawResult.getText());
         Log.e("QRCodeScanner", rawResult.getBarcodeFormat().toString());
 
+        //TODO: validate code as RTDB node
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Rescan QR Code?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+        builder.setTitle("QR Code Captured");
+        builder.setPositiveButton("RETAKE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mScannerView.resumeCameraPreview(QrCodeScannerActivity.this);
             }
         });
-        builder.setNeutralButton("NO", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("CONTINUE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//              Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(result));
-//              startActivity(browserIntent);
+                //TODO: send acknwledgement of access to RTDB via qrcode link
+//                rtdb.sendData(result, "accessed", "true");
                 TakeFrontPhoto();
             }
         });
