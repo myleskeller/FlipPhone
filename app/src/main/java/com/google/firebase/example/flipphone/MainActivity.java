@@ -236,6 +236,10 @@ public class MainActivity extends AppCompatActivity implements
                 AuthUI.getInstance().signOut(this);
                 startSignIn();
                 break;
+            case R.id.toFlip:
+                Intent chatIntent = new Intent(getApplicationContext(), SellFlip.class);
+                startActivity(chatIntent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -260,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements
                 break;
             case R.id.button_clear_filter:
                 onClearFilterClicked();
+                break;
         }
     }
 

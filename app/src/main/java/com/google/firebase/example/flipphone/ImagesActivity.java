@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import static com.google.firebase.example.flipphone.PhoneDetailActivity.KEY_PHONE_ID;
+//import static com.google.firebase.example.flipphone.PhoneDetailActivity.KEY_PHONE_ID;
 
 
 public class ImagesActivity extends AppCompatActivity{
@@ -19,12 +19,12 @@ public class ImagesActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.item_zoomed_phone);
+        //setContentView(R.layout.item_zoomed_phone);
 
-        String phoneId = getIntent().getExtras().getString(KEY_PHONE_ID);
+        //String phoneId = getIntent().getExtras().getString(KEY_PHONE_ID);
 
-        ImageView view = findViewById(R.id.zoomed_image);
-        Glide.with(this).load("https://www.smartphones2020.com/wp-content/uploads/2018/09/1.-Samsung-Galaxy-S10-Plus-%E2%80%93-The-Best-Smartphone-Overall-in-2019.jpg").into(view);
+        //ImageView view = findViewById(R.id.zoomed_image);
+       // Glide.with(this).load("https://www.smartphones2020.com/wp-content/uploads/2018/09/1.-Samsung-Galaxy-S10-Plus-%E2%80%93-The-Best-Smartphone-Overall-in-2019.jpg").into(view);
 
     }
 

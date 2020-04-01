@@ -1821,6 +1821,9 @@ id pin
 id progress_circular
 id progress_horizontal
 id progress_loading
+id proximityMax
+id proximityReading
+id proximitySensor
 id radio
 id rating_item_date
 id rating_item_divider
@@ -1906,7 +1909,6 @@ id textEnd
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView
 id textView2
 id text_current_search
 id text_current_search_container
@@ -1921,6 +1923,7 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id toFlip
 id toolbar
 id top
 id topPanel
