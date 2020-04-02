@@ -97,12 +97,13 @@ public class PhoneAdapter extends FirestoreAdapter<PhoneAdapter.ViewHolder> {
                     .into(imageView);
 
             nameView.setText(phone.getName());
+            priceView.setText("$"+phone.getPrice());
             //ratingBar.setRating((float) phone.getAvgRating());
-            //cityView.setText(phone.getCity());
+            //cityView.setText(phone.getCondition());
             //categoryView.setText(phone.getCategory());
             //numRatingsView.setText(resources.getString(R.string.fmt_num_ratings,
                     //phone.getNumRatings()));
-            priceView.setText(PhoneUtil.getPriceString(phone));
+
 
             // Click listener
             itemView.setOnClickListener(new View.OnClickListener() {

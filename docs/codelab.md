@@ -310,7 +310,7 @@ Let's edit the `onFilter()` method of `MainActivity.java`. This method accepts a
 
         // City (equality filter)
         if (filters.hasCity()) {
-            query = query.whereEqualTo("city", filters.getCity());
+            query = query.whereEqualTo("city", filters.getCondition());
         }
 
         // Price (equality filter)

@@ -23,12 +23,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -37,10 +37,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.adapter.RatingAdapter;
 import com.google.firebase.example.flipphone.model.Phone;
 import com.google.firebase.example.flipphone.model.Rating;
-import com.google.firebase.example.flipphone.util.PhoneUtil;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -58,18 +58,18 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
     private static final String TAG = "PhoneDetail";
 
-    public static final String KEY_RESTAURANT_ID = "key_phone_id";
-
+    public static final String KEY_PHONE_ID = "key_phone_id";
+    String phoneId;
     private ImageView mImageView;
     private TextView mNameView;
     private MaterialRatingBar mRatingIndicator;
     private TextView mNumRatingsView;
-    private TextView mCityView;
+    private TextView mConditionView;
     private TextView mCategoryView;
     private TextView mPriceView;
     private ViewGroup mEmptyView;
     private RecyclerView mRatingsRecycler;
-
+    private ImageButton deleteButton;
     private RatingDialogFragment mRatingDialog;
 
     private FirebaseFirestore mFirestore;
@@ -82,36 +82,61 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_detail);
-        
+
         mImageView = findViewById(R.id.phone_image);
         mNameView = findViewById(R.id.phone_name);
-        mRatingIndicator = findViewById(R.id.phone_rating);
-        mNumRatingsView = findViewById(R.id.phone_num_ratings);
-        mCityView = findViewById(R.id.phone_city);
+        //mRatingIndicator = findViewById(R.id.phone_rating);
+        //mNumRatingsView = findViewById(R.id.phone_num_ratings);
+        mConditionView = findViewById(R.id.phone_condition);
         mCategoryView = findViewById(R.id.phone_category);
         mPriceView = findViewById(R.id.phone_price);
         mEmptyView = findViewById(R.id.view_empty_ratings);
-        mRatingsRecycler = findViewById(R.id.recycler_ratings);
+        //mRatingsRecycler = findViewById(R.id.recycler_ratings);
+        deleteButton = findViewById(R.id.delete_button);
 
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
-
+        findViewById(R.id.phone_image).setOnClickListener(this);
         // Get phone ID from extras
-        String phoneId = getIntent().getExtras().getString(KEY_RESTAURANT_ID);
+        phoneId = getIntent().getExtras().getString(KEY_PHONE_ID);
         if (phoneId == null) {
-            throw new IllegalArgumentException("Must pass extra " + KEY_RESTAURANT_ID);
+            throw new IllegalArgumentException("Must pass extra " + KEY_PHONE_ID);
         }
+        String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        FirebaseFirestore mRef = FirebaseFirestore.getInstance();
+        mRef.collection("users").document(phoneId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Phone phone = documentSnapshot.toObject(Phone.class);
 
+                if(phone.getUserid().equals(user)) {
+                    deleteButton.setVisibility(View.VISIBLE);
+                    deleteButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //mRef.collection("users").document(phoneId).delete();
+                            Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
+                            Bundle extras = new Bundle();
+                            extras.putString("DELETE", phoneId);
+                            intent.putExtras(extras);
+                            startActivity(intent);
+
+
+                        }
+                    });
+                }
+            }
+        });
         // Initialize Firestore
         mFirestore = FirebaseFirestore.getInstance();
 
         // Get reference to the phone
-        mPhoneRef = mFirestore.collection("phones").document(phoneId);
+        mPhoneRef = mFirestore.collection("users").document(phoneId);
 
         // Get ratings
         Query ratingsQuery = mPhoneRef
-                .collection("ratings")
-                .orderBy("timestamp", Query.Direction.DESCENDING)
+                .collection("users")
+                .orderBy("price", Query.Direction.DESCENDING)
                 .limit(50);
 
         // RecyclerView
@@ -119,17 +144,17 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             @Override
             protected void onDataChanged() {
                 if (getItemCount() == 0) {
-                    mRatingsRecycler.setVisibility(View.GONE);
+                    //mRatingsRecycler.setVisibility(View.GONE);
                     mEmptyView.setVisibility(View.VISIBLE);
                 } else {
-                    mRatingsRecycler.setVisibility(View.VISIBLE);
-                    mEmptyView.setVisibility(View.GONE);
+                    //mRatingsRecycler.setVisibility(View.VISIBLE);
+                    // mEmptyView.setVisibility(View.GONE);
                 }
             }
         };
 
-        mRatingsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        mRatingsRecycler.setAdapter(mRatingAdapter);
+        //mRatingsRecycler.setLayoutManager(new LinearLayoutManager(this));
+       // mRatingsRecycler.setAdapter(mRatingAdapter);
 
         mRatingDialog = new RatingDialogFragment();
     }
@@ -163,6 +188,10 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             case R.id.fab_show_rating_dialog:
                 onAddRatingClicked(v);
                 break;
+            case R.id.phone_image:
+                Intent intent = new Intent(this, ImagesActivity.class);
+                intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, phoneId);
+                startActivity(intent);
         }
     }
 
@@ -185,17 +214,26 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     private void onPhoneLoaded(Phone phone) {
-        mNameView.setText(phone.getName());
-        mRatingIndicator.setRating((float) phone.getAvgRating());
-        mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
-        mCityView.setText(phone.getCity());
-        mCategoryView.setText(phone.getCategory());
-        mPriceView.setText(PhoneUtil.getPriceString(phone));
-
-        // Background image
-        Glide.with(mImageView.getContext())
-                .load(phone.getPhoto())
-                .into(mImageView);
+        try {
+            mNameView.setText(phone.getName());
+            //mRatingIndicator.setRating((float) phone.getAvgRating());
+            //mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
+            mConditionView.setText(phone.getCity());
+            mCategoryView.setText(phone.getCategory());
+            mPriceView.setText("$" + phone.getPrice());//PhoneUtil.getPriceString(phone));
+            if(phone.getName() == null)
+            {
+                return;
+            }
+            mNameView.setText(phone.getName());
+            // Background image
+            Glide.with(mImageView.getContext())
+                    .load(phone.getPhoto())
+                    .into(mImageView);
+        }
+        catch (Exception e){
+            Log.e("ERROR", e.toString() );
+        }
     }
 
     public void onBackArrowClicked(View view) {

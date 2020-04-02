@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Tyler\\Documents\\GitHub\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
+            "outputFile": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Tyler\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

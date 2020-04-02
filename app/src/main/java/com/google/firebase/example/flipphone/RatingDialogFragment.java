@@ -16,6 +16,7 @@
  package com.google.firebase.example.flipphone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +56,7 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_rating, container, false);
-        mRatingBar = v.findViewById(R.id.phone_form_rating);
+        //mRatingBar = v.findViewById(R.id.phone_form_rating);
         mRatingText = v.findViewById(R.id.phone_form_text);
 
         v.findViewById(R.id.phone_form_button).setOnClickListener(this);
@@ -86,15 +87,20 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.phone_form_button:
+
                 onSubmitClicked(v);
+
                 break;
             case R.id.phone_form_cancel:
                 onCancelClicked(v);
+                Intent i = new Intent(this.getContext(), Chat.class);
+
                 break;
         }
     }
 
     public void onSubmitClicked(View view) {
+
         Rating rating = new Rating(
                 FirebaseAuth.getInstance().getCurrentUser(),
                 mRatingBar.getRating(),

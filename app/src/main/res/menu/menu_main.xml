@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/menu_sign_out"
@@ -13,4 +12,18 @@
         android:id="@+id/toFlip"
         android:title="Go to Flip" />
 
+    <item
+        android:id="@+id/menu_qr_code"
+        android:title="@string/qr_code_scanner" />
+
+    <item
+        android:id="@+id/menu_qr_make"
+        android:title="@string/qr_code_generator" />
+
+    <item
+        android:id="@+id/menu_photo_front"
+        android:title="@string/photo_front" />
+    <item
+        android:id="@+id/menu_sell"
+        android:title="Sell"/>
 </menu>

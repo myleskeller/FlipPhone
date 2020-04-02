@@ -1,24 +1,10 @@
-/**
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
- package com.google.firebase.example.flipphone;
+package com.google.firebase.example.flipphone;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -34,6 +21,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.flipphone.camera.CameraActivity;
+import com.flipphone.qrcode.QRCodeGeneratorActivity;
+import com.flipphone.qrcode.QrCodeScannerActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.adapter.PhoneAdapter;
@@ -45,6 +38,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -62,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements
 
     private static final int LIMIT = 50;
 
+    private static final String EXTRA_MESSAGE = "";
+
+    static String which_phone = "";
+
     private Toolbar mToolbar;
     private TextView mCurrentSearchView;
     private TextView mCurrentSortByView;
@@ -75,11 +73,16 @@ public class MainActivity extends AppCompatActivity implements
     private PhoneAdapter mAdapter;
 
     private MainActivityViewModel mViewModel;
-
+    @Override
+    public void onBackPressed() {
+       // super.onBackPressed();
+        return;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -108,8 +111,8 @@ public class MainActivity extends AppCompatActivity implements
 
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
-        mQuery = mFirestore.collection("phones")
-                .orderBy("avgRating", Query.Direction.DESCENDING)
+        mQuery = mFirestore.collection("users")
+                .orderBy("price", Query.Direction.DESCENDING)
                 .limit(LIMIT);
     }
 
@@ -172,28 +175,31 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void onAddItemsClicked() {
-        CollectionReference phones = mFirestore.collection("phones");
+        CollectionReference phones = mFirestore.collection("users");
 
+        Phone phone = PhoneUtil.userPhone(this);
+        phones.add(phone);
+        /*
         for (int i = 0; i < 10; i++){
             Phone phone = PhoneUtil.getRandom(this);
             phones.add(phone);
-        }
+        }*/
     }
 
     @Override
     public void onFilter(Filters filters) {
         // Construct query basic query
-        Query query = mFirestore.collection("phones");
+        Query query = mFirestore.collection("users");
 
         // Category (equality filter)
         if (filters.hasCategory()) {
-            query = query.whereEqualTo("category", filters.getCategory());
+            query = query.whereEqualTo("condition", filters.getCategory());
         }
 
         // City (equality filter)
-        if (filters.hasCity()) {
-            query = query.whereEqualTo("city", filters.getCity());
-        }
+        //if (filters.hasCity()) {
+            //query = query.whereEqualTo("city", filters.getCondition());
+        //}
 
         // Price (equality filter)
         if (filters.hasPrice()) {
@@ -226,11 +232,21 @@ public class MainActivity extends AppCompatActivity implements
         return super.onCreateOptionsMenu(menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add_items:
                 onAddItemsClicked();
+                break;
+            case R.id.menu_qr_code:
+                OpenQRScanner();
+                break;
+            case R.id.menu_qr_make:
+                OpenQRGenerator();
+                break;
+            case R.id.menu_photo_front:
+                TakeFrontPhoto();
                 break;
             case R.id.menu_sign_out:
                 AuthUI.getInstance().signOut(this);
@@ -239,6 +255,10 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.toFlip:
                 Intent chatIntent = new Intent(getApplicationContext(), SellFlip.class);
                 startActivity(chatIntent);
+                break;
+            case R.id.menu_sell:
+                Intent intent = new Intent(this, SellActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -283,7 +303,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onPhoneSelected(DocumentSnapshot phone) {
         // Go to the details page for the selected phone
         Intent intent = new Intent(this, PhoneDetailActivity.class);
-        intent.putExtra(PhoneDetailActivity.KEY_RESTAURANT_ID, phone.getId());
+        intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, phone.getId());
 
         startActivity(intent);
     }
@@ -308,4 +328,42 @@ public class MainActivity extends AppCompatActivity implements
     private void showTodoToast() {
         Toast.makeText(this, "TODO: Implement", Toast.LENGTH_SHORT).show();
     }
+    public void OpenQRScanner() {
+        Intent intent = new Intent(this, QrCodeScannerActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "unused");
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    public void OpenQRGenerator() {
+        Intent intent = new Intent(this, QRCodeGeneratorActivity.class);
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_MESSAGE", "unused");
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+    public void TakeFrontPhoto() {
+        Intent intent = new Intent(this, CameraActivity.class);
+        Bundle extras = new Bundle();
+        //TODO: this would probably be the ideal place to keep track of the container for the listing
+        extras.putString("EXTRA_MESSAGE", "front");
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
+
+//    public void TakeBackPhoto() {
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        String message = "back";
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+//    }
+
+//    public void PriceAndDetails() {
+//        Intent intent = new Intent(this, CameraActivity.class);
+//        String message = "maybe this will be useful later..";
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
+//    }
 }

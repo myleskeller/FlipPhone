@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.google.firebase.example.flipphone">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS"
+        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
@@ -9,9 +18,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SellSuccess"></activity>
-        <activity android:name=".SellFlip" />
-        <activity android:name=".Chat" />
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.flipphone.listing.ListingDetails"
+            android:label="@string/title_activity_listing_details" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +37,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SellSuccess" />
+        <activity android:name=".SellFlip" />
+        <activity android:name=".Chat" />
         <activity android:name=".PhoneDetailActivity" />
+        <activity android:name="com.flipphone.qrcode.QrCodeScannerActivity" />
+        <activity android:name="com.flipphone.camera.PicturePreviewActivity" />
+        <activity android:name="com.flipphone.camera.CameraActivity" />
+        <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
+        <activity android:name=".SellActivity" />
+        <activity android:name=".ImagesActivity" />
+        <activity android:name=".DeleteActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

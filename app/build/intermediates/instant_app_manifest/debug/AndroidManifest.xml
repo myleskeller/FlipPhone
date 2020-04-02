@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.firebase.example.fireeats"
+    package="com.google.firebase.example.flipphone"
     android:targetSandboxVersion="2"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -9,10 +9,29 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="29" />
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS"
+        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
     <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
@@ -27,9 +46,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.google.firebase.example.flipphone.SellSuccess" />
-        <activity android:name="com.google.firebase.example.flipphone.SellFlip" />
-        <activity android:name="com.google.firebase.example.flipphone.Chat" />
+        <activity
+            android:name="com.flipphone.listing.ListingDetails"
+            android:label="@string/title_activity_listing_details" />
         <activity android:name="com.google.firebase.example.flipphone.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +56,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.google.firebase.example.flipphone.SellSuccess" />
+        <activity android:name="com.google.firebase.example.flipphone.SellFlip" />
+        <activity android:name="com.google.firebase.example.flipphone.Chat" />
         <activity android:name="com.google.firebase.example.flipphone.PhoneDetailActivity" />
+        <activity android:name="com.flipphone.qrcode.QrCodeScannerActivity" />
+        <activity android:name="com.flipphone.camera.PicturePreviewActivity" />
+        <activity android:name="com.flipphone.camera.CameraActivity" />
+        <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.SellActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.ImagesActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.DeleteActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -51,7 +80,13 @@
                 android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
@@ -147,7 +182,7 @@
 
         <provider
             android:name="com.firebase.ui.auth.data.client.AuthUiInitProvider"
-            android:authorities="com.google.firebase.example.fireeats.authuiinitprovider"
+            android:authorities="com.google.firebase.example.flipphone.authuiinitprovider"
             android:exported="false"
             android:initOrder="90" />
 
@@ -183,7 +218,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.google.firebase.example.fireeats.firebaseinitprovider"
+            android:authorities="com.google.firebase.example.flipphone.firebaseinitprovider"
             android:exported="false"
             android:initOrder="100" />
 
@@ -219,7 +254,7 @@
 
         <provider
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-            android:authorities="com.google.firebase.example.fireeats.lifecycle-process"
+            android:authorities="com.google.firebase.example.flipphone.lifecycle-process"
             android:exported="false"
             android:multiprocess="true" />
     </application>

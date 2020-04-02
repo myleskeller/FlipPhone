@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:theme="@style/AppTheme"
-        app:logo="@drawable/ic_smartphone_white_18dp"
+        app:logo="@drawable/ic_flip_phone_24px"
 
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
         app:title="@string/app_name"
@@ -128,8 +128,8 @@
         tools:visibility="gone">
 
         <ImageView
-            style="@style/AppTheme.PizzaGuy"
-            android:src="@drawable/pizza_monster" />
+            style="@style/AppTheme.PhoneImg"
+            android:src="@drawable/broken_phone" />
 
         <TextView
             style="@style/AppTheme.Body1"

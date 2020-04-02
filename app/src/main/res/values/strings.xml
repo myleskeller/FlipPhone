@@ -34,10 +34,23 @@
     <string name="apply">Apply</string>
     <string name="cancel">Cancel</string>
     <string name="message_no_results">Oops, couldn\'t find any results\nthat matched your filter</string>
-    <string name="message_no_reviews">Be the first to leave a review!</string>
-    <string name="hint_review">How was your experience?</string>
+    <string name="message_no_reviews">No phone specifications!</string>
+    <string name="temp_chat">Should Be Working Soon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</string>
+    <string name="hint_review">Enter message for the user</string>
     <string name="submit">Submit</string>
-    <string name="filter_add_review">Add review</string>
+    <string name="filter_add_review">Message User</string>
+    <string name="qr_code_scanner">QR Code Scanner</string>
+    <string name="photo_front">Capture Front Photo</string>
+    <string name="phone_guide_camera_overlay">phone guide camera overlay</string>
+    <string name="front_photo_tip_message">Lay the phone on a flat, well-illuminated surface and align the edges of the device with the edges of the silhouette overlay.</string>
+    <string name="front_photo_tip_title">Before you begin…</string>
+    <string name="preview_of_image_taken">preview of image taken</string>
+    <string name="qr_code_generator">Generate QR Code</string>
+    <string name="user_avatar">user avatar</string>
+    <string name="qr_code">qr code</string>
+    <string name="default_user_email">[Unverified Account]</string>
+    <string name="back_photo_tip_message">Flip the phone over and align the edges of the device with the edges of the silhouette overlay.</string>
+    <string name="back_photo_tip_title">Now the back…</string>
 
     <string name="temp_chat">Should Be Working Soon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</string>
 
@@ -76,4 +89,23 @@
         <item>@string/sort_by_popularity</item>
         <item>@string/sort_by_price</item>
     </string-array>
+    <string name="title_activity_listing_details">Price and Details</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="zoomed_picture_of_phone">zoomed picture of phone</string>
+    <string name="FCM_topic">flipphone</string>
+    <string name="sender_id">784574291741</string>
 </resources>

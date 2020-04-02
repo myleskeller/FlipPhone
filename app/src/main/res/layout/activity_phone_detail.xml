@@ -41,35 +41,12 @@
             style="@style/AppTheme.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/phone_rating"
+            android:layout_above="@+id/phone_category"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:textColor="@android:color/white"
             android:textStyle="bold"
             tools:text="Some Phone" />
-
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
-            android:id="@+id/phone_rating"
-            style="@style/Widget.MaterialRatingBar.RatingBar.Indicator"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_above="@+id/phone_category"
-            android:layout_alignLeft="@+id/phone_name"
-            app:mrb_progressTint="@android:color/white"
-            app:mrb_secondaryProgressTint="@android:color/white" />
-
-        <TextView
-            android:id="@+id/phone_num_ratings"
-            style="@style/AppTheme.Body1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/phone_rating"
-            android:layout_alignTop="@+id/phone_rating"
-            android:layout_marginLeft="4dp"
-            android:layout_toRightOf="@+id/phone_rating"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            tools:text="(10)" />
 
         <TextView
             android:id="@+id/phone_category"
@@ -81,7 +58,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:textColor="@android:color/white"
-            tools:text="2020" />
+            tools:text="Condition" />
 
         <TextView
             android:id="@+id/phone_city_divider"
@@ -92,7 +69,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/phone_city"
+            android:id="@+id/phone_condition"
             style="@style/AppTheme.Subheader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +77,7 @@
             android:layout_below="@+id/phone_category"
             android:layout_toRightOf="@+id/phone_city_divider"
             android:textColor="@android:color/white"
-            tools:text="San Francisco" />
+            tools:text="Used" />
 
         <TextView
             android:id="@+id/phone_price"
@@ -114,6 +91,20 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             tools:text="$$$" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="51dp"
+            android:layout_height="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00FFFFFF"
+            android:visibility="gone"
+            app:srcCompat="@drawable/delete_forever" />
 
     </RelativeLayout>
 
@@ -154,8 +145,8 @@
         tools:visibility="visible">
 
         <ImageView
-            android:src="@drawable/pizza_monster"
-            style="@style/AppTheme.PizzaGuy" />
+            android:src="@drawable/broken_phone"
+            style="@style/AppTheme.PhoneImg" />
 
         <TextView
             style="@style/AppTheme.Body1"
@@ -163,6 +154,7 @@
             android:layout_height="wrap_content"
             android:text="@string/message_no_reviews"
             android:textColor="@color/greyDisabled" />
+
 
     </LinearLayout>
 
