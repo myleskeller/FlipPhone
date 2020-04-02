@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,21 +11,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.flipphone.camera.CameraActivity;
 import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.flipphone.adapter.PhoneAdapter;
@@ -48,28 +42,21 @@ public class MainActivity extends AppCompatActivity implements
         PhoneAdapter.OnPhoneSelectedListener {
 
     private static final String TAG = "MainActivity";
-
     private static final int RC_SIGN_IN = 9001;
-
     private static final int LIMIT = 50;
-
     private static final String EXTRA_MESSAGE = "";
-
-    static String which_phone = "";
-
+    public static String which_phone = "";
     private Toolbar mToolbar;
     private TextView mCurrentSearchView;
     private TextView mCurrentSortByView;
     private RecyclerView mPhonesRecycler;
     private ViewGroup mEmptyView;
-
     private FirebaseFirestore mFirestore;
     private Query mQuery;
-
     private FilterDialogFragment mFilterDialog;
     private PhoneAdapter mAdapter;
-
     private MainActivityViewModel mViewModel;
+
     @Override
     public void onBackPressed() {
        // super.onBackPressed();

@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.example.flipphone.FirebaseRTDB;
+import com.google.firebase.example.flipphone.MainActivity;
 import com.google.firebase.example.flipphone.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -22,6 +24,7 @@ import com.google.zxing.common.BitMatrix;
 import java.util.Date;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Random;
 
 public class QRCodeGeneratorActivity extends AppCompatActivity {
 
@@ -29,6 +32,7 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
     TextView textView2;
     ImageView qrCode;
     ImageView userPhoto;
+    FirebaseRTDB rtdb = new FirebaseRTDB();
 
     protected void onCreate(Bundle savedInstanceState) {
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
@@ -61,8 +65,8 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
         }
 
         //make qrcode
-        //TODO: figure out how to pass url to this variable
-        String url = "dookie";
+//        String url = "dookie";
+        String url = getRandomString(24);
 
         Log.v("QR_GENERATE", "i received: " + url); //returned null???
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
@@ -78,5 +82,19 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
+        // should make a (probably) empty node in the database with the key of the random string
+        rtdb.makeNode(url);
+        rtdb.listenForData("idk");
+    }
+
+    private static  String getRandomString(int length) {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder randomStringBuilder = new StringBuilder();
+        Random generator = new Random();
+        while (randomStringBuilder.length() < length) { // length of the random string.
+            int index = (int) (generator.nextFloat() * chars.length());
+            randomStringBuilder.append(chars.charAt(index));
+        }
+        return randomStringBuilder.toString();
     }
 }
