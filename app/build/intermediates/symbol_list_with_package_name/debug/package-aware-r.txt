@@ -1996,6 +1996,9 @@ id price_value
 id progress_circular
 id progress_horizontal
 id progress_loading
+id proximityMax
+id proximityReading
+id proximitySensor
 id radio
 id rating_item_date
 id rating_item_divider
@@ -2091,7 +2094,6 @@ id textInputLayout
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView
 id textView2
 id textView3
 id textView4
@@ -2111,6 +2113,7 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id toFlip
 id toolbar
 id top
 id topPanel

@@ -17,6 +17,7 @@
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -240,8 +241,10 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     public void onAddRatingClicked(View view) {
-        Intent chatIntent = new Intent(getApplicationContext(), Chat.class);
-        startActivity(chatIntent);
+        Uri sms_uri = Uri.parse("smsto:12125551212");
+        Intent intent = new Intent(Intent.ACTION_SENDTO,sms_uri);
+        intent.putExtra("sms_body", "I'm interested in your listing.");
+        startActivity(intent);
     }
 
     @Override

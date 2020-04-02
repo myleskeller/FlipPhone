@@ -239,6 +239,11 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.menu_sell:
                 Intent intent = new Intent(this, SellActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.toFlip:
+                Intent chatIntent = new Intent(getApplicationContext(), SellFlip.class);
+                startActivity(chatIntent);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
