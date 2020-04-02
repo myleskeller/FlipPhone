@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\333974168aae7838e0c089c3b466affc\\material-1.1.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,24,30",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -1607,6 +1607,7 @@ drawable ic_arrow_back_white_24px
 drawable ic_arrow_down_24dp
 drawable ic_calendar_black_24dp
 drawable ic_camera_alt_white_24dp
+drawable ic_cellphone_basic
 drawable ic_check_white_24dp
 drawable ic_clear_black_24dp
 drawable ic_close_white_24px
@@ -1626,6 +1627,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_overlay
+drawable ic_phone_android_black_24dp
 drawable ic_place_white_24px
 drawable ic_sort_white_24px
 drawable mrb_star_border_icon_black_36dp
@@ -1756,9 +1758,7 @@ id button_continue
 id button_create
 id button_done
 id button_filter
-id button_new
 id button_next
-id button_old
 id button_resend_email
 id button_search
 id button_sign_in
@@ -2037,7 +2037,6 @@ id select_dialog_listview
 id selected
 id send_code
 id send_sms_tos
-id settings
 id shortcut
 id showCustom
 id showHome
@@ -2364,6 +2363,7 @@ mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals fui_error_weak_password
 plurals mtrl_badge_content_description
+string FCM_topic
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2623,7 +2623,6 @@ string preference_copied
 string preview_of_image_taken
 string price_1
 string price_2
-string price_3
 string project_id
 string qr_code
 string qr_code_generator
@@ -2631,6 +2630,7 @@ string qr_code_scanner
 string reply_title
 string search
 string search_menu_title
+string sender_id
 string sign_out
 string signature_title
 string sort_by_popularity
@@ -2652,6 +2652,7 @@ string v7_preference_on
 string value_any_category
 string value_any_condition
 string value_any_price
+string zoomed_picture_of_phone
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

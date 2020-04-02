@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",

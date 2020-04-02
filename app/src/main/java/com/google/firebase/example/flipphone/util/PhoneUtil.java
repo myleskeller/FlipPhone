@@ -360,9 +360,9 @@ public class PhoneUtil {
     public static String getPriceString(int priceInt) {
         switch (priceInt) {
             case 1:
-                return "$";
+                return "Highest Price";
             case 2:
-                return "$$";
+                return "Lowest Price";
             case 3:
             default:
                 return "$$$";

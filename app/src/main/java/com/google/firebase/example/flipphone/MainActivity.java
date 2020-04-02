@@ -177,17 +177,17 @@ public class MainActivity extends AppCompatActivity implements
 
         // Category (equality filter)
         if (filters.hasCategory()) {
-            query = query.whereEqualTo("condition", filters.getCategory());
+            query = query.whereEqualTo("condition", filters.getCondition());
         }
 
         // City (equality filter)
-        //if (filters.hasCity()) {
-            //query = query.whereEqualTo("city", filters.getCondition());
-        //}
+        if (filters.hasCity()) {
+            query = query.whereEqualTo("city", filters.getCondition());
+        }
 
         // Price (equality filter)
         if (filters.hasPrice()) {
-            query = query.whereEqualTo("price", filters.getPrice());
+            query = query.orderBy("price", filters.getSortDirection());
         }
 
         // Sort by (orderBy with direction)

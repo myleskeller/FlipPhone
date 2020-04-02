@@ -1,10 +1,10 @@
-#Sun Mar 29 16:21:52 EDT 2020
+#Thu Apr 02 10:33:50 EDT 2020
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.2=C\:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
-base.1=C\:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
-base.0=C\:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+base.2=C\:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
+base.1=C\:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.0=C\:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex

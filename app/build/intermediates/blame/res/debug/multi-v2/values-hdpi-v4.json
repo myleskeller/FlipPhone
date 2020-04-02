@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\robsi\\Desktop\\New Flip Phone\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "outputFile": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\470ffb1f439404fa2b62076a0c8bbc35\\jetified-core-1.9\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\89b7baefe5611be307b8c895bb4a2b45\\jetified-core-1.9\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\robsi\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Rob\\.gradle\\caches\\transforms-2\\files-2.1\\9234d3829231e0e2f3d46d58b07b6bae\\appcompat-1.1.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
