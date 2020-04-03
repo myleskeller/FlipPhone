@@ -38,7 +38,7 @@ public class Phone {
     }
 
     private String userid;
-    private String description;
+    private String description= "None";
     private String specifications;
     private String name;
 

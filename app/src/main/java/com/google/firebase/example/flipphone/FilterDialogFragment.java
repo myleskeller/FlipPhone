@@ -15,19 +15,43 @@
  */
  package com.google.firebase.example.flipphone;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.example.flipphone.model.Phone;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.rpc.Help;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 /**
  * Dialog Fragment containing filter form.
@@ -51,6 +75,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
 
     private FilterListener mFilterListener;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -62,7 +87,28 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         mCitySpinner = mRootView.findViewById(R.id.spinner_city);
         //mSortSpinner = mRootView.findViewById(R.id.spinner_sort);
         mPriceSpinner = mRootView.findViewById(R.id.spinner_price);
+        List<String> phones = new ArrayList<>();
 
+        phones.add("All Phones");
+        FirebaseFirestore mRef = FirebaseFirestore.getInstance();
+        CollectionReference phoneRef = mRef.collection("users");
+
+
+        phoneRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()) {
+                        String phoneName = document.getString("name");
+                        phones.add(phoneName);
+                    }
+                    ArrayList<String> phones2 = new ArrayList<>(new LinkedHashSet<>(phones));
+                    @SuppressLint("RestrictedApi") ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, phones2);
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    mCategorySpinner.setAdapter(adapter);
+                }
+            }
+        });
         mRootView.findViewById(R.id.button_search).setOnClickListener(this);
         mRootView.findViewById(R.id.button_cancel).setOnClickListener(this);
 
@@ -156,7 +202,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         String selected = (String) mPriceSpinner.getSelectedItem();
         if (getString(R.string.price_1).equals(selected)) {
             return Query.Direction.DESCENDING;
-        } if (getString(R.string.price_2).equals(selected)) {
+        }else if (getString(R.string.price_2).equals(selected)) {
             return Query.Direction.ASCENDING;
         }
 

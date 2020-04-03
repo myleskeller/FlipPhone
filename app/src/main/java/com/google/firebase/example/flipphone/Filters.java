@@ -52,7 +52,7 @@ public class Filters {
     }
 
     public boolean hasPrice() {
-        return (price > 0);
+        return (price >= 0);
     }
 
     public boolean hasSortBy() {

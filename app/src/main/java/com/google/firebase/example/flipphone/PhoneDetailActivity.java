@@ -70,6 +70,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private ViewGroup mEmptyView;
     private RecyclerView mRatingsRecycler;
     private ImageButton deleteButton;
+    private TextView listingDescription;
     private RatingDialogFragment mRatingDialog;
 
     private FirebaseFirestore mFirestore;
@@ -93,6 +94,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         mEmptyView = findViewById(R.id.view_empty_ratings);
         //mRatingsRecycler = findViewById(R.id.recycler_ratings);
         deleteButton = findViewById(R.id.delete_button);
+        listingDescription = findViewById(R.id.listing_description);
 
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
@@ -102,6 +104,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         if (phoneId == null) {
             throw new IllegalArgumentException("Must pass extra " + KEY_PHONE_ID);
         }
+
         String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         FirebaseFirestore mRef = FirebaseFirestore.getInstance();
         mRef.collection("users").document(phoneId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -221,6 +224,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             mConditionView.setText(phone.getCity());
             mCategoryView.setText(phone.getCategory());
             mPriceView.setText("$" + phone.getPrice());//PhoneUtil.getPriceString(phone));
+            listingDescription.setText(phone.getDescription());
             if(phone.getName() == null)
             {
                 return;

@@ -16,14 +16,14 @@
         <ImageView
             android:id="@+id/phone_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:alpha="1.0"
             android:scaleType="centerCrop"
             tools:src="@drawable/phone_1" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:background="@drawable/gradient_up" />
 
         <!-- Back button -->
@@ -134,19 +134,49 @@
     <!-- View for empty ratings -->
     <LinearLayout
         android:id="@+id/view_empty_ratings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="434dp"
         android:layout_below="@+id/phone_top_card"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="-3dp"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_margin="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description:"
+                    android:textSize="16sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/listing_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="None"></TextView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <ImageView
-            android:src="@drawable/broken_phone"
-            style="@style/AppTheme.PhoneImg" />
+            style="@style/AppTheme.PhoneImg"
+            android:src="@drawable/broken_phone" />
 
         <TextView
             style="@style/AppTheme.Body1"
