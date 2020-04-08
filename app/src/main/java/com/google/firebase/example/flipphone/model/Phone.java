@@ -23,7 +23,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Phone {
 
-    public static final String FIELD_CITY = "city";
+    //public static final String FIELD_CITY = "city";
     public static final String FIELD_CATEGORY = "category";
     public static final String FIELD_PRICE = "price";
     public static final String FIELD_POPULARITY = "numRatings";
@@ -77,7 +77,7 @@ public class Phone {
         this.specifications = specifications;
     }
 
-    private String city;
+    //private String city;
     private String condition;
     private String photo;
     private int price;
@@ -91,7 +91,7 @@ public class Phone {
         this.userid = userid;
         this.description = description;
         this.name = name;
-        this.city = city;
+        //this.city = city;
         this.condition = condition;
         this.photo = photo;
         this.price = price;
@@ -108,15 +108,15 @@ public class Phone {
     }
 
     public String getCondition() {
-        return city;
+        return condition;
     }
 
-    public void setCity(String city) {
+   /* public void setCondition(String city) {
         this.city = city;
     }
     public String getCity(){
         return city;
-    }
+    }*/
 
     public String getCategory() {
         return "Condition";

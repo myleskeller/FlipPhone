@@ -64,8 +64,9 @@
         <activity android:name="com.flipphone.camera.CameraActivity" />
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
         <activity android:name="com.google.firebase.example.flipphone.SellActivity" />
-        <activity android:name="com.google.firebase.example.flipphone.ImagesActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.ViewPagerAdapter" />
         <activity android:name="com.google.firebase.example.flipphone.DeleteActivity" />
+        <activity android:name="com.google.firebase.example.flipphone.ImageSliderActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

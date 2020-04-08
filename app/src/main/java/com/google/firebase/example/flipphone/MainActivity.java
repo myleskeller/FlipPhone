@@ -181,8 +181,8 @@ public class MainActivity extends AppCompatActivity implements
         }
 
         // City (equality filter)
-        if (filters.hasCity()) {
-            query = query.whereEqualTo("city", filters.getCondition());
+        if (filters.hasCondition()) {
+            query = query.whereEqualTo("condition", filters.getCondition());
         }
 
         // Price (equality filter)
@@ -299,8 +299,8 @@ public class MainActivity extends AppCompatActivity implements
         // Sign in with FirebaseUI
         Intent intent = AuthUI.getInstance().createSignInIntentBuilder()
                 .setAvailableProviders(Arrays.asList(
-                        //new AuthUI.IdpConfig.PhoneBuilder().build()
-                        new AuthUI.IdpConfig.EmailBuilder().build()
+                        new AuthUI.IdpConfig.PhoneBuilder().build()
+                        //new AuthUI.IdpConfig.EmailBuilder().build()
                 ))
                 .setIsSmartLockEnabled(false)
                 .build();

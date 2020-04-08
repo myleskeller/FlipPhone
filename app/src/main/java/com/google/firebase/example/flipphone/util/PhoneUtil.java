@@ -58,10 +58,10 @@ public class PhoneUtil {
         String[] categories = context.getResources().getStringArray(R.array.categories);
         categories = Arrays.copyOfRange(categories, 1, categories.length);
         phone.setCondition(getRandomString(categories, random));
-        phone.setUserid(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        phone.setUserid(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
         phone.setName("Samsung Galaxy S20");
         phone.setPhoto(getRandomImageUrl(random));
-        phone.setCity("New");
+        phone.setCondition("New");
         return phone;
     }
     public static Phone getRandom(Context context) {
@@ -80,7 +80,7 @@ public class PhoneUtil {
         int[] prices = new int[]{1, 2, 3};
 
         //phone.setName(getRandomName(random));
-        //phone.setCity(getRandomString(condition, random));
+        //phone.setCondition(getRandomString(condition, random));
         phone.setCondition(getRandomString(categories, random));
         phone.setPhoto(getRandomImageUrl(random));
         phone.setPrice(getRandomInt(prices, random));

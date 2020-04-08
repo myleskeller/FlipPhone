@@ -12,12 +12,12 @@
         "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_phone_1.png.flat",
-        "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\drawable\\phone_1.png"
-    },
-    {
         "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_shadow.xml.flat",
         "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\drawable\\bg_shadow.xml"
+    },
+    {
+        "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_phone_1.png.flat",
+        "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\drawable\\phone_1.png"
     },
     {
         "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_sort_white_24px.xml.flat",
@@ -242,6 +242,10 @@
     {
         "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_rating.xml.flat",
         "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\layout\\dialog_rating.xml"
+    },
+    {
+        "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi_baseline_message_white_48dp.png.flat",
+        "source": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\src\\main\\res\\drawable-nodpi\\baseline_message_white_48dp.png"
     },
     {
         "merged": "C:\\Users\\Rob\\Desktop\\myles new\\flip_phone\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_close_white_24px.xml.flat",

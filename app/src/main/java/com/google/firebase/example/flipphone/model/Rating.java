@@ -39,7 +39,7 @@ public class Rating {
         this.userId = user.getUid();
         this.userName = user.getDisplayName();
         if (TextUtils.isEmpty(this.userName)) {
-            this.userName = user.getEmail();
+            this.userName = user.getPhoneNumber();
         }
 
         this.rating = rating;

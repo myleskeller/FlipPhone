@@ -1539,6 +1539,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable baseline_message_white_48dp
 drawable bg_shadow
 drawable broken_phone
 drawable btn_checkbox_checked_mtrl
@@ -1889,7 +1890,6 @@ id ifRoom
 id image
 id imageView
 id imageView2
-id image_recycler_view
 id incandescent
 id info
 id invisible
@@ -1977,6 +1977,7 @@ id phone_button_back
 id phone_category
 id phone_city_divider
 id phone_condition
+id phone_description
 id phone_form_button
 id phone_form_cancel
 id phone_form_text
@@ -2139,6 +2140,7 @@ id video
 id view_empty
 id view_empty_ratings
 id view_offset_helper
+id view_pager
 id visible
 id visible_removing_fragment_view_tag
 id welcome_back_email_link_body

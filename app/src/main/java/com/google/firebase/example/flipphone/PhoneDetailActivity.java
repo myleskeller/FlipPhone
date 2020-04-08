@@ -76,7 +76,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private FirebaseFirestore mFirestore;
     private DocumentReference mPhoneRef;
     private ListenerRegistration mPhoneRegistration;
-
+    private String listingPhoneNum;
     private RatingAdapter mRatingAdapter;
 
     @Override
@@ -105,7 +105,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             throw new IllegalArgumentException("Must pass extra " + KEY_PHONE_ID);
         }
 
-        String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        String user = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
         FirebaseFirestore mRef = FirebaseFirestore.getInstance();
         mRef.collection("users").document(phoneId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -114,6 +114,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
 
                 if(phone.getUserid().equals(user)) {
                     deleteButton.setVisibility(View.VISIBLE);
+                    listingPhoneNum = phone.getUserid();
                     deleteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -192,7 +193,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                 onAddRatingClicked(v);
                 break;
             case R.id.phone_image:
-                Intent intent = new Intent(this, ImagesActivity.class);
+                Intent intent = new Intent(this, ImageSliderActivity.class);
                 intent.putExtra(PhoneDetailActivity.KEY_PHONE_ID, phoneId);
                 startActivity(intent);
         }
@@ -203,9 +204,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         return Tasks.forException(new Exception("not yet implemented"));
     }
 
-    /**
-     * Listener for the Phone document ({@link #mPhoneRef}).
-     */
+
     @Override
     public void onEvent(DocumentSnapshot snapshot, FirebaseFirestoreException e) {
         if (e != null) {
@@ -221,9 +220,9 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             mNameView.setText(phone.getName());
             //mRatingIndicator.setRating((float) phone.getAvgRating());
             //mNumRatingsView.setText(getString(R.string.fmt_num_ratings, phone.getNumRatings()));
-            mConditionView.setText(phone.getCity());
+            mConditionView.setText(phone.getCondition());
             mCategoryView.setText(phone.getCategory());
-            mPriceView.setText("$" + phone.getPrice());//PhoneUtil.getPriceString(phone));
+            mPriceView.setText("$" + phone.getPrice());
             listingDescription.setText(phone.getDescription());
             if(phone.getName() == null)
             {
@@ -245,7 +244,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     }
 
     public void onAddRatingClicked(View view) {
-        Uri sms_uri = Uri.parse("smsto:12125551212");
+        Uri sms_uri = Uri.parse("smsto:"+ listingPhoneNum);
         Intent intent = new Intent(Intent.ACTION_SENDTO,sms_uri);
         intent.putExtra("sms_body", "I'm interested in your listing.");
         startActivity(intent);

@@ -160,7 +160,7 @@ public class PicturePreviewActivity extends Activity {
         final String cloudFilePath = uri.getLastPathSegment();
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageReference = firebaseStorage.getReference("users");
-        StorageReference uploadRef = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getEmail()).child(cloudFilePath);
+        StorageReference uploadRef = storageReference.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child(cloudFilePath);
 
 //        UploadTask uploadTask = uploadRef.putFile(uri);
         UploadTask uploadTask = uploadRef.putBytes(byteImage);

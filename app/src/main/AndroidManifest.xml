@@ -37,8 +37,9 @@
         <activity android:name="com.flipphone.camera.CameraActivity" />
         <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
         <activity android:name=".SellActivity" />
-        <activity android:name=".ImagesActivity" />
+        <activity android:name=".ViewPagerAdapter" />
         <activity android:name=".DeleteActivity" />
+        <activity android:name=".ImageSliderActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -69,7 +69,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     private View mRootView;
 
     private Spinner mCategorySpinner;
-    private Spinner mCitySpinner;
+    private Spinner mConditionSpinner;
     private Spinner mSortSpinner;
     private Spinner mPriceSpinner;
 
@@ -84,7 +84,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         mRootView = inflater.inflate(R.layout.dialog_filters, container, false);
 
         mCategorySpinner = mRootView.findViewById(R.id.spinner_category);
-        mCitySpinner = mRootView.findViewById(R.id.spinner_city);
+        mConditionSpinner = mRootView.findViewById(R.id.spinner_city);
         //mSortSpinner = mRootView.findViewById(R.id.spinner_sort);
         mPriceSpinner = mRootView.findViewById(R.id.spinner_price);
         List<String> phones = new ArrayList<>();
@@ -167,8 +167,8 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     }
 
     @Nullable
-    private String getSelectedCity() {
-        String selected = (String) mCitySpinner.getSelectedItem();
+    private String getSelectedCondition() {
+        String selected = (String) mConditionSpinner.getSelectedItem();
         if (getString(R.string.value_any_condition).equals(selected)) {
             return null;
         } else {
@@ -212,7 +212,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
     public void resetFilters() {
         if (mRootView != null) {
             mCategorySpinner.setSelection(0);
-            mCitySpinner.setSelection(0);
+            mConditionSpinner.setSelection(0);
             mPriceSpinner.setSelection(0);
             //mSortSpinner.setSelection(0);
         }
@@ -223,7 +223,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
 
         if (mRootView != null) {
             filters.setCondition(getSelectedCategory());
-            filters.setCity(getSelectedCity());
+            filters.setCondition(getSelectedCondition());
             filters.setPrice(getSelectedPrice());
             //filters.setSortBy(getSelectedSortBy());
             filters.setSortDirection(getSortDirection());

@@ -28,7 +28,7 @@ import com.google.firebase.firestore.Query;
 public class Filters {
 
     private String category = null;
-    private String city = null;
+    private String condition = null;
     private int price = -1;
     private String sortBy = null;
     private Query.Direction sortDirection = null;
@@ -47,8 +47,8 @@ public class Filters {
         return !(TextUtils.isEmpty(category));
     }
 
-    public boolean hasCity() {
-        return !(TextUtils.isEmpty(city));
+    public boolean hasCondition() {
+        return !(TextUtils.isEmpty(condition));
     }
 
     public boolean hasPrice() {
@@ -63,16 +63,16 @@ public class Filters {
         return category;
     }
 
-    public void setCondition(String category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
     public String getCondition() {
-        return city;
+        return condition;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public int getPrice() {
@@ -102,7 +102,7 @@ public class Filters {
     public String getSearchDescription(Context context) {
         StringBuilder desc = new StringBuilder();
 
-        if (category == null && city == null) {
+        if (category == null) {
             desc.append("<b>");
             desc.append(context.getString(R.string.all_phones));
             desc.append("</b>");
@@ -114,13 +114,13 @@ public class Filters {
             desc.append("</b>");
         }
 
-        if (category != null && city != null) {
+        if (category != null) {
             desc.append(" in ");
         }
 
-        if (city != null) {
+        if (condition != null) {
             desc.append("<b>");
-            desc.append(city);
+            desc.append(" in " + condition + " Condition ");
             desc.append("</b>");
         }
 

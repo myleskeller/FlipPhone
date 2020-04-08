@@ -57,8 +57,8 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
 
         FirebaseUser account = FirebaseAuth.getInstance().getCurrentUser();
         if (account != null) {
-            textView2.setText(account.getEmail());
-            Log.v("FIREBASE", "account email: " + account.getEmail());
+            textView2.setText(account.getPhoneNumber());
+            Log.v("FIREBASE", "account email: " + account.getPhoneNumber());
             if (account.getPhotoUrl() != null)
                 Glide.with(this).load(account.getPhotoUrl()).into(userPhoto);
             Log.v("FIREBASE", "account photo url: " + account.getPhotoUrl());

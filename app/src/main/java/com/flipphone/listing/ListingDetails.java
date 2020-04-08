@@ -147,10 +147,10 @@ public class ListingDetails extends AppCompatActivity implements
             case R.id.post_listing:
 
                 Phone phone = new Phone();
-                String user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                String user = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
                 phone.setDescription(description.getText().toString());
                 phone.setPrice(price);
-                phone.setCity(condition);
+                phone.setCondition(condition);
                 phone.setUserid(user);
                 phone.setName(name);
                 FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -159,9 +159,9 @@ public class ListingDetails extends AppCompatActivity implements
 
                 phone.setPhotoBack(photoBack);
                 //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-                //String listing = mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()).limitToLast(1).toString();
+                //String listing = mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).limitToLast(1).toString();
                 //listing = listing.replaceAll("[^0-9]+"," ")
-                //mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getEmail()).child()
+                //mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child()
                 Task<DocumentReference> firebaseFirestore = FirebaseFirestore.getInstance().collection("users").add(phone);
                 //firebaseFirestore.set(phone);
                 ReturnToMain();
