@@ -114,9 +114,9 @@ public class Filters {
             desc.append("</b>");
         }
 
-        if (category != null) {
+       /* if (category != null) {
             desc.append(" in ");
-        }
+        }*/
 
         if (condition != null) {
             desc.append("<b>");
@@ -135,10 +135,8 @@ public class Filters {
     }
 
     public String getOrderDescription(Context context) {
-        if (Phone.FIELD_PRICE.equals(sortBy)) {
-            return context.getString(R.string.sorted_by_price);
-        } else {
-            return context.getString(R.string.value_any_condition);
-        }
+        //if (Phone.FIELD_PRICE.equals(sortBy)) {
+        return context.getString(R.string.sorted_by_price);
+
     }
 }

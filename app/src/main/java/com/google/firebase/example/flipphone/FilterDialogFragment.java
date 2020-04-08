@@ -222,7 +222,7 @@ public class FilterDialogFragment extends DialogFragment implements View.OnClick
         Filters filters = new Filters();
 
         if (mRootView != null) {
-            filters.setCondition(getSelectedCategory());
+            filters.setCategory(getSelectedCategory());
             filters.setCondition(getSelectedCondition());
             filters.setPrice(getSelectedPrice());
             //filters.setSortBy(getSelectedSortBy());
