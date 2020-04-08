@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ import butterknife.OnClick;
 public class PicturePreviewActivity extends Activity {
     String url;
     String frontPic, backPic;
+    ProgressBar progressBar;
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
@@ -84,6 +86,7 @@ public class PicturePreviewActivity extends Activity {
         Bundle b = new Bundle();
         b = intent.getExtras();
         frontPic = b.getString("FRONT_PIC");
+        progressBar = (ProgressBar) findViewById(R.id.progress_loader);
         Log.d("ALLPICTURES", "TESTING: " + frontPic);
 
         Log.v("StringExtra: ",message);
@@ -139,7 +142,8 @@ public class PicturePreviewActivity extends Activity {
 //        outputDir.mkdirs();
         File saveTo = new File(path + File.separator + currentTimeStamp + ".jpg");
 
-//        Toast.makeText(PicturePreviewActivity.this, "Saving...", Toast.LENGTH_SHORT).show();
+
+        progressBar.setVisibility(View.VISIBLE);
 //        image.get().toFile(saveTo, file -> {
 //            if (file != null) {
                 //Toast.makeText(PicturePreviewActivity.this, "Picture saved to " + file.getPath(), Toast.LENGTH_LONG).show();
@@ -212,6 +216,8 @@ public class PicturePreviewActivity extends Activity {
         Log.d("ALLPICTURES", "FRONT: "+ url);
         intent.putExtras(extras);
         setResult(PicturePreviewActivity.RESULT_OK, intent);
+        progressBar.setVisibility(View.GONE);
+
         //startActivity(intent);
         finish();
     }
@@ -225,6 +231,8 @@ public class PicturePreviewActivity extends Activity {
         Log.d("ALLPICTURES", "FRONT: "+frontPic);
         Log.d("ALLPICTURES", "BACK: " +backPic);
         intent.putExtras(extras);
+        progressBar.setVisibility(View.GONE);
+
         startActivity(intent);
 
     }

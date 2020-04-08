@@ -1997,6 +1997,7 @@ id price_seekBar
 id price_value
 id progress_circular
 id progress_horizontal
+id progress_loader
 id progress_loading
 id proximityMax
 id proximityReading
