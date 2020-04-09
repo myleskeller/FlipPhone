@@ -49,6 +49,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"스마트폰에서 열기"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"로그인"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Google 계정으로 로그인"</string>
+    <string msgid="3209159573327985035" name="copy">"복사"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"고급"</string>
     <string name="fui_accessibility_logo">앱 로고</string>
     <string name="fui_auto_verified">전화번호가 자동으로 확인되었습니다.</string>
     <string name="fui_button_text_save">저장</string>
@@ -139,6 +141,11 @@
     <string name="fui_welcome_back_idp_header">계정이 이미 있음</string>
     <string name="fui_welcome_back_idp_prompt">%1$s을(를) 이미 사용하고 있습니다. 계속하려면 %2$s(으)로 로그인하세요.</string>
     <string name="fui_welcome_back_password_prompt_body">이미 %1$s을(를) 사용하여 로그인했습니다. 해당 계정의 비밀번호를 입력하세요.</string>
+    <string msgid="478774118347071097" name="not_set">"설정되지 않음"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"\'<ns1:g id="SUMMARY">%1$s</ns1:g>\'이(가) 클립보드에 복사되었습니다."</string>
     <string msgid="730395136688082741" name="search_menu_title">"검색"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"사용 안함"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"사용"</string>
 </resources>

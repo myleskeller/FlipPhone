@@ -49,6 +49,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Telefonda aç"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Oturum aç"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Google\'da oturum aç"</string>
+    <string msgid="3209159573327985035" name="copy">"Kopyala"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"Gelişmiş"</string>
     <string name="fui_accessibility_logo">Uygulama logosu</string>
     <string name="fui_auto_verified">Telefon numarası otomatik olarak doğrulandı</string>
     <string name="fui_button_text_save">Kaydet</string>
@@ -139,6 +141,11 @@
     <string name="fui_welcome_back_idp_header">Zaten bir hesabınız var</string>
     <string name="fui_welcome_back_idp_prompt">%1$s adresini zaten kullandınız. Devam etmek için %2$s ile oturum açın.</string>
     <string name="fui_welcome_back_password_prompt_body">%1$s adresini oturum açmak için zaten kullandınız. Bu hesap için şifrenizi girin.</string>
+    <string msgid="478774118347071097" name="not_set">"Ayarlanmadı"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" panoya kopyalandı."</string>
     <string msgid="730395136688082741" name="search_menu_title">"Ara"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"KAPALI"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"AÇIK"</string>
 </resources>

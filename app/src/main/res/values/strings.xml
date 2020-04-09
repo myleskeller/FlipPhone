@@ -52,8 +52,6 @@
     <string name="back_photo_tip_message">Flip the phone over and align the edges of the device with the edges of the silhouette overlay.</string>
     <string name="back_photo_tip_title">Now the back…</string>
 
-    <string name="temp_chat">Should Be Working Soon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</string>
-
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">
         <item>@string/value_any_category</item>

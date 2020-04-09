@@ -53,6 +53,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"فتح على الهاتف"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"تسجل الدخول"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"‏تسجيل الدخول عبر Google"</string>
+    <string msgid="3209159573327985035" name="copy">"نسخ"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"إعدادات متقدمة"</string>
     <string name="fui_accessibility_logo">شعار التطبيق</string>
     <string name="fui_auto_verified">تمّ التحقّق تلقائيًا من رقم الهاتف.</string>
     <string name="fui_button_text_save">حفظ</string>
@@ -143,6 +145,11 @@
     <string name="fui_welcome_back_idp_header">لديك حساب حاليًا</string>
     <string name="fui_welcome_back_idp_prompt">لقد سبق أن استخدمت %1$s. سجّل الدخول باستخدام %2$s للمتابعة.</string>
     <string name="fui_welcome_back_password_prompt_body">لقد سبق أن استخدمت %1$s لتسجيل الدخول. يُرجى إدخال كلمة المرور لهذا الحساب.</string>
+    <string msgid="478774118347071097" name="not_set">"لم يتمّ تحديد قيمة."</string>
+    <string msgid="7961817945132860002" name="preference_copied">"تم نسخ \"<ns1:g id="SUMMARY">%1$s</ns1:g>\" إلى الحافظة."</string>
     <string msgid="730395136688082741" name="search_menu_title">"البحث"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>، <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"إيقاف"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"تفعيل"</string>
 </resources>

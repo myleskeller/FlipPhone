@@ -49,6 +49,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"மொபைலில் திற"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"உள்நுழைக"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Google மூலம் உள்நுழைக"</string>
+    <string msgid="3209159573327985035" name="copy">"நகலெடு"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"மேம்பட்டவை"</string>
     <string name="fui_accessibility_logo">ஆப்ஸ் லோகோ</string>
     <string name="fui_auto_verified">ஃபோன் எண் தானாகவே சரிபார்க்கப்பட்டது</string>
     <string name="fui_button_text_save">சேமி</string>
@@ -139,6 +141,11 @@
     <string name="fui_welcome_back_idp_header">ஏற்கனவே உங்களிடம் கணக்கு உள்ளது</string>
     <string name="fui_welcome_back_idp_prompt">ஏற்கனவே %1$sஐப் பயன்படுத்தியுள்ளீர்கள். தொடர, %2$s மூலம் உள்நுழையவும்.</string>
     <string name="fui_welcome_back_password_prompt_body">ஏற்கனவே %1$sஐப் பயன்படுத்தி உள்நுழைந்திருக்கிறீர்கள். அந்தக் கணக்கிற்கான கடவுச்சொல்லை உள்ளிடவும்.</string>
+    <string msgid="478774118347071097" name="not_set">"அமைக்கப்படவில்லை"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."</string>
     <string msgid="730395136688082741" name="search_menu_title">"தேடல்"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"ஆஃப்"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"ஆன்"</string>
 </resources>

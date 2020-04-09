@@ -51,6 +51,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Atidaryti telefone"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Prisijungti"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Prisijungti naudojant „Google“"</string>
+    <string msgid="3209159573327985035" name="copy">"Kopijuoti"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"Išplėstinė"</string>
     <string name="fui_accessibility_logo">Programos logotipas</string>
     <string name="fui_auto_verified">Telefono numeris patvirtintas automatiškai</string>
     <string name="fui_button_text_save">Išsaugoti</string>
@@ -141,6 +143,11 @@
     <string name="fui_welcome_back_idp_header">Jūs jau turite paskyrą</string>
     <string name="fui_welcome_back_idp_prompt">Jau panaudojote %1$s.Jei norite tęsti, prisijunkite per „%2$s“.</string>
     <string name="fui_welcome_back_password_prompt_body">Jūs jau prisijungėte naudodami %1$s. Įveskite tos paskyros slaptažodį.</string>
+    <string msgid="478774118347071097" name="not_set">"Nenustatyta"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"Suvestinė „<ns1:g id="SUMMARY">%1$s</ns1:g>“ nukopijuota į iškarpinę."</string>
     <string msgid="730395136688082741" name="search_menu_title">"Ieškoti"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"IŠJUNGTA"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"ĮJUNGTA"</string>
 </resources>

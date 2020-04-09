@@ -49,6 +49,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"在手机上打开"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"登录"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"使用 Google 帐号登录"</string>
+    <string msgid="3209159573327985035" name="copy">"复制"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"高级"</string>
     <string name="fui_accessibility_logo">应用徽标</string>
     <string name="fui_auto_verified">电话号码已自动验证</string>
     <string name="fui_button_text_save">保存</string>
@@ -139,6 +141,11 @@
     <string name="fui_welcome_back_idp_header">您已经有帐号了</string>
     <string name="fui_welcome_back_idp_prompt">您已经使用了 %1$s。请使用 %2$s 帐号登录以继续操作。</string>
     <string name="fui_welcome_back_password_prompt_body">您已经使用 %1$s 登录了，请输入该帐号的密码。</string>
+    <string msgid="478774118347071097" name="not_set">"未设置"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"已将“<ns1:g id="SUMMARY">%1$s</ns1:g>”复制到剪贴板。"</string>
     <string msgid="730395136688082741" name="search_menu_title">"搜索"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>、<ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"关闭"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"开启"</string>
 </resources>

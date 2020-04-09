@@ -1607,6 +1607,7 @@ drawable ic_arrow_back_white_24px
 drawable ic_arrow_down_24dp
 drawable ic_calendar_black_24dp
 drawable ic_camera_alt_white_24dp
+drawable ic_cellphone_basic
 drawable ic_check_white_24dp
 drawable ic_clear_black_24dp
 drawable ic_close_white_24px
@@ -1626,6 +1627,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_overlay
+drawable ic_phone_android_black_24dp
 drawable ic_place_white_24px
 drawable ic_sort_white_24px
 drawable mrb_star_border_icon_black_36dp
@@ -1756,9 +1758,7 @@ id button_continue
 id button_create
 id button_done
 id button_filter
-id button_new
 id button_next
-id button_old
 id button_resend_email
 id button_search
 id button_sign_in
@@ -1996,6 +1996,9 @@ id price_value
 id progress_circular
 id progress_horizontal
 id progress_loading
+id proximityMax
+id proximityReading
+id proximitySensor
 id radio
 id rating_item_date
 id rating_item_divider
@@ -2037,7 +2040,6 @@ id select_dialog_listview
 id selected
 id send_code
 id send_sms_tos
-id settings
 id shortcut
 id showCustom
 id showHome
@@ -2092,7 +2094,6 @@ id textInputLayout
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
-id textView
 id textView2
 id textView3
 id textView4
@@ -2112,13 +2113,17 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id toFlip
 id toolbar
 id top
 id topPanel
 id top_level_view
 id top_progress_bar
 id torch
+id touch_outside
+id transition_current_scene
 id transition_layout_save
+id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id trouble_signing_in
@@ -2361,6 +2366,7 @@ mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals fui_error_weak_password
 plurals mtrl_badge_content_description
+string FCM_topic
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2628,6 +2634,7 @@ string qr_code_scanner
 string reply_title
 string search
 string search_menu_title
+string sender_id
 string sign_out
 string signature_title
 string sort_by_popularity
@@ -2649,6 +2656,7 @@ string v7_preference_on
 string value_any_category
 string value_any_condition
 string value_any_price
+string zoomed_picture_of_phone
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

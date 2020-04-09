@@ -31,6 +31,8 @@
     <string msgid="2650565705514630347" name="abc_shareactionprovider_share_with">"Compartilhar com"</string>
     <string msgid="9009661856846212431" name="abc_shareactionprovider_share_with_application">"Compartilhar com <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
     <string msgid="6389460216547290468" name="abc_toolbar_collapse_description">"Recolher"</string>
+    <string msgid="3209159573327985035" name="copy">"Copiar"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"Avançado"</string>
     <string name="fui_accessibility_logo">Logotipo do app</string>
     <string name="fui_auto_verified">O número de telefone foi verificado automaticamente</string>
     <string name="fui_button_text_save">Salvar</string>
@@ -121,6 +123,11 @@
     <string name="fui_welcome_back_idp_header">Você já tem uma conta</string>
     <string name="fui_welcome_back_idp_prompt">Você já usou o e-mail %1$s. Faça login com o %2$s para continuar.</string>
     <string name="fui_welcome_back_password_prompt_body">Você já usou o e-mail %1$s para fazer login. Insira a senha dessa conta.</string>
+    <string msgid="478774118347071097" name="not_set">"Não definido"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" copiado para a área de transferência."</string>
     <string msgid="730395136688082741" name="search_menu_title">"Pesquisar"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"DESATIVADO"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"ATIVADO"</string>
 </resources>

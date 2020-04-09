@@ -49,6 +49,8 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"スマートフォンで開く"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"ログイン"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Googleにログイン"</string>
+    <string msgid="3209159573327985035" name="copy">"コピー"</string>
+    <string msgid="1234962710353108940" name="expand_button_title">"詳細設定"</string>
     <string name="fui_accessibility_logo">アプリのロゴ</string>
     <string name="fui_auto_verified">電話番号は自動的に確認されました</string>
     <string name="fui_button_text_save">保存</string>
@@ -139,6 +141,11 @@
     <string name="fui_welcome_back_idp_header">アカウントをすでにお持ちです</string>
     <string name="fui_welcome_back_idp_prompt">%1$s をすでに使用しています。%2$s でログインして続行してください。</string>
     <string name="fui_welcome_back_password_prompt_body">すでに %1$s を使用してログインしています。このアカウントのパスワードを入力してください。</string>
+    <string msgid="478774118347071097" name="not_set">"未設定"</string>
+    <string msgid="7961817945132860002" name="preference_copied">"「<ns1:g id="SUMMARY">%1$s</ns1:g>」をクリップボードにコピーしました。"</string>
     <string msgid="730395136688082741" name="search_menu_title">"検索"</string>
     <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="5190123168583152844" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>、<ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string msgid="5138405918326871307" name="v7_preference_off">"OFF"</string>
+    <string msgid="27351710992731591" name="v7_preference_on">"ON"</string>
 </resources>
