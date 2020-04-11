@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.flipphone.PhoneDetailActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.flipphone.MainActivity;
@@ -25,6 +30,8 @@ public class ListingDetails extends AppCompatActivity implements
     private FirebaseFirestore mFirestore;
     private CollectionReference mPhoneRef;
 
+    private String listing;
+    ProgressBar progressBar;
     private int price;
     EditText description;
     private String condition = "Good";
@@ -52,7 +59,7 @@ public class ListingDetails extends AppCompatActivity implements
         Bundle extras = intent.getExtras();
         photoFront = extras.getString("FRONT_PIC");
         photoBack = extras.getString("BACK_PIC");
-
+        progressBar = findViewById(R.id.progress_loader_listing);
         mFirestore = FirebaseFirestore.getInstance();
         //mPhoneRef = mFirestore.collection("users");
         int step = 1;
@@ -118,6 +125,7 @@ public class ListingDetails extends AppCompatActivity implements
         switch (v.getId()) {
             case R.id.post_listing:
 
+                progressBar.setVisibility(View.VISIBLE);
                 Phone phone = new Phone();
                 String user = FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber();
                 phone.setDescription(description.getText().toString());
@@ -135,17 +143,36 @@ public class ListingDetails extends AppCompatActivity implements
                 //listing = listing.replaceAll("[^0-9]+"," ")
                 //mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child()
                 Task<DocumentReference> firebaseFirestore = FirebaseFirestore.getInstance().collection("users").add(phone);
+
                 //firebaseFirestore.set(phone);
-                ReturnToMain();
+
+                firebaseFirestore.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+                        listing = firebaseFirestore.getResult().getId();
+                        AlertDialog alertDialog = new AlertDialog.Builder(ListingDetails.this).create();
+                        progressBar.setVisibility(View.GONE);
+                        alertDialog.setTitle("Listing Successful!");
+                        alertDialog.setMessage("Would you like to view the listing?");
+                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"View", ((dialog , which) -> {
+                            Intent i = new Intent(ListingDetails.this, PhoneDetailActivity.class);
+                            i.putExtra(PhoneDetailActivity.KEY_PHONE_ID, listing);
+                            startActivity(i);}));
+                        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", ((dialog , which) -> {
+                            ReturnToMain();
+                        }));
+                        alertDialog.show();
+                    }
+                });
+
+
                 break;
         }
     }
 
     public void ReturnToMain() {
         Intent intent = new Intent(this, MainActivity.class);
-        Bundle extras = new Bundle();
-        extras.putString("EXTRA_MESSAGE", "unused");
-        intent.putExtras(extras);
+
         startActivity(intent);
     }
 }

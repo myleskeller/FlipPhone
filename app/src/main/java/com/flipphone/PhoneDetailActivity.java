@@ -28,10 +28,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.flipphone.camera.CameraActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -56,7 +58,12 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         View.OnClickListener,
         EventListener<DocumentSnapshot>,
         RatingDialogFragment.RatingListener {
-
+    @Override
+    public void onBackPressed() {
+        // super.onBackPressed();
+        Intent i = new Intent(PhoneDetailActivity.this, MainActivity.class);
+        startActivity(i);
+    }
     private static final String TAG = "PhoneDetail";
 
     public static final String KEY_PHONE_ID = "key_phone_id";
@@ -120,12 +127,17 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                         @Override
                         public void onClick(View v) {
                             //mRef.collection("users").document(phoneId).delete();
-                            Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
-                            Bundle extras = new Bundle();
-                            extras.putString("DELETE", phoneId);
-                            intent.putExtras(extras);
-                            startActivity(intent);
-
+                            AlertDialog alertDialog = new AlertDialog.Builder(PhoneDetailActivity.this).create();
+                            alertDialog.setTitle("Delete");
+                            alertDialog.setMessage("Would you like to delete the listing?");
+                            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes", ((dialog , which) -> {
+                                Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
+                                Bundle extras = new Bundle();
+                                extras.putString("DELETE", phoneId);
+                                intent.putExtras(extras);
+                                startActivity(intent);}));
+                            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", ((dialog , which) -> dialog.dismiss()));
+                            alertDialog.show();
 
                         }
                     });

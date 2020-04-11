@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -67,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements
     public FirebaseRTDB.DeviceChat mChat;
     private int mScreenWidth;
     private int mScreenHeight;
-
     @Override
     public void onBackPressed() {
        // super.onBackPressed();
@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
