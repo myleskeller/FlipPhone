@@ -495,3 +495,7 @@ app/build/outputs/apk/debug/output.json
 app/build/outputs/logs/manifest-merger-debug-report.txt
 flip_phone.iml
 local.properties
+gradle/.DS_Store
+app/src/main/java/com/.DS_Store
+app/src/main/java/.DS_Store
+.DS_Store
