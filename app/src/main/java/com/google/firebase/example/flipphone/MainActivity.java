@@ -1,9 +1,14 @@
 package com.google.firebase.example.flipphone;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.flipphone.camera.CameraActivity;
+import com.flipphone.listing.PhoneSpecifications;
 import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
 import com.google.android.material.snackbar.Snackbar;
@@ -33,8 +39,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
+import java.lang.reflect.Method;
+import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener,
@@ -56,12 +63,16 @@ public class MainActivity extends AppCompatActivity implements
     private FilterDialogFragment mFilterDialog;
     private PhoneAdapter mAdapter;
     private MainActivityViewModel mViewModel;
+    public FirebaseRTDB.DeviceChat mChat;
+    private int mScreenWidth;
+    private int mScreenHeight;
 
     @Override
     public void onBackPressed() {
        // super.onBackPressed();
         return;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,13 +102,78 @@ public class MainActivity extends AppCompatActivity implements
 
         // Filter Dialog
         mFilterDialog = new FilterDialogFragment();
+
+        // Create RTDB chat object and populate with phone specifications
+        mChat = new FirebaseRTDB.DeviceChat(new PhoneSpecifications(this, getScreenResolution(), getScreenSize(), getBatteryCapacity()));
+    }
+
+    public String getScreenResolution() { //i hate that this had to be in MainActivity, but it works..
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            Point size = new Point();
+            getWindowManager().getDefaultDisplay().getRealSize(size);
+            mScreenWidth = size.x;
+            mScreenHeight = size.y;
+        } else {
+            Display display = getWindowManager().getDefaultDisplay();
+            try {
+                Method getHeight = Display.class.getMethod("getRawHeight");
+                Method getWidth = Display.class.getMethod("getRawWidth");
+                mScreenWidth = (Integer) getHeight.invoke(display);
+                mScreenHeight = (Integer) getWidth.invoke(display);
+            } catch (Exception e) {
+                mScreenWidth = display.getWidth();
+                mScreenHeight = display.getHeight();
+            }
+        }
+        Log.e("SPEC", "resolution: " + mScreenWidth + 'x' + mScreenHeight);
+        return String.valueOf(mScreenWidth) + 'x' + String.valueOf(mScreenHeight);
+    }
+
+    private String getScreenSize() { //i hate that this had to be in MainActivity, but it works..
+        DecimalFormat twoDecimalForm = new DecimalFormat("#.##");
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double x = Math.pow(mScreenWidth / dm.xdpi, 2);
+        double y = Math.pow(mScreenHeight / dm.ydpi, 2);
+        double screenInches = Math.sqrt(x + y);
+        String screen = twoDecimalForm.format(screenInches).concat("\"");
+        Log.e("SPEC", "screen: " + screen);
+        return screen;
+    }
+
+    public String getBatteryCapacity() { //i hate that this had to be in MainActivity, but it works..
+        // Power profile class instance
+        Object mPowerProfile_ = null;
+        // Reset variable for battery capacity
+        double batteryCapacity = 0;
+        // Power profile class name
+        final String POWER_PROFILE_CLASS = "com.android.internal.os.PowerProfile";
+        try {
+            // Get power profile class and create instance. We have to do this
+            // dynamically because android.internal package is not part of public API
+            mPowerProfile_ = Class.forName(POWER_PROFILE_CLASS).getConstructor(Context.class).newInstance(this);
+        } catch (Exception e) {
+            // Class not found?
+            e.printStackTrace();
+        }
+        try {
+            // Invoke PowerProfile method "getAveragePower" with param "battery.capacity"
+            batteryCapacity = (Double) Class
+                    .forName(POWER_PROFILE_CLASS)
+                    .getMethod("getAveragePower", java.lang.String.class)
+                    .invoke(mPowerProfile_, "battery.capacity");
+        } catch (Exception e) {
+            // Something went wrong
+            e.printStackTrace();
+        }
+
+        Log.e("SPEC", "battery: " + (int) batteryCapacity + " mAh");
+        return (int) batteryCapacity + " mAh";
     }
 
     private void initFirestore() {
         mFirestore = FirebaseFirestore.getInstance();
-        mQuery = mFirestore.collection("users")
-                .orderBy("price", Query.Direction.DESCENDING)
-                .limit(LIMIT);
+        mQuery = mFirestore.collection("users").orderBy("price", Query.Direction.DESCENDING).limit(LIMIT);
     }
 
     private void initRecyclerView() {

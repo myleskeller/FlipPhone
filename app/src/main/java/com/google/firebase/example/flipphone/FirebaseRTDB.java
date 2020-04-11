@@ -2,12 +2,12 @@ package com.google.firebase.example.flipphone;
 
 import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.flipphone.listing.PhoneSpecifications;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +26,7 @@ public class FirebaseRTDB extends Service {
         Log.d(TAG, "FirebaseRTDB service started");
 
         database = FirebaseDatabase.getInstance();
-         myRef = database.getReference();
+        myRef = database.getReference();
     }
 
     // Write to database
@@ -34,7 +34,7 @@ public class FirebaseRTDB extends Service {
 //        myRef.child(DB_CHILD).push().setValue(new deviceChat(type, data));        this works 100% for RTDB/listings/...../deviceChat{}
 
         String dook = myRef.child(DB_CHILD).child(listingID).push().getKey();
-        myRef.child(DB_CHILD).child(listingID).setValue(new deviceChat(type, data));
+        myRef.child(DB_CHILD).child(listingID).setValue(new DeviceChat(type, data));
         Log.w(TAG, "sent: '" + type + "', '" + data + "' to database");
         Log.w(TAG, "getKey() = "+ dook);
     }
@@ -42,7 +42,7 @@ public class FirebaseRTDB extends Service {
     // Write to database
     public void makeNode(String listingID){
         String dook = myRef.child(DB_CHILD).child(listingID).push().getKey();
-        myRef.child(DB_CHILD).child(listingID).setValue(new deviceChat("auth_string", listingID));
+        myRef.child(DB_CHILD).child(listingID).setValue(new DeviceChat("auth_string", listingID));
         Log.e(TAG, "created node '" + listingID + "' in database");
         Log.w(TAG, "getKey() = " + dook);
     }
@@ -92,16 +92,58 @@ public class FirebaseRTDB extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    private class deviceChat {
-        public String type;
-        public String data;
+    public static class DeviceChat {
+        public String type; //probably going to get rid of these
+        public String data; //probably going to get rid of these
 
-        public deviceChat() {
+        private boolean listingAccessed;
+        private boolean frontPhotoTaken;
+        private boolean flipped;
+        private boolean backPhotoTaken;
+        private boolean listingPosted;
+        private PhoneSpecifications specifications;
+
+        public DeviceChat() {
+            this.listingAccessed = false;
+            this.frontPhotoTaken = false;
+            this.flipped = false;
+            this.backPhotoTaken = false;
+            this.listingPosted = false;
+//            this.specifications = new PhoneSpecifications(context);
         }
 
-        public deviceChat(String type, String data) {
-            this.type = type;
-            this.data = data;
+        public DeviceChat(PhoneSpecifications _specifications) {
+            this.listingAccessed = false;
+            this.frontPhotoTaken = false;
+            this.flipped = false;
+            this.backPhotoTaken = false;
+            this.listingPosted = false;
+            this.specifications = _specifications;
+        }
+
+        public DeviceChat(String type, String data) { //probably going to get rid of this version
+            this.type = type; //probably going to get rid of these
+            this.data = data; //probably going to get rid of these
+        }
+
+        public void listingSuccessfullyAccessed() {
+            this.listingAccessed = true;
+        }
+
+        public void frontPhotoSuccessfullyTaken() {
+            this.frontPhotoTaken = true;
+        }
+
+        public void deviceFlipDetected() {
+            this.flipped = true;
+        }
+
+        public void backPhotoSuccessfullyTaken() {
+            this.backPhotoTaken = true;
+        }
+
+        public void listingSuccessfullyPosted() {
+            this.listingPosted = true;
         }
     }
 }
