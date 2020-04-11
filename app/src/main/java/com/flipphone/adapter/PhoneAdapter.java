@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone.adapter;
+ package com.flipphone.adapter;
 
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -26,9 +26,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.example.flipphone.R;
-import com.google.firebase.example.flipphone.model.Phone;
-import com.google.firebase.example.flipphone.util.PhoneUtil;
+import com.flipphone.R;
+import com.flipphone.model.Phone;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 

@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone;
+ package com.flipphone;
 
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.google.firebase.example.flipphone.model.Phone;
-import com.google.firebase.example.flipphone.util.PhoneUtil;
+import com.flipphone.model.Phone;
+import com.flipphone.util.PhoneUtil;
+import com.flipphone.R;
 import com.google.firebase.firestore.Query;
 
 /**

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.firebase.example.flipphone">
+    package="com.flipphone">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
@@ -19,27 +19,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.flipphone.listing.ListingDetails"
+            android:name=".listing.ListingDetails"
             android:label="@string/title_activity_listing_details" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.flipphone.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SellSuccess" />
-        <activity android:name=".SellFlip" />
-        <activity android:name=".Chat" />
-        <activity android:name=".PhoneDetailActivity" />
-        <activity android:name="com.flipphone.qrcode.QrCodeScannerActivity" />
-        <activity android:name="com.flipphone.camera.PicturePreviewActivity" />
-        <activity android:name="com.flipphone.camera.CameraActivity" />
-        <activity android:name="com.flipphone.qrcode.QRCodeGeneratorActivity" />
-        <activity android:name=".SellActivity" />
-        <activity android:name=".ViewPagerAdapter" />
-        <activity android:name=".DeleteActivity" />
-        <activity android:name=".ImageSliderActivity"/>
+        <activity android:name="com.flipphone.SellSuccess" />
+        <activity android:name="com.flipphone.SellFlip" />
+        <activity android:name="com.flipphone.Chat" />
+        <activity android:name="com.flipphone.PhoneDetailActivity" />
+        <activity android:name=".qrcode.QrCodeScannerActivity" />
+        <activity android:name=".camera.PicturePreviewActivity" />
+        <activity android:name=".camera.CameraActivity" />
+        <activity android:name=".qrcode.QRCodeGeneratorActivity" />
+        <activity android:name="com.flipphone.SellActivity" />
+        <activity android:name="com.flipphone.ViewPagerAdapter" />
+        <activity android:name="com.flipphone.DeleteActivity" />
+        <activity android:name="com.flipphone.ImageSliderActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

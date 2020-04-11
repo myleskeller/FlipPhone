@@ -13,17 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone.util;
+ package com.flipphone.util;
 
 import android.content.Context;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.example.flipphone.R;
-import com.google.firebase.example.flipphone.model.Phone;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.flipphone.R;
+import com.flipphone.model.Phone;
 
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

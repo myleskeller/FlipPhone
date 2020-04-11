@@ -1,20 +1,16 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
-import android.media.Image;
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.example.flipphone.model.Phone;
+import com.flipphone.model.Phone;
+import com.flipphone.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
 
 public class ImageSliderActivity extends AppCompatActivity {
 

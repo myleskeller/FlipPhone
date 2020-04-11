@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone.adapter;
+ package com.flipphone.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +23,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.example.flipphone.R;
-import com.google.firebase.example.flipphone.model.Rating;
+import com.flipphone.R;
+import com.flipphone.model.Rating;
 import com.google.firebase.firestore.Query;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;

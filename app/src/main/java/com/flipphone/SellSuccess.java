@@ -1,8 +1,10 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.flipphone.R;
 
 public class SellSuccess extends AppCompatActivity {
 

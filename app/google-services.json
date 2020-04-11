@@ -8,12 +8,73 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:784574291741:android:e85544fbc0fe4287330bf4",
+        "android_client_info": {
+          "package_name": "com.flipphone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784574291741-28omr68ddrs9r93ms63rbee8o73353sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjZH4ng08hhC5VRTPjIIYV8pdzG5qDrH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784574291741-28omr68ddrs9r93ms63rbee8o73353sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:784574291741:android:8faaace857cec10a330bf4",
         "android_client_info": {
           "package_name": "com.google.firebase.example.flipphone"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "784574291741-gp8cbnpqk0nbbnlk6sbblkco8ofbdvgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.example.flipphone",
+            "certificate_hash": "291868cc60ededb348109e54bdef8c4473648602"
+          }
+        },
+        {
+          "client_id": "784574291741-ca0obk8v96lruo74fp2leqkfus91e99p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.example.flipphone",
+            "certificate_hash": "f3e968ca0c3cc410a86dcbd132ccd51748e39871"
+          }
+        },
+        {
+          "client_id": "784574291741-4sje40e0adeqrrflpsktdvgifdtmnh6s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.example.flipphone",
+            "certificate_hash": "cbad86b6aabdb8bd679f640c2fb66827df04f83f"
+          }
+        },
+        {
+          "client_id": "784574291741-sr3vt2r8im58l6ql51ldgtlrgdcgmtm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.example.flipphone",
+            "certificate_hash": "622266066229810c1996d344c7c088e044610096"
+          }
+        },
         {
           "client_id": "784574291741-6dhmn543616t55smofhoiebfbmjg30tb.apps.googleusercontent.com",
           "client_type": 1,

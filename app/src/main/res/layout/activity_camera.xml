@@ -5,7 +5,7 @@
     android:id="@+id/overlay"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.flipphone.camera.CameraActivity">
+    tools:context=".camera.CameraActivity">
 
     <com.otaliastudios.cameraview.CameraView
         android:id="@+id/camera"

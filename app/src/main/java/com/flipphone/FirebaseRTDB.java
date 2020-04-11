@@ -1,4 +1,4 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
 import android.app.Service;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.flipphone.R;
 
 public class SellFlip extends AppCompatActivity {
     TextView ProximitySensor, ProximityMax, ProximityReading;

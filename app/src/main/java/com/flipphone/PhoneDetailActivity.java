@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone;
+ package com.flipphone;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,9 +38,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.example.flipphone.adapter.RatingAdapter;
-import com.google.firebase.example.flipphone.model.Phone;
-import com.google.firebase.example.flipphone.model.Rating;
+import com.flipphone.adapter.RatingAdapter;
+import com.flipphone.model.Phone;
+import com.flipphone.model.Rating;
+import com.flipphone.R;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;

@@ -1,7 +1,6 @@
 package com.flipphone.camera;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
-import com.google.firebase.example.flipphone.R;
+import com.flipphone.R;
 import com.otaliastudios.cameraview.CameraListener;
 import com.otaliastudios.cameraview.CameraView;
 import com.otaliastudios.cameraview.PictureResult;

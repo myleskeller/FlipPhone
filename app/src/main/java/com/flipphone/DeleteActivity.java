@@ -1,4 +1,4 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.flipphone.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DeleteActivity extends AppCompatActivity {

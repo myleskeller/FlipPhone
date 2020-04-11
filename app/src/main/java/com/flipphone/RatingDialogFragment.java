@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone;
+ package com.flipphone;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +28,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.example.flipphone.model.Rating;
+import com.flipphone.model.Rating;
+import com.flipphone.R;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 

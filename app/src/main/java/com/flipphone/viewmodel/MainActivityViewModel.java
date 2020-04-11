@@ -13,14 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.google.firebase.example.flipphone.viewmodel;
+ package com.flipphone.viewmodel;
 
 import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.example.flipphone.Filters;
+import com.flipphone.Filters;
+import com.flipphone.MainActivity;
 
 /**
- * ViewModel for {@link com.google.firebase.example.flipphone.MainActivity}.
+ * ViewModel for {@link MainActivity}.
  */
 
 public class MainActivityViewModel extends ViewModel {

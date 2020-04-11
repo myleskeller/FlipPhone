@@ -1,4 +1,4 @@
-package com.google.firebase.example.flipphone;
+package com.flipphone;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,10 +29,11 @@ import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.example.flipphone.adapter.PhoneAdapter;
-import com.google.firebase.example.flipphone.model.Phone;
-import com.google.firebase.example.flipphone.util.PhoneUtil;
-import com.google.firebase.example.flipphone.viewmodel.MainActivityViewModel;
+import com.flipphone.adapter.PhoneAdapter;
+import com.flipphone.model.Phone;
+import com.flipphone.util.PhoneUtil;
+import com.flipphone.viewmodel.MainActivityViewModel;
+
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;

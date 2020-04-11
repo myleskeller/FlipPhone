@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.google.firebase.example.flipphone.Chat">
+    tools:context="com.flipphone.Chat">
 
     <TextView
         android:id="@+id/BOTTOM_TEXT"
@@ -14,7 +14,8 @@
         android:text="@string/temp_chat"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_editor_absoluteY="62dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button"
