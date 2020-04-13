@@ -1,18 +1,3 @@
-/**
- * Copyright 2017 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.flipphone;
 
 import android.annotation.SuppressLint;
@@ -30,10 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
+import com.flipphone.model.Phone;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.flipphone.model.Phone;
-import com.flipphone.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -46,9 +30,6 @@ import java.util.List;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
-/**
- * Dialog Fragment containing filter form.
- */
 public class FilterDialogFragment extends DialogFragment implements View.OnClickListener {
 
     public static final String TAG = "FilterDialog";

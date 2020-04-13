@@ -41,16 +41,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.flipphone.MainActivity;
 import com.flipphone.R;
-import com.flipphone.RatingDialogFragment;
+import com.flipphone.adapter.RatingAdapter;
+import com.flipphone.model.Phone;
+import com.flipphone.model.Rating;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.flipphone.adapter.RatingAdapter;
-import com.flipphone.model.Phone;
-import com.flipphone.model.Rating;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -64,7 +63,7 @@ import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 public class PhoneDetailActivity extends AppCompatActivity implements
         View.OnClickListener,
         EventListener<DocumentSnapshot>,
-        RatingDialogFragment.RatingListener {
+        ChatDialogFragment.RatingListener {
 
     private static final String TAG = "PhoneDetail";
     private CardView descriptionView;
@@ -81,7 +80,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private RecyclerView mRatingsRecycler;
     private ImageButton deleteButton;
     private TextView listingDescription;
-    private RatingDialogFragment mRatingDialog;
+    private ChatDialogFragment mRatingDialog;
     private TextView specText;
 
     private FirebaseFirestore mFirestore;
@@ -127,6 +126,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Phone phone = documentSnapshot.toObject(Phone.class);
+                listingPhoneNum = phone.getUserid();
                 if(!phone.getDescription().equals(""))
                 {
                     descriptionView.setVisibility(View.VISIBLE);
@@ -139,7 +139,6 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                 }
                 if(phone.getUserid().equals(user)) {
                     deleteButton.setVisibility(View.VISIBLE);
-                    listingPhoneNum = phone.getUserid();
                     deleteButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -203,7 +202,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         //mRatingsRecycler.setLayoutManager(new LinearLayoutManager(this));
        // mRatingsRecycler.setAdapter(mRatingAdapter);
 
-        mRatingDialog = new RatingDialogFragment();
+        mRatingDialog = new ChatDialogFragment();
     }
 
     @Override

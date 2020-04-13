@@ -1,5 +1,6 @@
 package com.flipphone.qrcode;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -11,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.flipphone.MainActivity;
+import com.flipphone.R;
+import com.flipphone.SellFlip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.flipphone.FirebaseRTDB;
-import com.flipphone.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -34,9 +35,31 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
     TextView textView2;
     ImageView qrCode;
     ImageView userPhoto;
+    Thread thread;
 //    FirebaseRTDB rtdb = new FirebaseRTDB();
 
     protected void onCreate(Bundle savedInstanceState) {
+        thread = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!thread.isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                checkIfAccessed();
+                                Log.w("THREAD", "running.");
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+
+        thread.start();
+
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         int dimensions = metrics.widthPixels;
 
@@ -67,9 +90,6 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
         }
 
         //make qrcode
-        //TODO: change this placeholder back after done getting rtdb wokrking
-//        String url = getRandomString(24);
-//        String url = "0D32ALEGT8DF28QEO119HIRI";
         mRTDB.makeNode();
         mRTDB.listenForData();
 
@@ -87,9 +107,6 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-        // should make a (probably) empty node in the database with the key of the random string
-//        rtdb.makeNode(url);
-//        rtdb.listenForData(url);
     }
 
     private static  String getRandomString(int length) {
@@ -101,5 +118,18 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
             randomStringBuilder.append(chars.charAt(index));
         }
         return randomStringBuilder.toString();
+    }
+
+    public void checkIfAccessed() {
+        if (MainActivity.mRTDB.dbChat.getAccessStatus() == true) {
+            thread.interrupt();
+            accessDetected();
+        }
+    }
+
+    public void accessDetected() {
+        finish();
+        Intent intent = new Intent(this, SellFlip.class);
+        startActivity(intent);
     }
 }

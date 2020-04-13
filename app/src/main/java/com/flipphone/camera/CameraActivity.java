@@ -1,13 +1,13 @@
 package com.flipphone.camera;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.flipphone.R;
 import com.otaliastudios.cameraview.CameraListener;
@@ -18,12 +18,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.flipphone.MainActivity.mRTDB;
+
 public class CameraActivity extends AppCompatActivity {
 
     @BindView(R.id.camera)
     CameraView camera;
     String message = "this didn't work";
     String frontPic = "error";
+    static AlertDialog flipAlertDialog;
+    static boolean visible = false;
 
 
     @Override
@@ -67,6 +71,19 @@ public class CameraActivity extends AppCompatActivity {
 
     }
 
+    public static void flipReceived() {
+        Log.e("FLIP", "alert dialog visible: " + String.valueOf(visible));
+        if (visible == true) {
+            flipAlertDialog.dismiss();
+            visible = false;
+        }
+    }
+
+    @OnClick(R.id.fab_picture)
+    void capturePictureSnapshot() {
+        camera.takePictureSnapshot();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -102,33 +119,39 @@ public class CameraActivity extends AppCompatActivity {
                         extras.putString("FRONT_PIC", frontPic);
                         intent.putExtras(extras);
                         startActivity(intent);
-                        finish();
+//                        finish();
                     }
                 });
 
-                PermissionUtils.requestReadWriteAppPermissions(this);
+//                PermissionUtils.requestReadWriteAppPermissions(this);
             }
 
     }
 
-    @OnClick(R.id.fab_picture)
-    void capturePictureSnapshot() {
-
-        camera.takePictureSnapshot();
-    }
-
     public void showPhotoTip() { //this was surprisingly easy to implement...
-        AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
         if (message.equals("front")) {
+            AlertDialog alertDialog = new AlertDialog.Builder(CameraActivity.this).create();
+
             alertDialog.setTitle(getString(R.string.front_photo_tip_title));
             alertDialog.setMessage(getString(R.string.front_photo_tip_message));
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    (dialog, which) -> dialog.dismiss());
+            alertDialog.show();
         }
         if (message.equals("back")) {
-            alertDialog.setTitle(getString(R.string.back_photo_tip_title));
-            alertDialog.setMessage(getString(R.string.back_photo_tip_message));
+            visible = true;
+            mRTDB.listenForData();
+
+            flipAlertDialog = new AlertDialog.Builder(CameraActivity.this).create();
+
+            flipAlertDialog.setTitle(getString(R.string.back_photo_tip_title));
+            flipAlertDialog.setMessage(getString(R.string.back_photo_tip_message));
+            flipAlertDialog.setButton(flipAlertDialog.BUTTON_NEUTRAL, "OK(debug)",
+                    (dialog, which) -> dialog.dismiss());
+
+            flipAlertDialog.setCancelable(false);
+            flipAlertDialog.setCanceledOnTouchOutside(false);
+            flipAlertDialog.show();
         }
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                (dialog, which) -> dialog.dismiss());
-        alertDialog.show();
     }
 }

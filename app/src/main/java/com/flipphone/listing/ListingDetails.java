@@ -12,12 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.flipphone.MainActivity;
 import com.flipphone.R;
 import com.flipphone.model.Phone;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -131,13 +131,13 @@ public class ListingDetails extends AppCompatActivity implements
                 phone.setPrice(price);
                 phone.setCondition(condition);
                 phone.setUserid(user);
-                name = MainActivity.mRTDB.dbChat.specifications.getManufacturer() +" " +MainActivity.mRTDB.dbChat.specifications.getName();
+                name = MainActivity.mRTDB.dbChat.getSpecificationObject().getManufacturer() + " " + MainActivity.mRTDB.dbChat.getSpecificationObject().getName();
                 phone.setName(name);
                 FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
                 StorageReference storageReference =  firebaseStorage.getReference().child("users").child(user);
                 phone.setPhoto(photoFront);
 
-                phone.setSpecifications(MainActivity.mRTDB.dbChat.getSpecifications());
+                phone.setSpecifications(MainActivity.mRTDB.dbChat.getSpecificationObject());
                 phone.setPhotoBack(photoBack);
                 //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
                 //String listing = mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).limitToLast(1).toString();
@@ -150,6 +150,9 @@ public class ListingDetails extends AppCompatActivity implements
                 firebaseFirestore.addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
+                        MainActivity.mRTDB.dbChat.listingSuccessfullyPosted();
+                        MainActivity.mRTDB.updateNode();
+
                         listing = firebaseFirestore.getResult().getId();
                         AlertDialog alertDialog = new AlertDialog.Builder(ListingDetails.this).create();
                         progressBar.setVisibility(View.GONE);

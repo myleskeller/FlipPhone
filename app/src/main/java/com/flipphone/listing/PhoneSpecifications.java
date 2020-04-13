@@ -9,22 +9,17 @@ import android.util.Log;
 
 import com.jaredrummler.android.device.DeviceName;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.io.StringWriter;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static android.os.Build.TAGS;
 import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
 import static android.telephony.TelephonyManager.PHONE_TYPE_GSM;
 import static android.telephony.TelephonyManager.PHONE_TYPE_NONE;
@@ -45,12 +40,9 @@ public class PhoneSpecifications { //maybe extending application not a good idea
     public String resolution;
     public String screen;
     public String name;
-
+    private String deviceName;
 
     private Context context; //ugh...
-    public PhoneSpecifications(){
-
-    };
 
     public PhoneSpecifications(Context _context, String _resolution, String _screen, String _battery) {
         context = _context;
@@ -67,6 +59,9 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         this.expandableStorage = getExpandableStorage();
         this.resolution = _resolution;
         this.screen = _screen;
+    }
+
+    public PhoneSpecifications() {
     }
 
     public static String getStringFromInputStream(InputStream stream) throws IOException {
@@ -111,7 +106,7 @@ public class PhoneSpecifications { //maybe extending application not a good idea
             total = 1024;
 
         Log.e(TAG, "storage: " + total + " GB, (" + (int) usable + " GB)");
-        return total + " GB, (" + (int) usable + " GB)";
+        return "storage: " + total + " GB, (" + (int) usable + " GB)";
     }
 
     public String getMemorySize() {
@@ -183,9 +178,9 @@ public class PhoneSpecifications { //maybe extending application not a good idea
                 //TODO: don't return model if model == manufacturer
 //                model = info.model;                // "SM-G955W"
                 model = Build.BOARD; //honestly, i prefer this for the model
-                //deviceName = info.getName();       // "Galaxy S8+"
+                deviceName = info.getName();       // "Galaxy S8+"
                 // FYI: We are on the UI thread.
-                Log.e(TAG, "phone: " + manufacturer +  " (" + model + ")");
+                Log.e(TAG, "phone: " + manufacturer + ' ' + deviceName + " (" + model + ")");
             }
         });
     }
@@ -379,7 +374,7 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         return BufferSize.toString();
     }
 
-    public String getManufacturer() {
+    String getManufacturer() {
         return manufacturer;
     }
 
@@ -401,23 +396,43 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         return capMatcher.appendTail(capBuffer).toString();
     }
 
-    @Override
-    public String toString(){
+//    @Override
+//    public String toString(){
+//        String output = "Specs:\n";
+//        output += "internalStorage: " + this.internalStorage + '\n';
+//        output += "expandableStorage: " + this.expandableStorage + '\n';
+//        output += "battery: " + this.battery + '\n';
+//        output += "telephony: " + this.telephony + '\n';
+//        output += "manufacturer: " + this.manufacturer + '\n';
+//        output += "model: " + this.model + '\n';
+//        output += "ram: " + this.ram + '\n';
+//        output += "cpu: " + this.cpu + '\n';
+//        output += "os: " + this.os + '\n';
+//        output += "resolution: " + this.resolution + '\n';
+//        output += "screen: " + this.screen + '\n';
+//        output += "name: " + this.name + '\n';
+//        output += "deviceName: " + this.deviceName;// + '\n';
+//
+//        return output;
+//    }
 
-        String output;
-        output  = "Internal Storage: " + this.internalStorage + '\n';
-        //output += "expandableStorage: " + this.expandableStorage + '\n';
-        output += "Battery:                 " + this.battery + '\n';
-        output += "Telephony:           " + this.telephony + '\n';
-        output += "Manufacturer:     " + this.manufacturer + '\n';
-        output += "Model:                  " + this.model + '\n';
-        output += "Ram:                     " + this.ram + '\n';
-        output += "Cpu:                      " + this.cpu + '\n';
-        output += "Os:                         " + this.os + '\n';
-        output += "Resolution:          " + this.resolution + '\n';
-        output += "Screen:                 " + this.screen + '\n';
-        output += "Name:                   " + this.name + '\n';
-        //output += "deviceName: " + this.deviceName;// + '\n';
+    @Override
+    public String toString() {
+        String output = this.manufacturer + ' ' + this.name + " (" + this.model + ")" + '\n';
+        //telephony
+        output += "Carrier: " + this.telephony + '\n';
+        //storage
+        output += "Storage: " + this.internalStorage;
+        if (this.expandableStorage != null)
+            output += ", (expandable)";
+        output += '\n';
+        //screen
+        output += "Screen: " + this.screen + " @" + this.resolution + '\n';
+        output += "Battery: " + this.battery + '\n';
+        output += "Memory: " + this.ram + '\n';
+        output += "Processor: " + this.cpu + '\n';
+        output += "Android " + this.os + '\n';
+//        output += "deviceName: " + this.deviceName;// + '\n';
 
         return output;
     }

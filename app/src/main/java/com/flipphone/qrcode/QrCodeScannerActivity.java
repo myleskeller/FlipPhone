@@ -16,7 +16,6 @@ import androidx.core.content.ContextCompat;
 
 import com.flipphone.MainActivity;
 import com.flipphone.camera.CameraActivity;
-import com.flipphone.FirebaseRTDB;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -138,11 +137,9 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         builder.setNeutralButton("CONTINUE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO: send acknowledgement of access to RTDB via qrcode link
-//                rtdb.sendData(result, "listingAccessed", "true");
+                MainActivity.mRTDB.setNodeID(result);
                 MainActivity.mRTDB.dbChat.listingSuccessfullyAccessed();
-                MainActivity.mRTDB.updateNode(result, MainActivity.mRTDB.dbChat);
-
+                MainActivity.mRTDB.updateNode();
                 TakeFrontPhoto();
             }
         });

@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.flipphone.MainActivity;
 import com.flipphone.R;
 import com.flipphone.listing.ListingDetails;
 import com.google.android.gms.tasks.Continuation;
@@ -43,6 +45,14 @@ public class PicturePreviewActivity extends Activity {
     String url;
     String frontPic, backPic;
     ProgressBar progressBar;
+
+//    public static void backPhotoReceived() {
+//    }
+//
+//    public static void frontPhotoReceived() {
+//
+//    }
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
@@ -184,14 +194,16 @@ public class PicturePreviewActivity extends Activity {
                         backPic = url;
                     }
                     if (message.equals("front")) {
-
+                        //TODO: add alert to to check for phone flip
+//                        MainActivity.mRTDB.dbChat.frontPhotoSuccessfullyTaken();
+//                        MainActivity.mRTDB.updateNode();
+//                        finish();
                         TakeBackPhoto();
-                        finish();
                     }
                     //janky navigation implementation
                     if (message.equals("back")) {
+//                        finish();
                         PriceAndDetails();
-                        finish();
                     }
                 }
             }
@@ -200,8 +212,14 @@ public class PicturePreviewActivity extends Activity {
     }
 
     public void TakeBackPhoto () {
-        //Intent intent = new Intent(this, CameraActivity.class);
-        Intent intent = new Intent();
+        MainActivity.mRTDB.dbChat.frontPhotoSuccessfullyTaken();
+        MainActivity.mRTDB.updateNode();
+        Log.e("CHAT", "frontPhotoTaken: " + MainActivity.mRTDB.dbChat.getFrontPhotoStatus());
+
+        Intent intent = new Intent(this, CameraActivity.class);
+
+
+//        Intent intent = new Intent();
         Bundle extras = new Bundle();
         extras.putString("EXTRA_MESSAGE", "back");
         extras.putString("FRONT_PIC", url);
@@ -215,6 +233,8 @@ public class PicturePreviewActivity extends Activity {
     }
 
     public void PriceAndDetails() {
+        MainActivity.mRTDB.dbChat.backPhotoSuccessfullyTaken();
+        MainActivity.mRTDB.updateNode();
         Intent intent = new Intent(this, ListingDetails.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_MESSAGE", "unused");
@@ -225,9 +245,10 @@ public class PicturePreviewActivity extends Activity {
         intent.putExtras(extras);
         progressBar.setVisibility(View.GONE);
 
+        //        finish();
         startActivity(intent);
-
     }
+
     private String getFileExtension(Uri uri){
         ContentResolver cr = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
