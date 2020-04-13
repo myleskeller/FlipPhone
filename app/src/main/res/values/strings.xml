@@ -66,8 +66,8 @@
         <item>New</item>
         <item>Refurbished</item>
         <item>Good</item>
-        <item>Damaged</item>
-        <item>Broken</item>
+        <item>Fair</item>
+        <item>Poor</item>
 
     </string-array>
 

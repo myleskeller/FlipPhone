@@ -20,7 +20,15 @@
             android:alpha="1.0"
             android:scaleType="centerCrop"
             tools:src="@drawable/phone_1" />
-
+        <ProgressBar
+            android:id="@+id/progress_circular_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/delete_textView"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            style="?android:attr/progressBarStyleLarge"
+            android:visibility="gone"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="300dp"

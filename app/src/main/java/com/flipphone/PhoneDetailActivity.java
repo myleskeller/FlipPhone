@@ -17,6 +17,8 @@
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +27,9 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -58,12 +62,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         View.OnClickListener,
         EventListener<DocumentSnapshot>,
         RatingDialogFragment.RatingListener {
-    @Override
-    public void onBackPressed() {
-        // super.onBackPressed();
-        Intent i = new Intent(PhoneDetailActivity.this, MainActivity.class);
-        startActivity(i);
-    }
+
     private static final String TAG = "PhoneDetail";
 
     public static final String KEY_PHONE_ID = "key_phone_id";
@@ -86,6 +85,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private ListenerRegistration mPhoneRegistration;
     private String listingPhoneNum;
     private RatingAdapter mRatingAdapter;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,11 +131,24 @@ public class PhoneDetailActivity extends AppCompatActivity implements
                             alertDialog.setTitle("Delete");
                             alertDialog.setMessage("Would you like to delete the listing?");
                             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes", ((dialog , which) -> {
-                                Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
-                                Bundle extras = new Bundle();
-                                extras.putString("DELETE", phoneId);
-                                intent.putExtras(extras);
-                                startActivity(intent);}));
+                                spinner = (ProgressBar)findViewById(R.id.progress_circular_delete);
+                                spinner.getIndeterminateDrawable().setColorFilter(Color.parseColor("#4285F4"), PorterDuff.Mode.SRC_IN);
+                                spinner.setVisibility(View.VISIBLE);
+                                FirebaseFirestore mRef = FirebaseFirestore.getInstance();
+                                mRef.collection("users").document(phoneId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(PhoneDetailActivity.this, "Listing Deleted", Toast.LENGTH_SHORT).show();
+                                        Intent newIntent = new Intent(PhoneDetailActivity.this, MainActivity.class);
+                                        spinner.setVisibility(View.GONE);
+                                        startActivity(newIntent);
+                                    }
+                                });
+                                /*Intent intent = new Intent(PhoneDetailActivity.this, DeleteActivity.class);
+                                //Bundle extras = new Bundle();
+                                //extras.putString("DELETE", phoneId);
+                                //intent.putExtras(extras);
+                                startActivity(intent);*/}));
                             alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", ((dialog , which) -> dialog.dismiss()));
                             alertDialog.show();
 

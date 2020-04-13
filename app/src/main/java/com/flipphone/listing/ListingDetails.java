@@ -72,11 +72,11 @@ public class ListingDetails extends AppCompatActivity implements
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 switch(progress){
                     case 0:
-                        condition = "Broken";
-                                break;
+                        condition = "Poor";
+                        break;
                     case 1:
-                        condition = "Damaged";
-                                break;
+                        condition = "Fair";
+                        break;
                     case 2:
                         condition = "Good";
                         break;
@@ -154,11 +154,13 @@ public class ListingDetails extends AppCompatActivity implements
                         progressBar.setVisibility(View.GONE);
                         alertDialog.setTitle("Listing Successful!");
                         alertDialog.setMessage("Would you like to view the listing?");
-                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"View", ((dialog , which) -> {
+                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"View Listing", ((dialog , which) -> {
                             Intent i = new Intent(ListingDetails.this, PhoneDetailActivity.class);
                             i.putExtra(PhoneDetailActivity.KEY_PHONE_ID, listing);
-                            startActivity(i);}));
-                        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", ((dialog , which) -> {
+                            startActivity(i);
+                            finish();
+                        }));
+                        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Back to Main", ((dialog , which) -> {
                             ReturnToMain();
                         }));
                         alertDialog.show();
@@ -174,5 +176,6 @@ public class ListingDetails extends AppCompatActivity implements
         Intent intent = new Intent(this, MainActivity.class);
 
         startActivity(intent);
+        finish();
     }
 }

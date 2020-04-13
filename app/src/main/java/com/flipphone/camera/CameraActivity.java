@@ -58,6 +58,7 @@ public class CameraActivity extends AppCompatActivity {
                 extras.putString("EXTRA_MESSAGE", message);
                 intent.putExtras(extras);
                 startActivityForResult(intent, 0);
+
             }
         });
 
@@ -100,6 +101,7 @@ public class CameraActivity extends AppCompatActivity {
                         extras.putString("FRONT_PIC", frontPic);
                         intent.putExtras(extras);
                         startActivity(intent);
+                        finish();
                     }
                 });
 

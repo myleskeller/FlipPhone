@@ -186,10 +186,12 @@ public class PicturePreviewActivity extends Activity {
                     if (message.equals("front")) {
 
                         TakeBackPhoto();
+                        finish();
                     }
                     //janky navigation implementation
                     if (message.equals("back")) {
                         PriceAndDetails();
+                        finish();
                     }
                 }
             }
