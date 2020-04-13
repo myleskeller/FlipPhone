@@ -45,48 +45,26 @@ public class PhoneSpecifications { //maybe extending application not a good idea
     public String resolution;
     public String screen;
     public String name;
-    public boolean rooted;
     private String deviceName;
-    private String memory;
 
     private Context context; //ugh...
 
-    //    public DeviceSpecs(){
     public PhoneSpecifications(Context _context, String _resolution, String _screen, String _battery) {
         context = _context;
         getDeviceNames();
-//        PhoneSpecifications specs = new PhoneSpecifications();
         this.manufacturer = getManufacturer();
         this.name = getName();
         this.model = getModel();
-        this.telephony = getTelephonyType();
-//        this.battery = getBatteryCapacity();
+        this.telephony = getTelephony();
         this.battery = _battery;
         this.os = getOS();
         this.ram = getMemorySize();
         this.cpu = getCPU();
-//        this.internalStorage = getInternalStorage();
         this.internalStorage = getInternalMemorySize();
         this.expandableStorage = getExpandableStorage();
-//        this.resolution = getScreenResolution();
         this.resolution = _resolution;
         this.screen = _screen;
-        this.rooted = getRootStatus();
     }
-
-
-//    public String getScreenResolution() {
-//        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-//        Display display = wm.getDefaultDisplay();
-////        Display display = getWindowManager().getDefaultDisplay();
-//        Point size = new Point();
-//        display.getSize(size);
-//        int width = size.x;
-//        int height = size.y;
-//
-//        Log.e(TAG, "resolution: " + width + "x" + height);
-//        return width + "x" + height;
-//    }
 
     public static String getStringFromInputStream(InputStream stream) throws IOException {
         int n = 0;
@@ -167,47 +145,8 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         Log.e(TAG, "memory: " + lastValue);
         return lastValue;
     }
-//}
 
-    public boolean getRootStatus() {
-        // get from build info
-        String buildTags = TAGS;
-        if (buildTags != null && buildTags.contains("test-keys")) {
-            Log.e(TAG, "rooted: by build tag");
-            return true;
-        }
-        // check if /system/app/Superuser.apk is present
-        try {
-            File file = new File("/system/app/Superuser.apk");
-            if (file.exists()) {
-                Log.e(TAG, "rooted: /system/app/Superuser.apk");
-                return true;
-            }
-        } catch (Throwable e1) {
-            // ignore
-        }
-        // from executing shell command
-        Process process = null;
-        try {
-            process = Runtime.getRuntime().exec("which su");
-            Log.v(TAG, "'" + "which su" + "' successfully excecuted.");
-            Log.e(TAG, "rooted: su command");
-            return true;
-        } catch (final Exception e) {
-            Log.e(TAG, "" + e.getMessage());
-            return false;
-        } finally {
-            if (process != null) {
-                try {
-                    process.destroy();
-                } catch (final Exception e) {
-                    Log.e(TAG, "" + e.getMessage());
-                }
-            }
-        }
-    }
-
-    public String getTelephonyType() {
+    public String getTelephony() {
         TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String carrier = manager.getNetworkOperatorName().trim();
         int radio_val = manager.getPhoneType();
@@ -229,37 +168,6 @@ public class PhoneSpecifications { //maybe extending application not a good idea
             }
         }
     }
-
-//    public String getBatteryCapacity() {
-//        // Power profile class instance
-//        Object mPowerProfile_ = null;
-//        // Reset variable for battery capacity
-//        double batteryCapacity = 0;
-//        // Power profile class name
-//        final String POWER_PROFILE_CLASS = "com.android.internal.os.PowerProfile";
-//        try {
-//            // Get power profile class and create instance. We have to do this
-//            // dynamically because android.internal package is not part of public API
-//            mPowerProfile_ = Class.forName(POWER_PROFILE_CLASS).getConstructor(Context.class).newInstance(this);
-//        } catch (Exception e) {
-//            // Class not found?
-//            e.printStackTrace();
-//        }
-//        try {
-//            // Invoke PowerProfile method "getAveragePower" with param "battery.capacity"
-//            batteryCapacity = (Double) Class
-//                    .forName(POWER_PROFILE_CLASS)
-//                    .getMethod("getAveragePower", java.lang.String.class)
-//                    .invoke(mPowerProfile_, "battery.capacity");
-//        } catch (Exception e) {
-//            // Something went wrong
-//            e.printStackTrace();
-//        }
-//
-//        Log.e(TAG, "battery: " + batteryCapacity + "mAh");
-//        return batteryCapacity + "mAh";
-//    }
-
     private void getDeviceNames() {
         DeviceName.with(context).request(new DeviceName.Callback() {
             @Override
@@ -296,7 +204,7 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         return codeName + " v" + release + ", API Level: " + Build.VERSION.SDK_INT;
     }
 
-//    private String getProcessor(){ vomits out everything about cpu, mostly for debugging
+//    private String getProcessor(){ //vomits out everything about cpu, mostly for debugging
 //        String[] DATA = {"/system/bin/cat", "/proc/cpuinfo"};
 //        String Holder = "";
 //        byte[] byteArry = new byte[1024];
@@ -328,6 +236,29 @@ public class PhoneSpecifications { //maybe extending application not a good idea
 //        return null;
 //    }
 
+    private String getProcessor(){ //vomits out everything about cpu, mostly for debugging
+        String[] DATA = {"/system/bin/cat", "/proc/cpuinfo"};
+        String Holder = "";
+        byte[] byteArry = new byte[1024];
+
+        try{
+            ProcessBuilder processBuilder = new ProcessBuilder(DATA);
+            Process process = processBuilder.start();
+            InputStream inputStream;
+            inputStream = process.getInputStream();
+            while(inputStream.read(byteArry) != -1){
+                String temp = new String(byteArry);
+                if (temp.contains("Hardware")){
+                    return temp.replace(":", "").trim();
+                }
+            }
+            inputStream.close();
+        } catch(IOException ex){
+            ex.printStackTrace();
+        }
+        return "Arm64";
+    }
+
     public String getCPU() {
         String processor = getProcessor();
         int cores = getNumberOfCores();
@@ -336,35 +267,35 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         if (cores == 1 || cores == 0)
             return processor;
         else {
-            Log.e(TAG, "cpu: " + processor + " (" + cores + " Cores)");
-            return processor + " (" + cores + " Cores)";
+            Log.e(TAG, "cpu: " + processor + " (" + cores + "-core)");
+            return processor + " (" + cores + "-core)";
         }
     }
 
-    private String getProcessor() {
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader("/proc/cpuinfo"));
-            String str;
-            Map<String, String> output = new HashMap<>();
-            while ((str = br.readLine()) != null) {
-                String[] data = str.split(":");
-                if (data.length > 1) {
-                    String key = data[0].trim().replace(" ", "_");
-                    if (key.equals("model_name")) key = "cpu_model";
-                    String value = data[1].trim();
-                    if (key.equals("cpu_model"))
-                        value = value.replaceAll("\\s+", " ");
-                    output.put(key, value);
-                }
-            }
-            br.close();
-            return output.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    private String getProcessor() {
+//        BufferedReader br = null;
+//        try {
+//            br = new BufferedReader(new FileReader("/proc/cpuinfo"));
+//            String str;
+//            Map<String, String> output = new HashMap<>();
+//            while ((str = br.readLine()) != null) {
+//                String[] data = str.split(":");
+//                if (data.length > 1) {
+//                    String key = data[0].trim().replace(" ", "_");
+//                    if (key.equals("model_name")) key = "cpu_model";
+//                    String value = data[1].trim();
+//                    if (key.equals("cpu_model"))
+//                        value = value.replaceAll("\\s+", " ");
+//                    output.put(key, value);
+//                }
+//            }
+//            br.close();
+//            return output.toString();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     private int getNumberOfCores() {
         if (Build.VERSION.SDK_INT >= 17) {
@@ -406,16 +337,6 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         } else
             return null;
     }
-
-//    public String getInternalStorage() {
-//        File path = Environment.getDataDirectory();
-//        StatFs stat = new StatFs(path.getPath());
-//        long BlockSize = stat.getBlockSize();
-//        long TotalBlocks = stat.getBlockCount();
-//        Log.e(TAG, "storage: " + formatSize(TotalBlocks * BlockSize));
-//
-//        return formatSize(TotalBlocks * BlockSize);
-//    }
 
     //TODO: test with device that has external SD card
     private boolean externalMemoryAvailable() {
@@ -482,5 +403,25 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         }
 
         return capMatcher.appendTail(capBuffer).toString();
+    }
+
+    @Override
+    public String toString(){
+        String output = "Specs:\n";
+        output += "internalStorage: " + this.internalStorage + '\n';
+        output += "expandableStorage: " + this.expandableStorage + '\n';
+        output += "battery: " + this.battery + '\n';
+        output += "telephony: " + this.telephony + '\n';
+        output += "manufacturer: " + this.manufacturer + '\n';
+        output += "model: " + this.model + '\n';
+        output += "ram: " + this.ram + '\n';
+        output += "cpu: " + this.cpu + '\n';
+        output += "os: " + this.os + '\n';
+        output += "resolution: " + this.resolution + '\n';
+        output += "screen: " + this.screen + '\n';
+        output += "name: " + this.name + '\n';
+        output += "deviceName: " + this.deviceName;// + '\n';
+
+        return output;
     }
 }

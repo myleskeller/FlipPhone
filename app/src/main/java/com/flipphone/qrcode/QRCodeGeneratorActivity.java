@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.flipphone.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.flipphone.FirebaseRTDB;
@@ -25,13 +26,15 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.Random;
 
+import static com.flipphone.MainActivity.mRTDB;
+
 public class QRCodeGeneratorActivity extends AppCompatActivity {
 
     TextView textView;
     TextView textView2;
     ImageView qrCode;
     ImageView userPhoto;
-    FirebaseRTDB rtdb = new FirebaseRTDB();
+//    FirebaseRTDB rtdb = new FirebaseRTDB();
 
     protected void onCreate(Bundle savedInstanceState) {
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
@@ -64,17 +67,20 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
         }
 
         //make qrcode
-//        String url = "dookie";
-        String url = getRandomString(24);
+        //TODO: change this placeholder back after done getting rtdb wokrking
+//        String url = getRandomString(24);
+//        String url = "0D32ALEGT8DF28QEO119HIRI";
+        mRTDB.makeNode();
+        mRTDB.listenForData();
 
-        Log.v("QR_GENERATE", "i received: " + url); //returned null???
+        Log.v("QR_GENERATE", "generated qrcode of " + mRTDB.getNodeID()); //returned null???
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             Map<EncodeHintType, Object> hints = new EnumMap<>(EncodeHintType.class);
             hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
             hints.put(EncodeHintType.MARGIN, 1); /* default = 4 */
 
-            BitMatrix bitMatrix = multiFormatWriter.encode(url, BarcodeFormat.QR_CODE, dimensions, dimensions, hints);
+            BitMatrix bitMatrix = multiFormatWriter.encode(mRTDB.getNodeID(), BarcodeFormat.QR_CODE, dimensions, dimensions, hints);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             qrCode.setImageBitmap(bitmap);
@@ -82,8 +88,8 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         // should make a (probably) empty node in the database with the key of the random string
-        rtdb.makeNode(url);
-        rtdb.listenForData("idk");
+//        rtdb.makeNode(url);
+//        rtdb.listenForData(url);
     }
 
     private static  String getRandomString(int length) {

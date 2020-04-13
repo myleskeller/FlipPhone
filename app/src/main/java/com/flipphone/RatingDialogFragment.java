@@ -27,9 +27,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.flipphone.listing.Chat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.flipphone.model.Rating;
-import com.flipphone.R;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
@@ -43,7 +43,7 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
     private MaterialRatingBar mRatingBar;
     private EditText mRatingText;
 
-    interface RatingListener {
+    public interface RatingListener {
 
         void onRating(Rating rating);
 
@@ -57,7 +57,6 @@ public class RatingDialogFragment extends DialogFragment implements View.OnClick
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_rating, container, false);
-        //mRatingBar = v.findViewById(R.id.phone_form_rating);
         mRatingText = v.findViewById(R.id.phone_form_text);
 
         v.findViewById(R.id.phone_form_button).setOnClickListener(this);

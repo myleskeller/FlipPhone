@@ -1,4 +1,4 @@
-package com.flipphone;
+package com.flipphone.listing;
 
 import android.os.Bundle;
 
@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.flipphone.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.flipphone.model.Phone;
 import com.flipphone.R;

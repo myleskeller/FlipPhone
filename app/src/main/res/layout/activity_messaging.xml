@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.flipphone.Chat">
+    tools:context="com.flipphone.listing.Chat">
 
     <TextView
         android:id="@+id/BOTTOM_TEXT"
         android:layout_width="211dp"
         android:layout_height="573dp"
-        android:fontFamily="@font/bungee_inline"
         android:text="@string/temp_chat"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="100dp"

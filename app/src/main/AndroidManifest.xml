@@ -30,20 +30,16 @@
         </activity>
         <activity android:name="com.flipphone.SellSuccess" />
         <activity android:name="com.flipphone.SellFlip" />
-        <activity android:name="com.flipphone.Chat" />
-        <activity android:name="com.flipphone.PhoneDetailActivity" />
+        <activity android:name="com.flipphone.listing.Chat" />
+        <activity android:name="com.flipphone.listing.PhoneDetailActivity" />
         <activity android:name=".qrcode.QrCodeScannerActivity" />
         <activity android:name=".camera.PicturePreviewActivity" />
         <activity android:name=".camera.CameraActivity" />
         <activity android:name=".qrcode.QRCodeGeneratorActivity" />
         <activity android:name="com.flipphone.SellActivity" />
         <activity android:name="com.flipphone.ViewPagerAdapter" />
-        <activity android:name="com.flipphone.DeleteActivity" />
-        <activity android:name="com.flipphone.ImageSliderActivity"/>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity android:name="com.flipphone.listing.DeleteActivity" />
+        <activity android:name="com.flipphone.listing.ImageSliderActivity"/>
     </application>
 
 </manifest>

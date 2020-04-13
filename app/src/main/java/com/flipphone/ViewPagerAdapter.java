@@ -16,7 +16,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     private Context mContext;
     private String[] arrayList;
 
-    ViewPagerAdapter(Context context, String[] arrayList){
+    public ViewPagerAdapter(Context context, String[] arrayList){
         this.mContext = context;
         this.arrayList = arrayList;
     }

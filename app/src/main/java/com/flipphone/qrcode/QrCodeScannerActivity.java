@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.flipphone.MainActivity;
 import com.flipphone.camera.CameraActivity;
 import com.flipphone.FirebaseRTDB;
 import com.google.zxing.Result;
@@ -27,7 +28,7 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView mScannerView;
     private static int camId = Camera.CameraInfo.CAMERA_FACING_BACK;
-    FirebaseRTDB rtdb = new FirebaseRTDB();
+//    FirebaseRTDB rtdb = new FirebaseRTDB();
 
 
     @Override
@@ -137,8 +138,11 @@ public class QrCodeScannerActivity extends AppCompatActivity implements ZXingSca
         builder.setNeutralButton("CONTINUE", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //TODO: send acknwledgement of access to RTDB via qrcode link
-//                rtdb.sendData(result, "paired", "true");
+                //TODO: send acknowledgement of access to RTDB via qrcode link
+//                rtdb.sendData(result, "listingAccessed", "true");
+                MainActivity.mRTDB.dbChat.listingSuccessfullyAccessed();
+                MainActivity.mRTDB.updateNode(result, MainActivity.mRTDB.dbChat);
+
                 TakeFrontPhoto();
             }
         });

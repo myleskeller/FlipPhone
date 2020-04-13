@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- package com.flipphone;
+ package com.flipphone.listing;
 
 import android.content.Context;
 import android.content.Intent;
@@ -37,7 +37,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.flipphone.camera.CameraActivity;
+import com.flipphone.MainActivity;
+import com.flipphone.R;
+import com.flipphone.RatingDialogFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -47,7 +49,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.flipphone.adapter.RatingAdapter;
 import com.flipphone.model.Phone;
 import com.flipphone.model.Rating;
-import com.flipphone.R;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;

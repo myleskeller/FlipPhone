@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.flipphone.listing.PhoneSpecifications;
+import com.flipphone.model.Phone;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirebaseRTDB extends Service {
     private String TAG = "RTDB";
@@ -20,48 +25,76 @@ public class FirebaseRTDB extends Service {
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
     private DatabaseReference myRef;
+    private DatabaseReference listingRef;
     private LocalBroadcastManager broadcaster;
+    private String nodeID;
+
+    //    private PhoneSpecifications dbSpecs = null;
+    public DeviceChat dbChat = new DeviceChat(); //init communication channel
+
+    public void setPhoneSpecs(@NonNull PhoneSpecifications _chatSpecs){ dbChat.specifications = _chatSpecs; }
+
+//    public void setChannel(@NonNull DeviceChat _dbChat){ dbChat = _dbChat; }
 
     public FirebaseRTDB() {
         Log.d(TAG, "FirebaseRTDB service started");
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
+        listingRef = myRef.child(DB_CHILD);
     }
 
-    // Write to database
-    public void sendData(String listingID, String type, String data){
-//        myRef.child(DB_CHILD).push().setValue(new deviceChat(type, data));        this works 100% for RTDB/listings/...../deviceChat{}
+    public void updateNode(String listingID, DeviceChat deviceChat){
+        DatabaseReference nodeRef = listingRef.child(nodeID);
+        Map<String, Object> updatedChat = new HashMap<>();
+        updatedChat.put("listingAccessed", deviceChat.listingAccessed);
+        updatedChat.put("frontPhotoTaken", deviceChat.frontPhotoTaken);
+        updatedChat.put("flipped", deviceChat.flipped);
+        updatedChat.put("backPhotoTaken", deviceChat.backPhotoTaken);
+        updatedChat.put("listingPosted", deviceChat.listingPosted);
+        nodeRef.updateChildren(updatedChat);
 
-        String dook = myRef.child(DB_CHILD).child(listingID).push().getKey();
-        myRef.child(DB_CHILD).child(listingID).setValue(new DeviceChat(type, data));
-        Log.w(TAG, "sent: '" + type + "', '" + data + "' to database");
-        Log.w(TAG, "getKey() = "+ dook);
+        Log.w(TAG, "updated '" + listingID + "' with " + deviceChat.toString());
     }
 
-    // Write to database
-    public void makeNode(String listingID){
-        String dook = myRef.child(DB_CHILD).child(listingID).push().getKey();
-        myRef.child(DB_CHILD).child(listingID).setValue(new DeviceChat("auth_string", listingID));
-        Log.e(TAG, "created node '" + listingID + "' in database");
-        Log.w(TAG, "getKey() = " + dook);
+    public void makeNode(){
+        DatabaseReference keyReference = listingRef.push();
+        nodeID = keyReference.getKey();
+        keyReference.setValue(dbChat);
+
+        Map<String, Object> newChat = new HashMap<>();
+        newChat.put("listingAccessed", dbChat.listingAccessed);
+        newChat.put("frontPhotoTaken", dbChat.frontPhotoTaken);
+        newChat.put("flipped", dbChat.flipped);
+        newChat.put("backPhotoTaken", dbChat.backPhotoTaken);
+        newChat.put("listingPosted", dbChat.listingPosted);
+        newChat.put("specifications", dbChat.specifications);  //we'll see how this turns out..
+        keyReference.setValue(newChat);
+
+        Log.w(TAG, "created node '" + nodeID + "' in database with " + dbChat.specifications.toString());
+    }
+
+    public String getNodeID(){
+        return nodeID;
     }
 
     // Read from the database (continuously)
-    public void listenForData(String data){
+    public void listenForData(){
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 //TODO: do more with this to extract exactly what you need
-                String data = dataSnapshot.getValue().toString();
+                String data = dataSnapshot.getValue().toString();                                 //returns /listings
+//                String data = dataSnapshot.child(DB_CHILD).child(listingID).getValue().toString();  //returns listings/[listingID]
+//                String data = dataSnapshot.child(DB_CHILD).child(listingID).child("type").getValue().toString(); //returns listings/[listingID]/[type]
 
                 Log.e(TAG, "received data: " + data);
 
                 // if new data is received
-                Intent intent = new Intent("MyData");
-                intent.putExtra("data", data);
+//                Intent intent = new Intent("MyData");
+//                intent.putExtra("data", data);
                 // intent.putExtra("lng", remoteMessage.getData().get("DriverLongitude"));
 
                 //allegedly sends this event to another activity
@@ -83,7 +116,7 @@ public class FirebaseRTDB extends Service {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-        Log.w(TAG, "listening for: '" + data + "' being added to database");
+        Log.w(TAG, "listening for changes to '" + nodeID + "' in database");
     }
 
     @Override
@@ -145,5 +178,17 @@ public class FirebaseRTDB extends Service {
         public void listingSuccessfullyPosted() {
             this.listingPosted = true;
         }
+        @Override
+        public String toString(){
+            String output = "Node:\n";
+            output += "listingAccessed: " + String.valueOf(this.listingAccessed) + '\n';
+            output += "frontPhotoTaken: " + String.valueOf(this.frontPhotoTaken) + '\n';
+            output += "flipped: " + String.valueOf(this.flipped) + '\n';
+            output += "backPhotoTaken: " + String.valueOf(this.backPhotoTaken) + '\n';
+            output += "listingPosted: " + String.valueOf(this.listingPosted) + '\n';
+            output += "specifications: " + this.specifications.toString() + '\n';
+            return output;
+        }
+
     }
 }

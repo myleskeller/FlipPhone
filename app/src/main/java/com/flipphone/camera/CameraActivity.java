@@ -62,7 +62,8 @@ public class CameraActivity extends AppCompatActivity {
             }
         });
 
-        PermissionUtils.requestReadWriteAppPermissions(this);
+        //i don't think this is necessary anymore since we're not saving the file locally
+//        PermissionUtils.requestReadWriteAppPermissions(this);
 
     }
 

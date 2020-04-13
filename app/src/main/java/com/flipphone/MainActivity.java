@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.flipphone.camera.CameraActivity;
+import com.flipphone.listing.PhoneDetailActivity;
 import com.flipphone.listing.PhoneSpecifications;
 import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
@@ -65,9 +65,11 @@ public class MainActivity extends AppCompatActivity implements
     private FilterDialogFragment mFilterDialog;
     private PhoneAdapter mAdapter;
     private MainActivityViewModel mViewModel;
-    public FirebaseRTDB.DeviceChat mChat;
+    public static FirebaseRTDB mRTDB;
+//    public static FirebaseRTDB.DeviceChat mChat;
     private int mScreenWidth;
     private int mScreenHeight;
+//    public PhoneSpecifications mSpecs;
     @Override
     public void onBackPressed() {
        // super.onBackPressed();
@@ -104,7 +106,11 @@ public class MainActivity extends AppCompatActivity implements
         mFilterDialog = new FilterDialogFragment();
 
         // Create RTDB chat object and populate with phone specifications
-        mChat = new FirebaseRTDB.DeviceChat(new PhoneSpecifications(this, getScreenResolution(), getScreenSize(), getBatteryCapacity()));
+        //TODO: maybe move this so that they're only called when in selling mode
+        mRTDB = new FirebaseRTDB();
+//        mRTDB.setChannel(new FirebaseRTDB.DeviceChat());
+        //TODO: maybe move this so that it's only called when in selling mode && which_phone == old
+        mRTDB.setPhoneSpecs(new PhoneSpecifications(this, getScreenResolution(), getScreenSize(), getBatteryCapacity()));
     }
 
     public String getScreenResolution() { //i hate that this had to be in MainActivity, but it works..
@@ -136,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements
         double x = Math.pow(mScreenWidth / dm.xdpi, 2);
         double y = Math.pow(mScreenHeight / dm.ydpi, 2);
         double screenInches = Math.sqrt(x + y);
-        String screen = twoDecimalForm.format(screenInches).concat("\"");
+        String screen = twoDecimalForm.format(screenInches).concat(" inches");
         Log.e("SPEC", "screen: " + screen);
         return screen;
     }

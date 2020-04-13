@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="flip_phone/app" />
+      <module fileurl="file://$PROJECT_DIR$/FlipPhone.iml" filepath="$PROJECT_DIR$/FlipPhone.iml" group="FlipPhone" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="FlipPhone/app" />
       <module fileurl="file://$PROJECT_DIR$/flip_phone.iml" filepath="$PROJECT_DIR$/flip_phone.iml" group="flip_phone" />
     </modules>
   </component>

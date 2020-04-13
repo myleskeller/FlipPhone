@@ -1,4 +1,4 @@
-package com.flipphone;
+package com.flipphone.listing;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.flipphone.MainActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.flipphone.R;
 import com.google.firebase.firestore.FirebaseFirestore;
