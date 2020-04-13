@@ -131,11 +131,13 @@ public class ListingDetails extends AppCompatActivity implements
                 phone.setPrice(price);
                 phone.setCondition(condition);
                 phone.setUserid(user);
+                name = MainActivity.mRTDB.dbChat.specifications.getManufacturer() +" " +MainActivity.mRTDB.dbChat.specifications.getName();
                 phone.setName(name);
                 FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
                 StorageReference storageReference =  firebaseStorage.getReference().child("users").child(user);
                 phone.setPhoto(photoFront);
 
+                phone.setSpecifications(MainActivity.mRTDB.dbChat.getSpecifications());
                 phone.setPhotoBack(photoBack);
                 //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
                 //String listing = mDatabase.child("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).limitToLast(1).toString();

@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -65,7 +67,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         RatingDialogFragment.RatingListener {
 
     private static final String TAG = "PhoneDetail";
-
+    private CardView descriptionView;
     public static final String KEY_PHONE_ID = "key_phone_id";
     String phoneId;
     private ImageView mImageView;
@@ -80,6 +82,7 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private ImageButton deleteButton;
     private TextView listingDescription;
     private RatingDialogFragment mRatingDialog;
+    private TextView specText;
 
     private FirebaseFirestore mFirestore;
     private DocumentReference mPhoneRef;
@@ -87,12 +90,15 @@ public class PhoneDetailActivity extends AppCompatActivity implements
     private String listingPhoneNum;
     private RatingAdapter mRatingAdapter;
     private ProgressBar spinner;
+    private LinearLayout showSpecs;
+    private LinearLayout hideSpecs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_detail);
-
+        specText = findViewById(R.id.spec_text);
+        descriptionView = findViewById(R.id.desc_visibility);
         mImageView = findViewById(R.id.phone_image);
         mNameView = findViewById(R.id.phone_name);
         //mRatingIndicator = findViewById(R.id.phone_rating);
@@ -104,7 +110,8 @@ public class PhoneDetailActivity extends AppCompatActivity implements
         //mRatingsRecycler = findViewById(R.id.recycler_ratings);
         deleteButton = findViewById(R.id.delete_button);
         listingDescription = findViewById(R.id.listing_description);
-
+        showSpecs = findViewById(R.id.with_specification);
+        hideSpecs = findViewById(R.id.without_specification);
         findViewById(R.id.phone_button_back).setOnClickListener(this);
         findViewById(R.id.fab_show_rating_dialog).setOnClickListener(this);
         findViewById(R.id.phone_image).setOnClickListener(this);
@@ -120,7 +127,16 @@ public class PhoneDetailActivity extends AppCompatActivity implements
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Phone phone = documentSnapshot.toObject(Phone.class);
-
+                if(!phone.getDescription().equals(""))
+                {
+                    descriptionView.setVisibility(View.VISIBLE);
+                }
+                if(!phone.getName().equals("null"))
+                {
+                    showSpecs.setVisibility(View.VISIBLE);
+                    hideSpecs.setVisibility(View.GONE);
+                    specText.setText(String.format(phone.getSpecifications().toString(),15));
+                }
                 if(phone.getUserid().equals(user)) {
                     deleteButton.setVisibility(View.VISIBLE);
                     listingPhoneNum = phone.getUserid();

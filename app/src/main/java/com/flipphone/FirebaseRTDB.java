@@ -134,7 +134,7 @@ public class FirebaseRTDB extends Service {
         private boolean flipped;
         private boolean backPhotoTaken;
         private boolean listingPosted;
-        private PhoneSpecifications specifications;
+        public PhoneSpecifications specifications;
 
         public DeviceChat() {
             this.listingAccessed = false;
@@ -177,6 +177,9 @@ public class FirebaseRTDB extends Service {
 
         public void listingSuccessfullyPosted() {
             this.listingPosted = true;
+        }
+        public PhoneSpecifications getSpecifications() {
+            return this.specifications;
         }
         @Override
         public String toString(){

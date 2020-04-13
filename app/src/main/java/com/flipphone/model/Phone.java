@@ -15,6 +15,7 @@
  */
  package com.flipphone.model;
 
+import com.flipphone.listing.PhoneSpecifications;
 import com.google.firebase.firestore.IgnoreExtraProperties;
 
 /**
@@ -39,7 +40,7 @@ public class Phone {
 
     private String userid;
     private String description= "None";
-    private String specifications;
+    private PhoneSpecifications specifications;
     private String name;
 
     public String getPhotoFront() {
@@ -69,11 +70,11 @@ public class Phone {
         this.description = description;
     }
 
-    public String getSpecifications() {
+    public PhoneSpecifications getSpecifications() {
         return specifications;
     }
 
-    public void setSpecifications(String specifications) {
+    public void setSpecifications(PhoneSpecifications specifications) {
         this.specifications = specifications;
     }
 

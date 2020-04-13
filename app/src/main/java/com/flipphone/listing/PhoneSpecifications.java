@@ -45,9 +45,12 @@ public class PhoneSpecifications { //maybe extending application not a good idea
     public String resolution;
     public String screen;
     public String name;
-    private String deviceName;
+
 
     private Context context; //ugh...
+    public PhoneSpecifications(){
+
+    };
 
     public PhoneSpecifications(Context _context, String _resolution, String _screen, String _battery) {
         context = _context;
@@ -108,7 +111,7 @@ public class PhoneSpecifications { //maybe extending application not a good idea
             total = 1024;
 
         Log.e(TAG, "storage: " + total + " GB, (" + (int) usable + " GB)");
-        return "storage: " + total + " GB, (" + (int) usable + " GB)";
+        return total + " GB, (" + (int) usable + " GB)";
     }
 
     public String getMemorySize() {
@@ -180,9 +183,9 @@ public class PhoneSpecifications { //maybe extending application not a good idea
                 //TODO: don't return model if model == manufacturer
 //                model = info.model;                // "SM-G955W"
                 model = Build.BOARD; //honestly, i prefer this for the model
-                deviceName = info.getName();       // "Galaxy S8+"
+                //deviceName = info.getName();       // "Galaxy S8+"
                 // FYI: We are on the UI thread.
-                Log.e(TAG, "phone: " + manufacturer + ' ' + deviceName + " (" + model + ")");
+                Log.e(TAG, "phone: " + manufacturer +  " (" + model + ")");
             }
         });
     }
@@ -260,16 +263,9 @@ public class PhoneSpecifications { //maybe extending application not a good idea
     }
 
     public String getCPU() {
-        String processor = getProcessor();
         int cores = getNumberOfCores();
-        if (processor == null)
-            return null;
-        if (cores == 1 || cores == 0)
-            return processor;
-        else {
-            Log.e(TAG, "cpu: " + processor + " (" + cores + "-core)");
-            return processor + " (" + cores + "-core)";
-        }
+        Log.e(TAG, "cpu: " + cores + "-core");
+        return String.valueOf(cores) + "-core";
     }
 
 //    private String getProcessor() {
@@ -383,7 +379,7 @@ public class PhoneSpecifications { //maybe extending application not a good idea
         return BufferSize.toString();
     }
 
-    private String getManufacturer() {
+    public String getManufacturer() {
         return manufacturer;
     }
 
@@ -407,20 +403,21 @@ public class PhoneSpecifications { //maybe extending application not a good idea
 
     @Override
     public String toString(){
-        String output = "Specs:\n";
-        output += "internalStorage: " + this.internalStorage + '\n';
-        output += "expandableStorage: " + this.expandableStorage + '\n';
-        output += "battery: " + this.battery + '\n';
-        output += "telephony: " + this.telephony + '\n';
-        output += "manufacturer: " + this.manufacturer + '\n';
-        output += "model: " + this.model + '\n';
-        output += "ram: " + this.ram + '\n';
-        output += "cpu: " + this.cpu + '\n';
-        output += "os: " + this.os + '\n';
-        output += "resolution: " + this.resolution + '\n';
-        output += "screen: " + this.screen + '\n';
-        output += "name: " + this.name + '\n';
-        output += "deviceName: " + this.deviceName;// + '\n';
+
+        String output;
+        output  = "Internal Storage: " + this.internalStorage + '\n';
+        //output += "expandableStorage: " + this.expandableStorage + '\n';
+        output += "Battery:                 " + this.battery + '\n';
+        output += "Telephony:           " + this.telephony + '\n';
+        output += "Manufacturer:     " + this.manufacturer + '\n';
+        output += "Model:                  " + this.model + '\n';
+        output += "Ram:                     " + this.ram + '\n';
+        output += "Cpu:                      " + this.cpu + '\n';
+        output += "Os:                         " + this.os + '\n';
+        output += "Resolution:          " + this.resolution + '\n';
+        output += "Screen:                 " + this.screen + '\n';
+        output += "Name:                   " + this.name + '\n';
+        //output += "deviceName: " + this.deviceName;// + '\n';
 
         return output;
     }
