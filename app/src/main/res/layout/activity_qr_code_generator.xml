@@ -48,7 +48,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:translationX="16dp"
-            app:srcCompat="@drawable/pizza_monster"
+            app:srcCompat="@drawable/ic_flip_phone_dark_24dp"
             android:layout_marginRight="16dp"
             android:contentDescription="@string/user_avatar" />
 

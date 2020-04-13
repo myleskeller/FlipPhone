@@ -58,6 +58,20 @@ public class FirebaseRTDB extends Service {
         Log.w(TAG, "updated '" + nodeID + "' with " + dbChat.toString());
     }
 
+    public void updateNodeSpecs() {
+        DatabaseReference nodeRef = listingRef.child(nodeID);
+        Map<String, Object> updatedChat = new HashMap<>();
+//        updatedChat.put("listingAccessed", dbChat.listingAccessed);
+//        updatedChat.put("frontPhotoTaken", dbChat.frontPhotoTaken);
+//        updatedChat.put("flipped", dbChat.flipped);
+//        updatedChat.put("backPhotoTaken", dbChat.backPhotoTaken);
+//        updatedChat.put("listingPosted", dbChat.listingPosted);
+        updatedChat.put("specifications", dbChat.specifications);
+        nodeRef.updateChildren(updatedChat);
+
+        Log.w(TAG, "updated '" + nodeID + "' with " + dbChat.specifications.toString());
+    }
+
     public void makeNode(){
         DatabaseReference keyReference = listingRef.push();
         nodeID = keyReference.getKey();
@@ -96,6 +110,8 @@ public class FirebaseRTDB extends Service {
                 try { //checks for listingAccessed
                     if (dataSnapshot.child(DB_CHILD).child(nodeID).child("listingAccessed").getValue().toString().equals("true")) {
                         dbChat.listingSuccessfullyAccessed();
+                        if (MainActivity.which_phone == "old")
+                            updateNodeSpecs();
                     }
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
@@ -112,7 +128,6 @@ public class FirebaseRTDB extends Service {
 
                 try { //checks for frontPhotoTaken
                     if (dataSnapshot.child(DB_CHILD).child(nodeID).child("frontPhotoTaken").getValue().toString().equals("true")) {
-//                        PicturePreviewActivity.frontPhotoReceived();
                         dbChat.frontPhotoSuccessfullyTaken();
                     }
                 } catch (NullPointerException ex) {
@@ -122,7 +137,107 @@ public class FirebaseRTDB extends Service {
                 try { //checks for backPhotoTaken
                     if (dataSnapshot.child(DB_CHILD).child(nodeID).child("backPhotoTaken").getValue().toString().equals("true")) {
                         dbChat.backPhotoSuccessfullyTaken();
-//                        PicturePreviewActivity.backPhotoReceived();
+
+                        //my many, many failed attempts at extracting a json string into a POJO...
+
+                        //update local dbChat object specifications with correct device info from rtdb
+
+//                        PhoneSpecifications oldPhoneSpecs = null;
+//                        for (DataSnapshot messageSnapshot: dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").getChildren()) {
+//                            oldPhoneSpecs = messageSnapshot.getValue(PhoneSpecifications.class);
+//                        }
+
+
+//                        PhoneSpecifications oldPhoneSpecs = null;
+//                        for (DataSnapshot messageSnapshot: dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").getChildren()) {
+//                            oldPhoneSpecs.expandableStorage = (String) messageSnapshot.child("expandableStorage").getValue();
+//                            oldPhoneSpecs.battery = (String) messageSnapshot.child("battery").getValue();
+//                            oldPhoneSpecs.cpu = (String) messageSnapshot.child("cpu").getValue();
+//                            oldPhoneSpecs.internalStorage = (String) messageSnapshot.child("internalStorage").getValue();
+//                            oldPhoneSpecs.manufacturer = (String) messageSnapshot.child("manufacturer").getValue();
+//                            oldPhoneSpecs.model = (String) messageSnapshot.child("model").getValue();
+//                            oldPhoneSpecs.name = (String) messageSnapshot.child("name").getValue();
+//                            oldPhoneSpecs.os = (String) messageSnapshot.child("os").getValue();
+//                            oldPhoneSpecs.ram = (String) messageSnapshot.child("ram").getValue();
+//                            oldPhoneSpecs.resolution = (String) messageSnapshot.child("resolution").getValue();
+//                            oldPhoneSpecs.screen = (String) messageSnapshot.child("screen").getValue();
+//                            oldPhoneSpecs.telephony = (String) messageSnapshot.child("telephony").getValue();
+//                        } 
+//                        PhoneSpecifications oldPhoneSpecs = new PhoneSpecifications();
+//                        String data = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").getValue().toString();
+//                        Log.e(TAG, "specs?:" + data);
+//
+//                        data = data.replace("{", "");
+//                        data = data.replace("}", "");
+//                        List<String> dataList = Arrays.asList(data.split(","));
+//
+//                        Log.e(TAG, "specs?:" + data);
+//
+////                            oldPhoneSpecs.setExpandableStorage(dataList.get());
+//                        String ss = "";
+//                            for (String s: dataList) {
+//                                if (s.contains("battery")){
+//                                    ss = s.substring(s.indexOf("=")+1);
+//                                    String sss = ss.trim();
+//                                    oldPhoneSpecs.setBattery(sss);}
+//                        if (dataList.contains("cpu")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setCpu(sss);}
+//                        if (dataList.contains("internalStorage")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setInternalStorage(sss);}
+//                        if (dataList.contains("manufacturer")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setManufacturer(sss);}
+//                        if (dataList.contains("model")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setModel(sss);}
+//                        if (dataList.contains("name")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setName(sss);}
+//                        if (dataList.contains("os")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setOs(sss);}
+//                        if (dataList.contains("ram")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setRam(sss);}
+//                        if (dataList.contains("resolution")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setResolution(sss);}
+//                        if (dataList.contains("screen")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setScreen(sss);}
+//                        if (dataList.contains("telephony")){
+//                            ss = s.substring(s.indexOf("=")+1);
+//                            String sss = ss.trim();
+//                            oldPhoneSpecs.setTelephony(sss);}
+//                        }
+//                        PhoneSpecifications oldPhoneSpecs = new PhoneSpecifications();
+//                        oldPhoneSpecs.expandableStorage = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("expandableStorage").getValue().toString();
+//                        oldPhoneSpecs.battery = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("battery").getValue().toString();
+//                        oldPhoneSpecs.cpu = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("cpu").getValue().toString();
+//                        oldPhoneSpecs.internalStorage = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("internalStorage").getValue().toString();
+//                        oldPhoneSpecs.manufacturer = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("manufacturer").getValue().toString();
+//                        oldPhoneSpecs.model = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("model").getValue().toString();
+//                        oldPhoneSpecs.name = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("name").getValue().toString();
+//                        oldPhoneSpecs.os = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("os").getValue().toString();
+//                        oldPhoneSpecs.ram = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("ram").getValue().toString();
+//                        oldPhoneSpecs.resolution = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("resolution").getValue().toString();
+//                        oldPhoneSpecs.screen = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("screen").getValue().toString();
+//                        oldPhoneSpecs.telephony = dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").child("telephony").getValue().toString();
+
+//                        PhoneSpecifications oldPhoneSpecs = (PhoneSpecifications) dataSnapshot.child(DB_CHILD).child(nodeID).child("specifications").getValue();
+//                        if (oldPhoneSpecs != null)
+//                        dbChat.setSpecificationObject(oldPhoneSpecs);
                     }
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
@@ -131,19 +246,10 @@ public class FirebaseRTDB extends Service {
                 try { //checks for listingPosted
                     if (dataSnapshot.child(DB_CHILD).child(nodeID).child("listingPosted").getValue().toString().equals("true")) {
                         dbChat.listingSuccessfullyPosted();
-//                        PicturePreviewActivity.backPhotoReceived();
+                        myRef.removeEventListener(this); //maybe stops listening after listing posted?
                     }
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
-                }
-
-                // if the data exchange is completed.
-                //TODO: maybe put an escape parameter into the RTDB..
-                if (dataSnapshot.hasChild("attemptFinish_"+"nodeId")) {
-                    boolean isFinished = (boolean) dataSnapshot.child("attemptFinish_"+"nodeId").getValue();
-                    if(isFinished){
-                        myRef.removeEventListener(this);
-                    }
                 }
             }
 
@@ -254,6 +360,10 @@ public class FirebaseRTDB extends Service {
 
         public boolean getBackPhotoStatus() {
             return this.backPhotoTaken;
+        }
+
+        public void setSpecificationObject(PhoneSpecifications oldPhoneSpecs) {
+            this.specifications = oldPhoneSpecs;
         }
     }
 }

@@ -146,8 +146,8 @@ public class CameraActivity extends AppCompatActivity {
 
             flipAlertDialog.setTitle(getString(R.string.back_photo_tip_title));
             flipAlertDialog.setMessage(getString(R.string.back_photo_tip_message));
-            flipAlertDialog.setButton(flipAlertDialog.BUTTON_NEUTRAL, "OK(debug)",
-                    (dialog, which) -> dialog.dismiss());
+//            flipAlertDialog.setButton(flipAlertDialog.BUTTON_NEUTRAL, "OK(debug)",
+//                    (dialog, which) -> dialog.dismiss());
 
             flipAlertDialog.setCancelable(false);
             flipAlertDialog.setCanceledOnTouchOutside(false);

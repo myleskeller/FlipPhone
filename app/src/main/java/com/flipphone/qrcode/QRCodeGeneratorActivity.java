@@ -78,7 +78,7 @@ public class QRCodeGeneratorActivity extends AppCompatActivity {
 
         //user email
         textView2.setText(R.string.default_user_email);
-        userPhoto.setImageResource(R.drawable.pizza_monster);
+        userPhoto.setImageResource(R.drawable.ic_flip_phone_dark_24dp);
 
         FirebaseUser account = FirebaseAuth.getInstance().getCurrentUser();
         if (account != null) {

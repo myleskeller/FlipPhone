@@ -436,4 +436,52 @@ public class PhoneSpecifications { //maybe extending application not a good idea
 
         return output;
     }
+
+    public void setBattery(String battery) {
+        this.battery = battery;
+    }
+
+    public void setExpandableStorage(String expandableStorage) {
+        this.expandableStorage = expandableStorage;
+    }
+
+    public void setCpu(String cpu) {
+        this.cpu = cpu;
+    }
+
+    public void setInternalStorage(String internalStorage) {
+        this.internalStorage = internalStorage;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public void setRam(String ram) {
+        this.ram = ram;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public void setScreen(String screen) {
+        this.screen = screen;
+    }
+
+    public void setTelephony(String telephony) {
+        this.telephony = telephony;
+    }
 }

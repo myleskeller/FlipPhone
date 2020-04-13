@@ -6,24 +6,6 @@
         android:title="@string/sign_out" />
 
     <item
-        android:id="@+id/menu_add_items"
-        android:title="@string/add_random_items" />
-    <item
-        android:id="@+id/toFlip"
-        android:title="Go to Flip" />
-
-    <item
-        android:id="@+id/menu_qr_code"
-        android:title="@string/qr_code_scanner" />
-
-    <item
-        android:id="@+id/menu_qr_make"
-        android:title="@string/qr_code_generator" />
-
-    <item
-        android:id="@+id/menu_photo_front"
-        android:title="@string/photo_front" />
-    <item
         android:id="@+id/menu_sell"
         android:title="Sell"/>
 </menu>

@@ -23,18 +23,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.flipphone.adapter.PhoneAdapter;
 import com.flipphone.camera.CameraActivity;
 import com.flipphone.listing.PhoneDetailActivity;
 import com.flipphone.listing.PhoneSpecifications;
+import com.flipphone.model.Phone;
 import com.flipphone.qrcode.QRCodeGeneratorActivity;
 import com.flipphone.qrcode.QrCodeScannerActivity;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.flipphone.adapter.PhoneAdapter;
-import com.flipphone.model.Phone;
 import com.flipphone.util.PhoneUtil;
 import com.flipphone.viewmodel.MainActivityViewModel;
-
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -302,18 +301,18 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_add_items:
-                onAddItemsClicked();
-                break;
-            case R.id.menu_qr_code:
-                OpenQRScanner();
-                break;
-            case R.id.menu_qr_make:
-                OpenQRGenerator();
-                break;
-            case R.id.menu_photo_front:
-                TakeFrontPhoto();
-                break;
+//            case R.id.menu_add_items:
+//                onAddItemsClicked();
+//                break;
+//            case R.id.menu_qr_code:
+//                OpenQRScanner();
+//                break;
+//            case R.id.menu_qr_make:
+//                OpenQRGenerator();
+//                break;
+//            case R.id.menu_photo_front:
+//                TakeFrontPhoto();
+//                break;
             case R.id.menu_sign_out:
                 AuthUI.getInstance().signOut(this);
                 startSignIn();
@@ -322,10 +321,10 @@ public class MainActivity extends AppCompatActivity implements
                 Intent intent = new Intent(this, SellActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.toFlip:
-                Intent chatIntent = new Intent(getApplicationContext(), SellFlip.class);
-                startActivity(chatIntent);
-                break;
+//            case R.id.toFlip:
+//                Intent chatIntent = new Intent(getApplicationContext(), SellFlip.class);
+//                startActivity(chatIntent);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
